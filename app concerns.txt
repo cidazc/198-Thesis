@@ -1,0 +1,12 @@
+Who decides which data goes to which node?
+- System (automatic)
+- Master node admins
+- Data node admins
+- Users- Users
+
+- Users
+
+
+- master node could decide automatically based on available space
+
+Remind sir about access to servers with open ports

@@ -1,0 +1,29 @@
+199-1-21 Meet Notes
+Data sync bet servers
+
+when a dataset gets uploaded:
+- notify master node of new update
+- master picks which other data nodes will host a copy of the dataset
+- then asks those nodes to copy from the original data node
+- data nodes will copy from the original
+- after complete download, flag locally and notify master node about completion
+
+upd or delete:
+- inform everyone if metadata has been changed
+
+only master node keeps a record of all metadata in the dist system
+all data nodes have to ask master node if user wants a file it does not own
+
+use nginx
+http://w.x.y.z:80/api/ (exposed endpoint) -> http://w.x.y.z:5984 (couchdb)
+
+assume data nodes have a public ip
+assume all data is public
+
+
+dev:
+start coding NOW, then decide what features to change/add/remove
+
+benchmarking:
+refer to lit on factors to consider for benchmarking
+look for fasta files

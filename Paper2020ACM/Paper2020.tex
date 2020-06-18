@@ -1,0 +1,961 @@
+%%
+%% This is file `sample-acmsmall.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% samples.dtx  (with options: `acmsmall')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from sample-acmsmall.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file samples.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+%% The first command in your LaTeX source must be the \documentclass command.
+\documentclass[acmsmall]{acmart}
+
+
+
+
+% NOTE that a single column version is required for submission and peer review. This can be done by changing the \doucmentclass[...]{acmart} in this template to 
+%\documentclass[manuscript,screen]{acmart}
+
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+\setcopyright{acmcopyright}
+\copyrightyear{2020}
+\acmYear{2020}
+\acmDOI{10.1145/1122445.1122456}
+
+
+%%
+%% These commands are for a JOURNAL article.
+\acmJournal{JACM}
+\acmVolume{1}
+\acmNumber{1}
+\acmArticle{1}
+\acmMonth{6}
+
+%%
+%% Submission ID.
+%% Use this when submitting an article to a sponsored event. You'll
+%% receive a unique submission ID from the organizers
+%% of the event, and this ID should be used as the parameter to this command.
+%%\acmSubmissionID{123-A56-BU3}
+
+%%
+%% The majority of ACM publications use numbered citations and
+%% references.  The command \citestyle{authoryear} switches to the
+%% "author year" style.
+%%
+%% If you are preparing content for an event
+%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
+%% citations and references.
+%% Uncommenting
+%% the next command will enable that style.
+%%\citestyle{acmauthoryear}
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{caDDS: Community Assisted Distributed Database for Sequences}
+
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+%% Of note is the shared affiliation of the first two authors, and the
+%% "authornote" and "authornotemark" commands
+%% used to denote shared contribution to the research.
+\author{Carl Araya}
+\authornote{Both authors contributed equally to this research.}
+\email{jjazcarraga@up.edu.ph}
+\affiliation{%
+  \institution{University of the Philippines - Diliman}
+  \city{Quezon}
+  \country{Philippines}
+}
+
+\author{Jose Carlos Rodrigo J. Azcarraga}
+\authornotemark[1]
+\affiliation{%
+  \institution{University of the Philippines - Diliman}
+  \city{Quezon}
+  \country{Philippines}
+}
+\email{jjazcarraga@up.edu.ph}
+
+
+%%
+%% By default, the full list of authors will be used in the page
+%% headers. Often, this list is too long, and will overlap
+%% other information printed in the page headers. This command allows
+%% the author to define a more concise list
+%% of authors' names for this purpose.
+\renewcommand{\shortauthors}{Araya and Azcarraga}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+300 words
+- purpose and problems:
+    - design a framework
+    - design a database
+- basic design:
+- system summary:
+    - master node and data node
+- conclusion:
+    - time complexity wise: 
+    - proposed system has this pros
+    - based system has this pros
+
+working draft (insert kulang when info is ready):
+ Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genomic data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Data nodes should theoretically increase data transfer speeds even as the number of users increase. (to be updated based on conclusion) While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. A recommendation is to implement the system and make the code public for the use of other communities.
+\end{abstract}
+
+%%
+%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
+%% Please copy and paste the code instead of the example below.
+%%
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10010405.10010444.10010093</concept_id>
+       <concept_desc>Applied computing~Genomics</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10002951.10002952.10002953</concept_id>
+       <concept_desc>Information systems~Database design and models</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+   <concept>
+       <concept_id>10003120.10003130</concept_id>
+       <concept_desc>Human-centered computing~Collaborative and social computing</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+ </ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Applied computing~Genomics}
+\ccsdesc[500]{Information systems~Database design and models}
+\ccsdesc[500]{Human-centered computing~Collaborative and social computing}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\keywords{genomics, distributed, database, community}
+
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% START OF PROGRESS FOR CID MAY 22 2020
+\section{Introduction}
+The goal of this introduction is to explain the idea of genomes, their size and magnitude. Inside every human body are the instructions to create and maintain it. These instructions are found inside the genome. The instructions inside the human genome are incredibly long. For example, entire human genome, inside a singular cell, when laid out is around 2 meters in length.\cite{ency_sci_tech}
+
+Combining  and laying out all the information for all the cells in the human body. The length is incredibly long that it can span the earth to moon 6000 times. This describes as well the vast amount of DNA information in the body. These kinds of information will help scientists explain many of the understood and unknown processes inside all organisms. These may also be used to compare different organisms to each other. And to compare humans to other humans.
+
+
+Defining \textit{genome}
+% CID PROGRESS ENDS HEREE FOR MAY 22 2020
+%------------------------------------------
+% CID PROGRESS STARTS HEREE FOR MAY 29 2020
+
+\subsection{Definition of Genomics}
+Genomics is is the study of wholes sets of genes and their interactions\cite{campbell}. The efforts to study this field has led to volumes of data that need to be analyzed. Which has also spurred the field bioinformatics, which aims to use computers to aid the analysis and storage of biological data. Institutions such as the National Institute of Health and National Library of Medicine, have led this field and built a website to encourage collaboration online through their online portal called NCBI (National Center for Biotechnology Information). \cite{campbell} This website will be discussed later in more detail.
+
+National Institute of Health \cite{genomics-definition} formally defines genomics as \\ \\
+\textit{the study of all of a person's genes (the genome), including interactions of those genes with each other and with the person's environment.} \\ \\
+
+In the definition, one main component of genomics are genes. Genes comprise of DNA. DNA, deoxyribonucleic acid, is a chemical compound that works like a computer bytes to store information for organisms. DNA's structure is composed of chemical compounds (or nucleotides) that encode information. These nucleotides are commonly written down as A,G,C,T corresponding to their chemical makeup. Another important feature of genes is that these genes are the instructions passed on from one generation to another. \cite[p.~2]{hartl2018}
+
+These nucleotides form sets of base pairs (otherwise known as \textit{bases}). These bases encode the information stated earlier. They are pairs since, there is always a corresponding complement pair for every nucleotide. To give a bigger picture, when these bases are combined and organized, these act as a blueprint to describe and instruct the body(or organism) on how to create it and how to maintain it.\cite{alberts_mole}
+
+If all the bases, genes, genomics combined form the blueprint of the organism. There is useful knowledge there and there will be a need to understand all the complexity and interactions to further understand how the blueprint of an organism works. Genomics play a role in understanding different components of an organism by paying attention to the genes and nucleotide bases. Different organisms have certain differences in genes and this has been a focal point of many genomic studies, which sometimes is aimed as well as establishing surprising similarities among distinct organisms.
+
+The instructions inside the genes explain the complexity of an organism. This also means more complex organisms are likely to have more complicated genes and therefore have a lot more information. Even if this general idea is true, there are some exceptions, some plants such as the Japanese canopy plant \textit{Paris japonica} have 50 times the genome size compared to humans\cite{campbell}. These may be due to repeating non-essential DNA. But the idea of having many unknown components and interactions in a complex organism means more information will be needed and gathered. Humans, being complex, are extensively studied in order to detail the complex processes inside the body. The presence of many studies for the human genome has increased the amount of information generated. To give an idea of the amount of information, for humans, the full human genome contain around $3.2x10^9$ base pairs \cite{introgenomics}. 
+
+Storing information is one aspect, but before analyzing that information, these have to be physically taken from the organism's cells and read. Reading these information from genes will need a certain technology. The technology is called \textit{Sequencing}.
+
+\subsection{Sequencing}
+
+The machines to generate the sequences are aptly called \textbf{Sequencers} that look (or more appropriately, \textit{read}) the DNA of a specimen. The machine outputs A,G,C,T, sometimes with uncertainties. Sequencers look at the exact order of a single strand of DNA. The process of sequencing DNA seems straightforward that a machine will read only one strand of DNA. In actuality, one strand is too little for one machine to read. So before reading, the DNA is \textit{replicated} multiple times in the laboratory. Here there is a concept of repeated reading or coverage which will be discussed later.
+
+Sequencers also can't read the entire length of DNA. With this, the DNA is also \textit{fragmented} before processing. By fragmented meaning it will be cut up into pieces. Sequencers can only read it in parts. 
+
+The idea of \textit{replication} and \textit{fragmentation} are important because these increase the data taken up when sequencing. Replication causes a lot of redundant data in the sequence. Fragmentation causes there to be a need to piece back the information together. Now with those concepts in mind sequencers then reads (or sequences) the replicated and fragmented data.
+
+These reads or sequences taken will need an extra step before the data becomes useful. It will then be needed to be put back together computationally to form the \textit{correct or reference} DNA. These utilize many of the technology developed by bioinformatice. These are one of the reasons why genomic data is large because even the fragmented replicated data is still stored, not just the reference DNA.
+
+\subsection{Human Genome Project}
+
+Another way to see the way genomic data is large is by looking at the \textit{Human Genome Project (HGP)}. The project's aim was to sequence the entire human genome. At the time it needed a lot of collaborations, a lot of financing, and new computational tools (piecing everything together). Back in 2003 it was a milestone because the first human genome \cite{introgenomics} had been first completely read. It took the project ten years of work, a dozen institutions, and 3,000,000,000 dollars to finish. The technology for sequencing and genomics was still at its infancy. 
+
+Once the Human Genome Project was completed in 2003 and the studies fully published in 2006. The research then paved the way to study chimpanzees since their DNA is the closest to humans. And the whole genome structure of humans can easily be used to recreate the whole genome sequence of the chimpanzee. This was completed 2 years after the Human Genome Project\cite{campbell}. These paved the way for more and more whole genome studies of animals much different from humans. By April 2013, around 4,300 genomes had been studied\cite{campbell}. These contribute to the growing amount of research, analysis, and most importantly data around genomes of different organisms.
+
+
+\subsubsection{Next Generation Sequencing}
+
+The introduction of \textit{Next Generation Sequencers or (NGS)} can be seen as a another significant event in the history of genomics. This is a new technology which has allowed the machines to read faster and cheaper. These utilize a variety of technologies, some make use of light, some use ion semiconductors, others use a special DNA marker with a fluorescent probe \cite[~p.67]{paulselzer2018}.  Back in 1980 the speed in which sequencing can be done was 1000 base pairs a day. In 2000 when the human genome project had been ongoing, the speed grew to 1000 base pairs every second, 24 hours a day, 7 days a week \cite{campbell}.  In 2000 the technology had been growing faster and more reliable.
+
+NGS has contributed to this speedup even further. Many countries that research have started employing NGS. The NGS technology in Japan can now read 10,000 human genomes per day. \cite[p.~19]{introgenomics} Compare this to the many years and institutions it took to study the first human genome back in 2003. Now a singular laboratory can achieve this with speed.
+
+These show how the technology for reading genomes has been developed over the years. This tech has increased the speed of reading, and as well as research. Which directly affects the speed in which genome data is produced. Since each sequence read requires storage. This poses a problem to projects involving sequences, causing the data volumes to be usually very large\cite{bon_compression}. 
+
+There exists a concept of \textit{coverage} as well. Referring back to the \textit{replication} and \textit{fragmentation} concept earlier. There needs to be a specific number of reads a machine needs in order to produce a good quality reference sequence (the correct, standard sequence). Meaning the sequence isn't read only once, where multiple reads need multiple reads.  
+
+This contributes to the large data size of sequence reads. Currently, for a coverage of around 60, the file size for a compressed human genome can easily reach 200 GB. And a project of 10-20 genomes would need approximately 4 TB of storage. Transferring these data across research groups would indeed be a challenge. \cite[~p.68]{paulselzer2018} These highlight the important and growing problem of storage and file transfers in genome research.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\textwidth]{images/human-gen-cost.jpg} 
+\caption{Cost per Genome Data Over Time}
+\label{fig:human_gen_cost_fig}
+\end{figure}
+
+To view these technology developments over time, we look at the Figure~\ref{fig:human_gen_cost_fig} on Page~\pageref{fig:human_gen_cost_fig} \cite{genomics-cost}, we note here the expensive cost at the initial stages of sequencing the human genome. But as time progresses, the cost substantially went down to what it is now. The big fall of the prices around 2004 - 2005 corresponds to the introduction of the Next Generation Sequencers.
+
+\subsection{Database}
+
+\begin{figure}[h]
+\caption{Megabase Cost Over Time}
+\centering
+\includegraphics[width=0.65\textwidth]{images/seq-cost.jpeg} 
+\label{fig:megabase_cost_fig}
+\end{figure}
+
+Similar to Figure~\ref{fig:human_gen_cost_fig} on Page~\pageref{fig:human_gen_cost_fig}, we also note the same pattern for the cost of sequencing (not just humans) in Figure~\ref{fig:megabase_cost_fig}\cite{genomics-cost}. After the human genome project, many more whole genome projects have been completed. And the cost of sequencing dropped 1000 fold from 2008 to 2012 alone \cite{bon_compression}. This lowering of cost, again corresponds to the idea of sequencing becoming more available. Increasing the number of research projects, therefore contributing to the growing number again of genomic data.
+ 
+\begin{center}
+\textit{Moore's law states that the number of transistors on a chip doubles every two years.}\cite{kurose}
+\end{center}
+
+The idea of Moore's law should give relief to genomic researchers since this means, that as time passes by, technology for processing and storage will improve. And the overall capacity for what technology can do will increase as well. 
+
+But, by paying attention to the speed in which the number of sequence data increases seems to exceed the speed of Moore's Law. And this will pose an additional problem since the technology doesn't seem to be catching up. The immediate problem is the storage of all the data being produced. A certain technology needs to be made for the purpose of holding this data. This technology is called \textit{Databases}. But there is a greater need as well in making sure the data stays secure, consistent, easily accessible, and fast. These are other aspects needed by a genomics researcher as well. And this is the reason why a specific class of Databases called \textit{Distributed Databases} will be needed in this paper.
+
+\subsubsection{Databases Definition}
+A database (DBMS, Database Management System) is defined by containing information about a particular enterprise. Functionalities include: \cite{Silberschatz2010}
+\begin{itemize}
+    \item Collection of interrelated data
+    \item Set of programs to access the data
+    \item An environment that is both convenient and efficient to use
+\end{itemize}
+
+These form a system that is made for accessing and updating data. The next section discusses the key points when considering how to  create a good database system (or DBMS). The key points are important to discuss many important features and dilemmas of the proposed system later. Certain database principles are needed to make sure the data is available, secure, and consistent. 
+
+\subsubsection{Principles of Databases} 
+There are 3 principles needed when creating a database. The idea is that only two of the three can be focused on at any given time. Only two since the current technology can only handle two. These principles and limitations need to be taken into consideration when designing the system. \cite{Silberschatz2010}
+
+\begin{itemize}
+    \item Consistency - Does the data have integrity? To update one part, all other (replicated) parts should be updated quickly as well; Data is accurate and copied faithfully. An example would be that genes for specimen A, when copied to another data node should contain the exact copy of the data, with no changes.
+    \item Accessibility - How easy it is to access data, API protocols? An example would be the number of commands  a user needs to do to access every data.
+    \item Partition Tolerance - How resilient is the system when it comes to failures? If one portion breaks, the other portions should still be entirely usable. An example would be a power failure for one system, how would this affect the other systems?
+\end{itemize}
+
+\subsubsection{Database Types} 
+Two types of databases will be discussed in this paper. Each have their specific niche and use. One is more efficient and easier to make, another is better suited for collaborative work. Note some technical jargon needs to be used to explain some concepts. These are namely: \cite{centralizedvsdistributed}
+
+\begin{itemize}
+    \item Centralized - In a centralized database, all data are managed by a single DBMS in a single node to be distributed to users. As a result, transactions are easily manageable because everything can be processed in the single node. Here, the cost of communication is high and reliability is low, as an error in the database will mean disaster to the network as a whole. These are easier to create.
+    
+    \item Distributed - In a distributed database, data are stored in multiple servers in different geographical locations. Each node may contain a part or the entirety of the data. The difficulty of managing transactions will go up, but the result is higher availability, faster response, and modular growth, among other advantages. These databases are better creating spread out databases, and are better for collaborative work.
+\end{itemize}
+
+For genomic research, when the data storage needs to be increased often, distributed databases are most appropriate.
+
+\subsection{Application Architecture}
+Another important consideration is how a system is built. These describe the blueprint and interaction within a database system. These provide insights similar to the questions asked when looking between database types. Database types describe how the data is handled inside the system. But application architecture describes how the users interact with the system. The application architecture is how a networked app is structured across the various end systems (i.e. computers, servers, etc.) \cite{kurose} The end systems are another way to call users or clients. 
+The application architecture types fall into either client-server, peer-to-peer, or hybrid architecture.
+
+\subsubsection{Client-Server}
+A client-server architecture relies on a Web server that is always available and has a fixed IP address. When a client (or user) sends a request for data, the server (or DBMS in this example) responds by sending the requested data. The client-server architecture is mainly built to respond to one client at a time. The architecture may handle multiple connections but as these grow bigger, it may not be able to keep up with the increasing number of connections since the server might not be able to handle all the requests.
+
+\subsubsection{P2P}
+A peer-to-peer (P2P) architecture has minimal to no reliance on always-on, dedicated servers. Peers are desktops/laptops (or users) that communicate to each other without passing through a dedicated server (or DBMS). These include internet, BitTorrent, and some other file sharing protocols. An advantage of P2P networks is their scalability, unlike the earlier type. Each user can benefit the whole network by sharing his/her own resources. 
+
+However, since P2P doesn't have a central data management system. P2P has its own problems, which are security and incentivizing users to share their resources.
+
+\subsubsection{Hybrid}
+A hybrid architecture combines elements of P2P and client-server architectures, attempting to utilize advantages of both.
+
+For a genomic database system, it would be best to utilize Hybrid Application Architecture. Since there needs to be certain features that Client-Server of P2P might not be able to deliver. One would be scalability, another is security and centralized management of the data, which is a feature not provided by P2P.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% RRL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Review of Related Literature}
+
+We review the technologies on data storage done before. Some have employed \textit{Client-Server}, some \textit{P2P}, others have tried \textit{Hybrid} (but are still few and unsuccessful).
+
+\subsection{SeqTorr: A distributed scalable database for genomic information}
+The focus on SeqTorr was finding a way to scale databases meant specifically for genomic information. There was also a focus on being able to choose information to share and use. The standard genomics workflow consists of uploading and downloading data on an international database like NCBI. Having a distributed scalable local infrastructure to store genomic data instead of relying on NCBI would be beneficial since: only certain sequences in NCBI are relevant to the institutions (e.g. Asian sequences are needed more than Caucasian ones), researchers within the country can share data with fast speeds, and  institutions can share in the hosting of data.
+
+The architecture of SeqTorr consists of a master node and multiple data nodes. The master node contains metadata of all the sequences and is where the user authentication is handled, while the data node is where the actual sequences are stored. All user uploads happen in the master node. When the master node receives a sequence from a user, it distributes the sequence to any available data nodes. 
+\cite{seqtorr}
+
+SeqTorr seems to go in the right direction and focus for genomic databses. But currently, SeqTorr is not available, and the code base does not have any documentation which makes future work difficult.
+
+\subsection{BioTorrents}
+BioTorrents focused on P2P and making it easy to share data across biological scientific communities.  Scientific data continues to grow, and so does the demand for easier accessibility. Centralized servers, as stated earlier, using HTTP or FTP cannot keep up with concurrent requests, and peer-to-peer protocols does not scale well for large files.\cite{biotorrents} One example of these centralized servers is NCBI, which will be discussed later. BitTorrent handles both these problems. 
+
+BioTorrents is a system for legally sharing scientific data that works on top of the BitTorrent protocol (or P2P). It is much like a public tracker. The main website hosts .torrent and metadata files. The main website doesn't store data, rather it lets the users keep the data and share it to other users. The main website only facilitates the sharing of these data (via the idea of P2P and torrents).
+
+The main website stores info about each dataset includes categories, license, filenames, etc. that helps users in searching for relevant datasets. There is also a torrent file has a list of trackers, servers that "know" which peers are serving which files, so it can download from those peers simultaneously. These torrents act like a directory telling the user who currently has the data for a piece of the file. The system then helps the user download many pieces of the file from many different users.
+
+The client (or user) must have their computer continuously turned on to keep their file available to others. The main issue with BioTorrents, which is a problem as well in P2P, is that it requires lots of users that will keep many torrents available as often as possible.\cite{biotorrents} These entail that for the system to work, many people need to use it and all these people need to keep their computers on all the time.
+
+BioTorrents was successful, many people had used it to share data. It was active for a while. However, BioTorrents has been down for years. This also shows what problems a system will face when doing a pure P2P application architecture.
+
+\subsection{PeerDB}
+% summarize intro
+PeerDB is a proposed P2P system for sharing general data. Each node is equipped with a MySQL database that it keeps available for other nodes to download from. Each node also keeps track of its neighbors, and any useful information about them. Queries are passed around neighbors, with a maximum number of hops. A node may cache information about other peers to speed up future queries.
+\cite{peerdb}
+
+PeerDB is a proposal for a distributed system using P2P. For this to be used in the context of genomic biological work, a main website which facilitates sharing will be need to be put up. PeerDB needs to be installed as well on all the users who will be participating.
+
+A future PeerDB system will also face similar problems faced by BioTorrents since it will need to rely on numerous active users for it to work.
+
+\subsection{NCBI}
+The National Center for Biotechnology Information or more commonly known as NCBI, which discussed briefly in the section on \textit{BioTorrents} and in the \textit{Introduction}. This is the standard genomic database used by many researches and institutions. We will refer this later on as well as the \textit{base system}. This is the website used to access and store most genomic information\cite{campbell}. It uses a client-server architecture. Users may download data via the graphics interface (website), or may be done via file transfer protocols such as FTP or HTTP \cite{biotorrents}. The latter is preferred since it may be done to automate the download of data.
+
+The SeqTorr authors\cite{seqtorr} also stated that NCBI is the main and current DBMS used to get and share genomic data. But one difficulty using that is updating the current genomic data. There currently is no way to check which data (on your computer) has been updated, which sequences were corrected. And the way the authors solved this was to regularly re-download the entire NCBI database.
+
+To state again some problems of NCBI, it has the limitations of \textit{Client-Server} architecture meaning the speed of the download is heavily reliant on the speed of the main NCBI server and the number of users accessing the server. Which also puts a lot of stress on the main server. Another problem discussed earlier was the updating of local user data, which have no technology yet to do so.
+
+% CID PROGRESS ENDS HEREE FOR MAY 29 2020
+% CID PROGRESS STARTS HEREE FOR JUNE 2 2020
+
+\begin{table}[h]
+    \caption{Comparisons of Different Databases}
+    \label{table:database_comparison_table}
+    \begin{tabular}{ccccc}
+    \toprule
+    System      & CS/P2P/H & Available? & DL/UL speed & Type of Data \\ 
+    \midrule
+    BioTorrents & P2P           & No         & Depends                    & Biological  \\ 
+    SeqTorr     & H             & No         & Fast (PH server)           & FASTA        \\ 
+    PeerDB      & P2P           & No         & Depends                    & General      \\ 
+    NCBI        & CS            & Yes        & Slow (US server)           & Biological  \\ 
+    \bottomrule
+    \end{tabular}
+\end{table} 
+
+Table~\ref{table:database_comparison_table} on page ~\pageref{table:database_comparison_table} describes the different technologies studied. This will also be used later on to describe what are the main problems of the different databases.
+
+\section{Problem}
+To restate the different gaps or problems found with other implementations of Genomic Databases
+\subsection{Problems of Classical Databases}
+\begin{enumerate}
+\item Genome researchers download an entire database of genomic data, especially when uncertain how to update their data
+\item Genome researchers only need a portion of the database, but end up downloading the entire database
+\item Client-Server approach can face bottlenecks (server speed)
+\item P2P approach has a need of a large unmoderated active user base to work
+
+\end{enumerate}
+
+\subsection{Problems of Current Distributed Databases for Genomes}
+\begin{enumerate}
+    \item No public existing usable public framework on distributed databases for genomes
+    \item Existing distributed database system for genomes is not replicable
+\end{enumerate}
+
+\section{Objectives}
+
+Based on the problems we found described, we propose to:
+
+\begin{itemize}
+    \item Design the framework for an information system that speeds up the download and upload of genomic data
+    \begin{itemize} 
+        \item To resolve 1 \& 2 of the Problems of Classical Databases. 
+    \end{itemize}
+    \item  Design a distributed database system
+    \begin{itemize}
+        \item To resolve 3 \& 4 of the Problems of Classical Databases. 
+    \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+    \item For the framework, the system should have the main API’s 
+    \begin{itemize}
+        \item POST genome data
+        \item GET genome data (this will implement a hybrid P2P transfer)
+        \begin{itemize}
+            \item This will aim to speed up number 3 in the Problems of Classical Databases
+        \end{itemize}
+        \item PUT genome metadata (optional: PUT data)
+        \item DELETE genome data
+    \end{itemize}
+\end{itemize}
+
+
+\section{Scope}
+
+The project will focus on creating a framework, and outlining key API features of the framework. The current scope of the project is as follows:
+
+\begin{itemize}
+    \item To create a framework for a proposed system
+    \item To design the correctness of a system
+    \item To look at the basic time complexity of the base system (NCBI) and the proposed system
+    \item To compare the proposed system to the base system
+
+\end{itemize}
+
+The current scope and coverage of the project will NOT consider:
+
+\begin{itemize}
+    \item Security and Authentication 
+    \item Specific technologies to create the system
+    \item All the data stored in the system (but focus on main data only)
+    \item Implementing the actual system (but pseudocodes to the author's best ability will be provided)
+\end{itemize}
+
+% CID PROGRESS ENDS HEREE FOR JUNE 2 2020
+
+% CID PROGRESS STARTS HEREE FOR JUNE 3 2020
+% REDID FORMAT
+% CID PROGRESS ENDS HEREE FOR JUNE 3 2020
+
+% CID PROGRESS STARTS HEREE FOR JUNE 4 2020
+
+\section{Theoretical Framework}
+
+\subsection{Networks}
+
+An important aspect of the proposed system is the transfer of files to other computers. To achieve that, there are network technologies and systems developed. Each layer of the network has certain features, securities, and abstraction which contributes to the overall idea of sharing files across networks. Networks Layers are the abstraction of how computers pass data to each other. Understanding this is needed to maximize the speed in which data is transferred between computers. As well as to realize where certain problems or bottlenecks later on. A network, specifically the Internet, is comprised of the following levels of abstraction. \cite{kurose}
+\begin{enumerate}
+    \item Level 1: Medium used to send signals (physical, electrical signals of 0
+and 1), through wire or by air
+    \item Level 2: Introduction of packets: Wifi, Ethernet, connecting together
+different . Goal of sending a group of signals.
+    \item Level 3: Introduction of networks: IP Address to uniquely identify
+entities.
+    \item Level 4: Management of error free data transmission: Sending a group
+of messages via TCP, UDP, FTP
+    \item Level 5: Abstraction of Level 4: Function calls programmers will use
+to do level 4 processes.
+\end{enumerate}
+
+Level 1 through 3 focus on building a system for sending messages from one computer entity to another. Every level talks to another entity on the same level. And a higher level talks to the lower level. This later on will be important to understanding the scope of what the thesis will do. Level 1 and 2 can be vulnerable if anyone can read the data in the air, partly why HTTPS was developed to encrypt the data. 
+
+Level 4 and 5 is what the system will mainly use. In these systems, there are APIs commonly used to transfer files between computers on networks. These levels, compared to the levels earlier discussed also are more specific to the ideas of file transfer, checking if the files are error free, and more. Making sure files transferred are error free will be needed to do data synchronization later on.
+
+In networks, when there is data being accessed over the network, it is not called C.R.U.D. (the way databases access data), instead it is called POST, GET, PUT, DELETE. POST is analogous to CREATE meaning the user submit data to be stored (in the server). GET is similar to READ but is in the context of reading a file over a network (from a server). PUT is analogous to UPDATE as DELETE remains as DELETE. These are codes used to denote network commands that do the same thing as the CRUD functions discussed earlier. This is important since there is an added layer of difficulty when it comes to transmitting data over a network.
+
+% CID PROGRESS STARTS HEREE FOR JUNE 6 2020
+
+\subsection{Summary of the System}
+
+The system is essentially a database. The database stores sequence data. It has the normal CRUD functions meaning Create, Read, Update, Delete. It can let anyone download sequence data. But only registered users can upload sequence data. When a user uploads data, the moderator will verify the data's authenticity before allowing it to be uploaded. 
+
+Then for the downloading of the data. The user will download normally, but under the hood the system will be doing a lot of work. It will check multiple "mirrors" of the download, by looking at the different available data nodes, then let the user choose the fastest or best option. File transfer will occur to bring the file to the user, then the system will be the one checking if the file were downloaded correctly. There is a simple organization of available files as well.
+
+The system is described as \textit{community assisted}. Since ideally, institutions can contribute to sharing the data by hosting servers that will become the data nodes. This sharing allows a greater bandwidth, and hopefully speed in which this data can be transferred. 
+
+The database is a distributed database, which will aim to utilize the best features from Peer2Peer and Client/Servers. This will also aim to store sequences. Thus the "Distributed Database for Sequences" portion of the title.
+
+\subsubsection{Community Aspect}
+- community: define as set of people who generally collaborate together to do research
+- focus on genome research community
+- any users in a community can upload data
+- users can become data nodes
+- as data nodes increase, data speeds (bandwidth) should theoretically increase as well
+- system is an opportunity to set up genomic databases for frequently used local data
+
+- summary: community assists in adding data
+- community assists in adding data storage (through data nodes)
+- community assists in increasing the data speeds
+- community is assisted since the data it uses frequently should theoretically get accessed faster
+
+- addition: this is a framework to design and develop community-centered databases (can be modeled to be used beyond genome)
+
+
+% CID PROGRESS ENDS HEREE FOR JUNE 4 2020
+
+\begin{figure}[h]
+\caption{App network diagram}
+\centering
+\includegraphics[width=0.35\textwidth]{images/thesis1.png} 
+\end{figure}
+
+\begin{figure}[h]
+\caption{POST: Uploading a sequence to the master node}
+\centering
+\includegraphics[width=0.35\textwidth]{images/thesis3.png} 
+\end{figure}
+
+\begin{figure}[h]
+\caption{POST: Uploading a sequence to the data node}
+\centering
+\includegraphics[width=0.35\textwidth]{images/thesis2.png} 
+\end{figure}
+
+\begin{figure}[h]
+\caption{GET: Downloading a sequence}
+\centering
+\includegraphics[width=0.35\textwidth]{images/thesis4.png} 
+\end{figure}
+
+%CID: Explain the data model and data permissions
+
+\begin{table}[h]
+\caption{Data Model to be Used in the System}
+\label{table:data_model_table}
+\begin{tabular}{cl}
+    \toprule
+    key & description \\
+    \midrule
+    seq\textunderscore id & unique ID assigned to all sequences \\
+    organism & organism where the sequence was extracted from \\
+    quality & the rating of the data based on the number of downloads or another criteria \\
+    uploader & user that uploaded the data \\
+    institute & institute where the uploader or sequence was taken from \\
+    upload\textunderscore date & date the data was uploaded to the database \\
+    last\textunderscore modified & the date the metadata or data was edited \\
+    data\textunderscore nodes & list of data nodes that this data is contained to \\
+    \bottomrule
+\end{tabular}
+\end{table}
+
+Table~\ref{table:data_model_table} on Page~\pageref{table:data_model_table} aims to show the metadata that will be initially stored in the database.
+
+%CID: Data Permissions
+
+\begin{table}[h]
+\caption{Data Permissions and Users in the System}
+\label{table:data_perm_table}
+\begin{tabular}{cl}
+    \toprule
+    user & description \\
+    \midrule
+   Moderator & Has ability to upload, download, store data, verify \\
+    Peer & Has ability to upload, download, store data \\
+    Guest & Has ability to upload, download \\
+   \bottomrule 
+\end{tabular}
+\end{table}
+
+Table~\ref{table:data_perm_table} on Page~\pageref{table:data_perm_table} shows the different set of users and the permissions allowed to them in the system. The moderator is a special user who has the ability to not allow some data to be uploaded. This is to make sure there is a means to verifying the data being uploaded. All users can upload, download, and store (or host) data. All other users, which are called guests has an ability to download and upload data.
+
+
+
+%HIII NEED HELP HEREE
+\section{Proof of Correctness}
+correct if
+GET - gets data
+POST - puts data
+PUT - edits data
+DELTE - deletes data
+
+speed should be X
+
+A proof of correctness for the implementation.
+
+\section{Theoretical Analysis of Speed}
+
+Theoretical analysis of the speed up by checking time complexity of the base method versus the distributed method.
+
+in the base method
+client sends data in X bytes per second. When X people are using. 
+(insert math equation)
+Each person gets the file at 1 byte per second.
+
+in the proposed method
+client has N data nodes and each node sends data in X bytes per second. When X people are using. Assuming perfect and equal distribution. 
+(insert math equation)
+Each person gets  at least N bytes per second
+
+Since N is always greater than 1, the speed should always be greater in the proposed method
+
+As user number increases, base method will reach a limit to its ability to handle data transfer.
+
+As user number increases, proposed method will also reach a limit. But scalability is possibile to remove the limit.
+
+
+\section{Comparison of base method vs distributed method}
+
+base method (NCBI)
+- houses a lot of biological data
+- go to website
+- one website
+- one data source
+- single point of failure
+- implemented
+
+proposed method
+- ability to scale
+- multiple (scalable data nodes) data sources
+- multiple (scalable data nodes) data links
+- not yet implemented
+- can be done / implemented on a local scale (limit nodes to the needs)
+- only have data for a certain data community
+- only have users from a certain data community
+- able to design the APIs for speed, security, consistency, tolerance, etc. depending on community needs
+
+- increase in data speed transfer (if there are sufficient available data nodes)
+- can reduce the data stored to house only locally used and needed data
+
+\section{Recommendations}
+
+Implement this. Describe the technologies used and why. And make the code public. Better yet create a template code to easily copy and implement own data centers.
+
+Implementation problems. The network API will face problems in port access especially in UPD internet. Only 2 ports are currently available. 
+
+Have a set of testing APIs and have testing APIs embedded in each component. And the testing consistently checks which data have integrity. 
+
+Have security. The API structure is one way of having security in the future even if it isnt implemented yet. Restructure and redesigning the APIs are one way to achieve security. Adding user authentication is one way to achieve this. As well as having a separate layer between user and master. Where all interactions happen in that layer (even data transfer??). 
+Abstract this project even further. Creating means for master nodes to communicate and collaborate with other master nodes. This will let different caDDS (assuming this is implemented) to communicate and collaborate (send data) to other caDDS.
+
+Abstract this project for non-genomic data as well. To develop the idea of a distributed data community (where distributed databases are easy to scale, implement, and connect). Which can help share many kinds of scientific data more easily. A specific suggestion is for other fields with large data gathered, such as space image data.
+
+
+\section{Slides}
+1. Title
+2. Abstract
+3. Overview
+
+CURRENT
+BIO
+1. Genes
+- all organisms have genes
+- genes from DNA: AGCT
+- genes are instructions and blueprints for life
+
+2. Genomics
+- study of genes
+- more complex organisms have more complex genes
+- studying complex organisms needs a lot of storage
+
+3. Sequencing
+- reading genes from cells is sequencing
+- replications(coverage) \& fragmentation of DNA to read
+- store the many fragments
+
+4. Human Genome Project
+- finished in 2003, project wanted to read the entire human genome
+- didn't have the tools at the time
+- big cost, many institutions, 10 years
+
+5. Next Generation Sequencing
+- new technology to read sequences faster
+- reading faster -> more reads -> more data
+
+6. Growing problem of storage
+- moore's law make faster processing power and better storage
+- but moore's law is too slow for genomic data increase
+- each has 60x coverage, around 200gb each
+- NGS, More genomic researches, more files needed to be saved and transferred
+
+
+TECH
+7. Database
+- store data with tech
+
+8. Definition
+- DBMS chuchu
+
+9. Database Principles
+- consistency
+- availability
+- partition tolerance
+
+10. Database Types
+- Centralized
+- Distributed
+- use Distributed becuz x
+
+11. Application Architecture
+- Client Server
+- P2P
+- Hybrid
+- Use Hybrid because X
+
+RRL
+12.SeqTorr
+- idea
+- pros
+- cons
+
+13.BioTorrents
+- idea
+- pros
+- cons
+
+14.PeerDB
+- idea
+- pros
+- cons
+
+15.NCBI
+- idea
+- pros
+- cons
+
+16. PROBLEM
+-classical databases
+-distributed databases
+
+17. OBJECTIVES
+- make a dist database
+- community assisted
+- main APIs
+- time complexity
+- pros and cons
+
+18. SCOPE
+- no this and that
+
+SYSTEM
+19. Network
+- five levels, but needs Level 4 and 5 only
+20. Summary
+- system is this
+- distributed
+- community assisted
+- genomic research
+
+21. User-System
+- user talks to system (via master)
+
+22. Master-Data
+- master is the main interface
+- data is what stores info
+
+23. Internal Node Interface
+- frontend talks to backend
+- backend talks to other backend via APIs
+
+24. Internal Node Structure
+- front end
+- back end
+- database
+
+COMMUNITY
+25. Summary
+- good for community
+- easy to expand storage
+
+COMPARISONS
+26. Speed Comparisons
+- simple time complexity chart
+- faster si caDDS ofc
+
+27. Pros and Cons Comparisons
+-caDDS is scalable, easy for community, has docu hehe
+-NCBI is one, very specific features, 
+
+28. Recommendations
+-implement
+-security
+-public code
+-stuff
+
+% CID PROGRESS FOR JUNE 4 HAS A LOT OF ROUGH IDEAS
+% CID PROGRESS ENDS HEREE FOR JUNE 4 2020
+
+
+%\begin{figure}[h]
+%  \centering
+%  \includegraphics[width=\linewidth]{sample-franklin}
+%  \caption{1907 Franklin Model D roadster. Photograph by Harris \&
+%    Ewing, Inc. [Public domain], via Wikimedia
+%    Commons. (\url{https://goo.gl/VLCRBB}).}
+%  \Description{A woman and a girl in white dresses sit in an open car.}
+%\end{figure}
+
+\section{Appendices}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% ACKNOWLEDGEMENT & GRATITUDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% The acknowledgments section is defined using the "acks" environment
+%% (and NOT an unnumbered section). This ensures the proper
+%% identification of the section in the article metadata, and the
+%% consistent spelling of the heading.
+\begin{acks}
+
+(Not yet serious) Our advisers have really helped us over the school year. The dificult pandemic has changed our thesis to the point it has been - Cid
+\end{acks}
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{bibfile}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+\appendix
+
+\section{User-System Interface}
+(check appendix for detailed pseudocode)
+
+parang this section abstracts the user part from the system part
+
+The user commmunicates with the system. User can do create, read, update, delete.
+
+The system on its own delegates how things are stored or updated consistently ...
+
+The user communicates with the master all the time???
+
+
+\section{Master Node-Data Node Interface}
+(check appendix for detailed pseudocode)
+
+parang this section abstracts how master and data communicate and store data
+
+GET
+The user requests data from the system (via the master gate hehe)
+
+The master holds a copy of all the data locations in the data nodes (can be called a directory). 
+The master once needs a certain data, will check its directory which data nodes have it
+The master once knows which of its data nodes have the data (multiple) will call them to inform it will request data
+The data is informed that data will be requests
+The master sends the directory of addresses of data nodes with the data and transfer key???? to the user
+
+The user user receives the transfer key and uses it in the website to request data from data nodes
+
+CREATE
+The user wants to send data to the system (via the master gate hehe)
+
+The master holds a copy of all the data locations (can be called a directory). 
+The master will find 2+ data nodes to hold the data, and store them in a temp directory
+The master will call the 2+ data nodes and check if they have enough space and are able to receive the data
+The master will wait for an ack before sending the data to the 2+ data nodes
+The master will ask the user to generate a hashcode
+The master will send the user data nodes to send the data
+The data nodes will receive the data and hash
+The data nodes will complete receiving data, generate a hash and compare it with the user's hash. If different, repeat the process (may ask from a data node with complete data).
+The data nodes if all have the complete, correct data will inform master node.
+
+The user user receives the transfer key 
+The user generates a hash of its data
+The user uses the transfer key to send data to data nodes
+
+\section{Master Node-Data Node Structure}
+(check appendix for detailed pseudocode)
+
+
+MASTER NODE
+holds data:
+directory of data nodes with verified data
+directory of data nodes with unverified data (being transferred currently)
+directory of data nodes space free
+
+holds function:
+which data nodes have data x?
+does data node N have data x?
+is user able to receive data X?
+is user able to send data X?
+is data node N able to send data X?
+is data node N able to receive data X?
+
+
+what is hash of data X on data node N?
+what is hash of user data X to be sent?
+Is hash of data X on data node N and user data X same?
+
+
+is data X being transferred currently from data node N?
+is data X being transferred currently to data node N?
+is data X done transferring to data node N?
+is data X across all data nodes consistent? (same hash)?
+
+how much space does data node N have?
+how much space does user data to send need?
+
+send data node N location to user?
+where is the location of data node N?
+
+
+DATA NODES
+holds data:
+Metadata
+Data
+Directory of Metadata
+Storage Space
+
+
+holds function:
+has storage space X?
+how much storage space?
+is data X across all data nodes consistent? (same hash)?
+how much space does user data need?
+able to receive data X?
+able to send data X?
+what is hash of data X?
+what is hash of user data X to be sent?
+Is hash of data X and user data X same?
+
+\section{Node Internal Interface}
+(check appendix for detailed pseudocode)
+Frontend-Backend Interface
+Via Data APIs
+GET, POST, PUT, DELETE
+
+Via Data Sync APIs
+DATA SAME? 
+
+Via Data Availability APIs
+DATA AVAILABLE?
+DATA NODE ABLE TO RECEIVE?
+DATA NODE ABLE TO SEND?
+
+\section{Node Internal Structure}
+(check appendix for detailed pseudocode)
+
+parang this section abstracts how nodes function inside
+
+Frontend - debugging mostly, users dont see this frontend???? or isang frontend lang ni master nakikita
+Backend - storage before it goes to database? for functions? for APIs??
+ 
+Inside Backend: Idea pala to categorize functions into these APIs idk if tama paggamit ko ng APIs
+Network APIs - abstracted part to connect to the network
+Database Sync APIs - abstracted part to keep database consistent
+Database Availability APIs - abstracted part to keep database available
+
+
+Database - stores shit
+
+
+\subsection{Community Aspect}
+- good for community since the system is expandable or customizable??
+- community can see the whole framework and structure
+- communities can set up their own master and data nodes
+- individuals in communities can host their own data nodes (ideally master node is the institution with the data)
+- ideally having multiple data nodes makes it download faster somehow
+- communities can only store the data they need
+- communities basically can self-expand storage, self-organize somehow the storage, and self-increase their bandwidth 
+
+
+\end{document}
+\endinput
+%%
+%% End of file `sample-acmsmall.tex'.
+%%
+

@@ -1,0 +1,264 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMEShttps://www.overleaf.com/project/5dbfadb88b2560000102ab44
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+
+
+%\usetheme{Boadilla}
+\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+%\usepackage {tikz}
+\usepackage{tkz-graph}
+\usepackage{bibentry}
+
+
+\usepackage[
+backend=biber,
+style=numeric,
+sorting=ynt
+]{biblatex}
+ 
+\documentclass[xcolor=table]{beamer} 
+
+\bibliography{bibfile}
+
+\graphicspath{ {images/} }
+
+\GraphInit[vstyle = Shade]
+\tikzset{
+  LabelStyle/.style = { rectangle, rounded corners, draw,
+                        minimum width = 2em, fill = yellow!50,
+                        text = red, font = \bfseries },
+  VertexStyle/.append style = { inner sep=5pt,
+                                font = \normalsize\bfseries},
+  EdgeStyle/.append style = {->, bend left} }
+\usetikzlibrary {positioning}
+%\usepackage {xcolor}
+\definecolor {processblue}{cmyk}{0.96,0,0,0}
+
+% show sections only
+\setcounter{tocdepth}{1}
+% show subsections
+%\setcounter{tocdepth}{2}
+% show subsubsections
+%\setcounter{tocdepth}{3}
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
+
+%\AtBeginSubsection[]
+%{
+%    \begin{frame}
+%        \frametitle{Table of Contents}
+%        \tableofcontents[currentsection,currentsubsection]
+%    \end{frame}
+%}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[caDDS]{caDDS: Community Assisted Distributed Database for Sequences} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% INFO %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Azcarraga, Araya} % Your name
+\institute[Department of Computer Science, University of the Philippine - Diliman] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+University of the Philippine - Diliman\\ % Your institution for the title page
+\medskip
+}
+\date{\today} % Date, can be changed to a custom date
+
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OVERVIEW %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRO + RRL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Abstract}
+\end{frame}
+
+\begin{frame}{Genes}
+\end{frame}
+
+\begin{frame}{Genomics}
+\end{frame}
+
+\begin{frame}{Sequencing}
+\end{frame}
+
+\begin{frame}{Next Generation Sequencing}
+\end{frame}
+
+\begin{frame}{Growing problem of storage}
+\end{frame}
+
+\begin{frame}{Database}
+\end{frame}
+
+\begin{frame}{Database Definition}
+\end{frame}
+
+\begin{frame}{Database Principles}
+\end{frame}
+
+\begin{frame}{Database Types}
+\end{frame}
+
+\begin{frame}{Application Architecture}
+\end{frame}
+
+\begin{frame}{SeqTorr}
+\end{frame}
+
+\begin{frame}{BioTorrents}
+\end{frame}
+
+\begin{frame}{PeerDB}
+\end{frame}
+
+\begin{frame}{base system: NCBI}
+\end{frame}
+
+\begin{frame}{Problem}
+\end{frame}
+
+\begin{frame}{Objectives}
+\end{frame}
+
+\begin{frame}{Scope}
+\end{frame}
+
+\begin{frame}{System}
+\end{frame}
+
+\begin{frame}{Network}
+\end{frame}
+
+\begin{frame}{Summary}
+\end{frame}
+
+\begin{frame}{Community}
+\end{frame}
+
+\begin{frame}{Speed Comparisons}
+\end{frame}
+
+
+\begin{frame}{Comparisons}
+\end{frame}
+
+
+\begin{frame}{Recommendations}
+\end{frame}
+
+\begin{frame}
+\Huge{\centerline{The End}}
+\small{\centerline{Thank you for coming}}
+\end{frame}
+
+\section{Bibliography}
+
+\begin{frame}[allowframebreaks]
+\printbibliography[heading=none]
+\end{frame}
+
+
+\end{document}
+

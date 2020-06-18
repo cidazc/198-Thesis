@@ -1,0 +1,71 @@
+UPDATED (as of 2/22)
+
+- Frontend & backend: Ruby on Rails
+- Testing: Rspec
+- 
+
+
+
+
+
+Stuff Cid Doesnt Know Yet:
+- NodeJS
+- File Transferring in NodeJS
+  - Carl: I have no idea how to do this yet. All I know is that we can store files within either mongodb or the filesystem directly.
+
+NodeJS
+- https://nodeschool.io/ (learnyounode)
+
+ExpressJS
+- https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs
+  - it's a nice intro to express & mongodb din
+
+More advanced JS concepts
+- Functional programming https://nodeschool.io/ (functional-javascript-workshop)
+- Async (callbacks, promises) https://javascript.info/async
+- Closures https://javascript.info/closure
+- to read more js concepts: https://javascript.info/js
+
+In-depth NodeJS
+- https://blog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810
+- https://jscomplete.com/learn/node-beyond-basics
+  - the topics are locked pero you can unlock them for free by searching the topic name on google (e.g. "requiring modules") then clicking the freecodecamp article. There's a link on top of the article that lets you unlock it
+
+
+
+Automated testing (Jest)
+- https://dev.to/nedsoft/testing-nodejs-express-api-with-jest-and-supertest-1km6
+
+
+(Carl) To learn:
+- [DONE] ES6, ES7, ES8 (optionally ES9 ES10)
+- [DONE] https://github.com/goldbergyoni/nodebestpractices
+- [DONE] CouchDB Basics
+    - [DONE] CouchDB Replication & Clusters
+- [DONE] Mocha
+- [DONE] Docker
+- [DONE] Docker Compose
+- Jest
+- Dat
+
+- How does HTML and NodeJS handle forms and file uploads/downloads
+- Examples of distributed databases where each node has an API open to users
+  - Preferably in Node
+- Any documentation generator
+
+
+Good References
+- https://javascript.info/
+- https://github.com/lukehoban/es6features
+
+LOW PRIO
+
+ESLint
+- https://eslint.org/docs/user-guide/getting-started
+- try integrating it with your text editor
+- we use airbnb style guide https://github.com/airbnb/javascript (don't have to read it for now)
+
+Swagger (API documentation generator) [ok not sure if we'll use this]
+- https://swagger.io/
+
+https://mobile.twitter.com/WrayCharles/status/1229496039071080448
