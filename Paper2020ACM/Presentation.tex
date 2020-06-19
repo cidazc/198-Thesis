@@ -174,79 +174,228 @@ University of the Philippine - Diliman\\ % Your institution for the title page
 \begin{frame}{Abstract}
   Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genomic data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Data nodes should theoretically increase data transfer speeds even as the number of users increase. (to be updated based on conclusion) While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. A recommendation is to implement the system and make the code public for the use of other communities.
 \end{frame}
-
+\section{Introduction}
+\subsection{Genomic Concepts}
 \begin{frame}{Genes}
+  \begin{itemize}   
+    \item all organisms have genes
+    \item genes from DNA: AGCT
+    \item genes are instructions and blueprints for life
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Genomics}
+  \begin{block} {\textbf{Definition of Genomics}}
+    Genomics is the study of all of a person's genes (the genome), including interactions of those genes with each other and with the person's environment. \cite{genomics-definition}
+  \end{block}
+  \begin{itemize}   
+    \item study of genes
+    \item more complex organisms have more complex genes
+    \item studying complex organisms needs a lot of storage
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Sequencing}
+  \begin{itemize}   
+    \item reading genes from cells is sequencing
+    \item replications(coverage) \& fragmentation of DNA to read
+    \item store the many fragments
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Human Genome Project}
+  \begin{itemize}   
+    \item finished in 2003, project wanted to read the entire human genome
+    \item didn't have the tools at the time
+    \item big cost, many institutions, 10 years
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Next Generation Sequencing}
+  \begin{itemize}   
+    \item new technology to read sequences faster
+    \item reading faster -> more reads -> more data
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Growing problem of storage}
+  \begin{itemize}   
+    \item moore's law make faster processing power and better storage
+    \item but moore's law is too slow for genomic data increase
+    \item each has 60x coverage, around 200gb each
+    \item NGS, More genomic researches, more files needed to be saved and transferred
+  \end{itemize}
 \end{frame}
 
+\subsection{Database Concepts}
 \begin{frame}{Database}
+  \begin{itemize}   
+    \item store data with tech
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Database Definition}
+  \begin{itemize}   
+    \item DBMS chuchu
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Database Principles}
+  \begin{itemize}   
+    \item consistency
+    \item availability
+    \item partition tolerance
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Database Types}
+  \begin{itemize}   
+    \item Centralized
+    \item Distributed
+    \item use Distributed becuz x
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Application Architecture}
+  \begin{itemize}   
+    \item Client Server
+    \item P2P
+    \item Hybrid
+    \item Use Hybrid because X
+  \end{itemize}
 \end{frame}
 
+\section{Review of Related technology}
+
 \begin{frame}{SeqTorr}
+  \begin{itemize}   
+    \item idea
+    \item pros
+    \item cons
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{BioTorrents}
+  \begin{itemize}   
+    \item idea
+    \item pros
+    \item cons
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{PeerDB}
+  \begin{itemize}   
+    \item idea
+    \item pros
+    \item cons
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{base system: NCBI}
+  \begin{itemize}   
+    \item why popular
+    \item idea
+    \item idea
+  \end{itemize}
 \end{frame}
 
+\begin{frame}{base system: NCBI}
+  \begin{itemize}   
+    \item pros
+    \item cons
+    \item cons
+  \end{itemize}
+\end{frame}
+
+\section{Problem}
 \begin{frame}{Problem}
+  \begin{itemize}   
+    \item classical databases
+    \item distributed databases
+  \end{itemize}
 \end{frame}
 
+\section{Objectives}
 \begin{frame}{Objectives}
+  \begin{itemize}   
+    \item make a dist database
+    \item community assisted
+    \item main APIs
+    \item time complexity
+    \item pros and cons
+  \end{itemize}
 \end{frame}
 
+\section{Scope}
 \begin{frame}{Scope}
+  \begin{itemize}   
+    \item no this
+    \item and
+    \item that
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{System}
-\end{frame}
 
+\section{Theoretical Framework}
 \begin{frame}{Network}
+  \begin{itemize}   
+    \item five levels
+    \item need to focus on Level 4 and 5 only
+    \item 
+  \end{itemize}
+\end{frame}
+
+\subsection{System Summay}
+\begin{frame}{System}
+  \begin{itemize}   
+    \item system is this
+    \item distributed
+    \item community assisted
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Summary}
+  \begin{itemize}   
+    \item 
+    \item 
+    \item 
+  \end{itemize}
 \end{frame}
 
+\subsection{Community}
 \begin{frame}{Community}
+  \begin{itemize}   
+    \item good for community
+    \item easy to expand storage
+    \item 
+  \end{itemize}
 \end{frame}
 
+\subsection{Comparisons}
 \begin{frame}{Speed Comparisons}
+  \begin{itemize}   
+    \item simple time complexity chart
+    \item faster si caDDS ofc 
+    \item 
+  \end{itemize}
 \end{frame}
 
 
-\begin{frame}{Comparisons}
+\begin{frame}{Final Comparisons}
+  \begin{itemize}   
+    \item caDDS is scalable, easy for community, has docu hehe
+    \item NCBI is one, stable, widely used
+    \item 
+  \end{itemize}
 \end{frame}
 
 
 \begin{frame}{Recommendations}
+  \begin{itemize}   
+    \item implement
+    \item security
+    \item public code
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
