@@ -259,14 +259,7 @@ A database (DBMS, Database Management System) is defined by containing informati
 
 These form a system that is made for accessing and updating data. The next section discusses the key points when considering how to  create a good database system (or DBMS). The key points are important to discuss many important features and dilemmas of the proposed system later. Certain database principles are needed to make sure the data is available, secure, and consistent. 
 
-\subsubsection{Principles of Databases} 
-There are 3 principles needed when creating a database. The idea is that only two of the three can be focused on at any given time. Only two since the current technology can only handle two. These principles and limitations need to be taken into consideration when designing the system. \cite{Silberschatz2010}
 
-\begin{itemize}
-    \item Consistency - Does the data have integrity? To update one part, all other (replicated) parts should be updated quickly as well; Data is accurate and copied faithfully. An example would be that genes for specimen A, when copied to another data node should contain the exact copy of the data, with no changes.
-    \item Accessibility - How easy it is to access data, API protocols? An example would be the number of commands  a user needs to do to access every data.
-    \item Partition Tolerance - How resilient is the system when it comes to failures? If one portion breaks, the other portions should still be entirely usable. An example would be a power failure for one system, how would this affect the other systems?
-\end{itemize}
 
 \subsubsection{Database Types} 
 Two types of databases will be discussed in this paper. Each have their specific niche and use. One is more efficient and easier to make, another is better suited for collaborative work. Note some technical jargon needs to be used to explain some concepts. These are namely: \cite{centralizedvsdistributed}
@@ -278,6 +271,17 @@ Two types of databases will be discussed in this paper. Each have their specific
 \end{itemize}
 
 For genomic research, when the data storage needs to be increased often, distributed databases are most appropriate.
+
+\subsubsection{CAP theorem for Databases} 
+There are 3 principles needed when creating a database. The idea is that only two of the three can be focused on at any given time. Only two since the current technology can only handle two. These principles and limitations need to be taken into consideration when designing the system. 
+
+\begin{itemize}
+    \item Consistency - Does the data have integrity? To update one part, all other (replicated) parts should be updated quickly as well; Data is accurate and copied faithfully. An example would be that genes for specimen A, when copied to another data node should contain the exact copy of the data, with no changes.
+    \item Availability - Is the database usable by clients all of the time? The entire system must be in downtime as infrequently as possible, despite failures.
+    \item Partition Tolerance - How resilient is the system when it comes to failures? If one portion breaks, the other portions should still be entirely usable. An example would be a power failure for one system, how would this affect the other systems?
+\end{itemize}
+
+Partition tolerance is a de facto requirement of distributed databases and cannot be avoided, so the main trade-off is between availablity and consistency. \cite{Silberschatz2010} Suppose a distributed system prefers consistency. A user updates an SQL row in one partition of the database. Beforehand, this row has already been replicated among many partitions. To ensure that all replicas of the row are consistent, the system must lock this part of the database to prevent other users from reading and editing it, so availability will be affected in the meantime. A distributed system preferring availability, such as a messenger app, will not lock parts of the database in the purpose of being open to serve its users, but cannot guarantee that the data it outputs is always up-to-date. There might be a delay before the data is fully consistent among geographic partitions.
 
 \subsection{Application Architecture}
 Another important consideration is how a system is built. These describe the blueprint and interaction within a database system. These provide insights similar to the questions asked when looking between database types. Database types describe how the data is handled inside the system. But application architecture describes how the users interact with the system. The application architecture is how a networked app is structured across the various end systems (i.e. computers, servers, etc.) \cite{kurose} The end systems are another way to call users or clients. 
