@@ -281,7 +281,7 @@ There are 3 principles needed when creating a database. The idea is that only tw
     \item Partition Tolerance - How resilient is the system when it comes to failures? If one portion breaks, the other portions should still be entirely usable. An example would be a power failure for one system, how would this affect the other systems?
 \end{itemize}
 
-Partition tolerance is a de facto requirement of distributed databases and cannot be avoided, so the main trade-off is between availablity and consistency. \cite{Silberschatz2010} Suppose a distributed system prefers consistency. A user updates an SQL row in one partition of the database. Beforehand, this row has already been replicated among many partitions. To ensure that all replicas of the row are consistent, the system must lock this part of the database to prevent other users from reading and editing it, so availability will be affected in the meantime. A distributed system preferring availability, such as a messenger app, will not lock parts of the database in the purpose of being open to serve its users, but cannot guarantee that the data it outputs is always up-to-date. There might be a delay before the data is fully consistent among geographic partitions.
+Partition tolerance is a de facto requirement of distributed databases and cannot be avoided, so the main trade-off is between availablity and consistency. \cite{Silberschatz2010} Suppose a distributed system prefers consistency over availability. A user updates an SQL row in one partition of the database. Beforehand, this row has already been replicated among many partitions. To ensure that all replicas of the row are consistent, the system must lock this part of the database to prevent other users from reading and editing it, so availability will be negatively affected in the meantime. A distributed system preferring availability, such as a messenger app, will not lock parts of the database in the purpose of being open to serve its users, but cannot guarantee that the data it outputs is always up-to-date. There might be a delay before the data is fully consistent throughout geographic locations.
 
 \subsection{Application Architecture}
 Another important consideration is how a system is built. These describe the blueprint and interaction within a database system. These provide insights similar to the questions asked when looking between database types. Database types describe how the data is handled inside the system. But application architecture describes how the users interact with the system. The application architecture is how a networked app is structured across the various end systems (i.e. computers, servers, etc.) \cite{kurose} The end systems are another way to call users or clients. 
@@ -323,7 +323,7 @@ The main website stores info about each dataset includes categories, license, fi
 
 The client (or user) must have their computer continuously turned on to keep their file available to others. The main issue with BioTorrents, which is a problem as well in P2P, is that it requires lots of users that will keep many torrents available as often as possible.\cite{biotorrents} These entail that for the system to work, many people need to use it and all these people need to keep their computers on all the time.
 
-BioTorrents was successful, many people had used it to share data. It was active for a while. However, BioTorrents has been down for years. This also shows what problems a system will face when doing a pure P2P application architecture.
+BioTorrents was successful; many people had used it to share data. It was active for a while. However, BioTorrents has been down for years. This also shows what problems a system will face when doing a pure P2P application architecture.
 
 \subsection{PeerDB}
 % summarize intro
@@ -440,7 +440,7 @@ The current scope and coverage of the project will NOT consider:
 
 \subsection{Networks}
 
-An important aspect of the proposed system is the transfer of files to other computers. To achieve that, there are network technologies and systems developed. Each layer of the network has certain features, securities, and abstraction which contributes to the overall idea of sharing files across networks. Networks Layers are the abstraction of how computers pass data to each other. Understanding this is needed to maximize the speed in which data is transferred between computers. As well as to realize where certain problems or bottlenecks later on. A network, specifically the Internet, is comprised of the following levels of abstraction. \cite{kurose}
+An important aspect of the proposed system is the transfer of files to other computers. To achieve that, there are network technologies and systems that need to be understood. Each layer of the network has certain features, securities, and abstraction which contributes to the overall idea of sharing files across networks. Networks Layers are the abstraction of how computers pass data to each other. Understanding this is needed to maximize the speed in which data is transferred between computers. As well as to realize where certain problems or bottlenecks later on. A network, specifically the Internet, is comprised of the following levels of abstraction. \cite{kurose}
 \begin{enumerate}
     \item Level 1: Medium used to send signals (physical, electrical signals of 0
 and 1), through wire or by air
@@ -454,11 +454,11 @@ of messages via TCP, UDP, FTP
 to do level 4 processes.
 \end{enumerate}
 
-Level 1 through 3 focus on building a system for sending messages from one computer entity to another. Every level talks to another entity on the same level. And a higher level talks to the lower level. This later on will be important to understanding the scope of what the thesis will do. Level 1 and 2 can be vulnerable if anyone can read the data in the air, partly why HTTPS was developed to encrypt the data. 
+Level 1 through 3 focus on building a system for sending messages from one computer entity to another. Every level talks to another entity on the same level. And a higher level talks to the lower level. This later on will be important to understanding the scope of what the thesis will do. Level 1 and 2 can be vulnerable if anyone can read the data inside the network, partly why HTTPS was developed to encrypt the data. 
 
-Level 4 and 5 is what the system will mainly use. In these systems, there are APIs commonly used to transfer files between computers on networks. These levels, compared to the levels earlier discussed also are more specific to the ideas of file transfer, checking if the files are error free, and more. Making sure files transferred are error free will be needed to do data synchronization later on.
+Level 4 and 5 is what the system will mainly use and operate on. In these systems, there are APIs commonly used to transfer files between computers on networks. These levels, compared to the levels earlier discussed also are more specific to the ideas of file transfer, checking if the files are error free, and more. Making sure files transferred are error free will be needed to do data synchronization later on. Another important network concept is that computers closer on the network (when talking directly) should have a faster speed and lower latency than computers farther apart on a network.
 
-In networks, when there is data being accessed over the network, it is not called C.R.U.D. (the way databases access data), instead it is called POST, GET, PUT, DELETE. POST is analogous to CREATE meaning the user submit data to be stored (in the server). GET is similar to READ but is in the context of reading a file over a network (from a server). PUT is analogous to UPDATE as DELETE remains as DELETE. These are codes used to denote network commands that do the same thing as the CRUD functions discussed earlier. This is important since there is an added layer of difficulty when it comes to transmitting data over a network.
+In networks, when there is data being accessed over the network, it is not called C.R.U.D. (the way databases access data), instead it is called POST, GET, PUT, DELETE. POST is analogous to CREATE meaning the user submit data to be stored (in the server). GET is similar to READ but is in the context of reading a file over a network (from a server). PUT is analogous to UPDATE as DELETE remains as DELETE. These are codes used to denote network commands that do the same thing as the CRUD functions discussed earlier. This is important since there is an added layer of difficulty when it comes to transmitting data over a network. 
 
 % CID PROGRESS STARTS HEREE FOR JUNE 6 2020
 
@@ -473,22 +473,9 @@ The system is described as \textit{community assisted}. Since ideally, instituti
 The database is a distributed database, which will aim to utilize the best features from Peer2Peer and Client/Servers. This will also aim to store sequences. Thus the "Distributed Database for Sequences" portion of the title.
 
 \subsubsection{Community Aspect}
+The sytem was also described as community assisted. The definition of \textbf{community} to be used here is a \textit{set of people who generally collaborate together to do research}. And the focus is the genome research community. Reemphasizing certain features from the database, that any users can upload data. This means all users in the community can contribute to the knowledge base, and contribute data to be used by the community. Another important community aspect is that users can become data nodes themselves. Meaning these users can increase the overall storage of the database, and at the same time theoretically increase data speeds (which will be discussed more later). Frequently used local data as well will be more easily accessible (since it's on local data nodes, and should have faster access speeds). The concept of closer networks having faster speeds (discussed in the network section) is at play here. Another community aspect will be this paper, publicly describing many aspects of the structure and code. So that this concept may be further developed and even implemented by genome research communities.
 
-
-
-- community: define as set of people who generally collaborate together to do research
-- focus on genome research community
-- any users in a community can upload data
-- users can become data nodes
-- as data nodes increase, data speeds (bandwidth) should theoretically increase as well
-- system is an opportunity to set up genomic databases for frequently used local data
-
-- summary: community assists in adding data
-- community assists in adding data storage (through data nodes)
-- community assists in increasing the data speeds
-- community is assisted since the data it uses frequently should theoretically get accessed faster
-
-- addition: this is a framework to design and develop community-centered databases (can be modeled to be used beyond genome)
+To summarize, this helps the community since the community may add their own data. The community may increase storage (through data nodes) these may also assist in increasing data speeds. And frequently used data will have faster access. 
 
 
 % CID PROGRESS ENDS HEREE FOR JUNE 4 2020
@@ -559,7 +546,6 @@ Table~\ref{table:data_model_table} on Page~\pageref{table:data_model_table} aims
 Table~\ref{table:data_perm_table} on Page~\pageref{table:data_perm_table} shows the different set of users and the permissions allowed to them in the system. The moderator is a special user who has the ability to not allow some data to be uploaded. This is to make sure there is a means to verifying the data being uploaded. All users can upload, download, and store (or host) data. All other users, which are called guests has an ability to download and upload data.
 
 
-
 %HIII NEED HELP HEREE
 \section{Proof of Correctness}
 correct if
@@ -570,27 +556,50 @@ DELTE - deletes data
 
 speed should be X
 
+Data aross Data Nodes is consistent
+
 A proof of correctness for the implementation.
 
 \section{Theoretical Analysis of Speed}
 
-Theoretical analysis of the speed up by checking time complexity of the base method versus the distributed method.
+Theoretical analysis of the speed up by checking time complexity of the base method versus the proposed method.
 
-in the base method
-client sends data in X bytes per second. When X people are using. 
-(insert math equation)
-Each person gets the file at 1 byte per second.
+\subsection{Base Method}
+In the base method, represented by NCBI. We will abstract the transfer into this algorithm. Assuming as well, constant speed, equal division of bandwidth, all users are getting the same data all at once, and there is a constant overhead before downloading can occur.
 
-in the proposed method
-client has N data nodes and each node sends data in X bytes per second. When X people are using. Assuming perfect and equal distribution. 
-(insert math equation)
-Each person gets  at least N bytes per second
+\subsubsection{Base Method Algorithm}
 
-Since N is always greater than 1, the speed should always be greater in the proposed method
+1. There is a constant overhead H seconds to set up the communication between the user and the main server.
+1. The main server sends data in the speed of X bytes per second. X is the speed of data transfer from the server.
+2. Users will receive the data with an equal portion of the X bytes per second (bandwidth).
 
-As user number increases, base method will reach a limit to its ability to handle data transfer.
+\subsubsection{Base Case of the Base Method}
+1 total users will receive data in the speed of X/1 bytes per second.
+2 total users will receive data in the speed of X/2 bytes per second.
 
-As user number increases, proposed method will also reach a limit. But scalability is possibile to remove the limit.
+With simple induction we can assume the general case to be:
+
+\subsubsection{General Case of the Base Method} 
+N total users will receive data in the speed of X/N bytes per second. N is the number of users sharing the bandwidth.
+
+\subsubsection{Notable Cases of the Base Method}
+If N=X, all users will receive data with 1 byte per second.
+If N>X, all users will receive data with less than 1 byte per second, or if we forego the assumption of total equal division: Some will receive 1 byte per second, and others will receive 0 bytes per second or no transfer at all. This a bottleneck scenario.
+
+
+\subsection{Proposed Method}
+For the proposed system, it is very similar to the base method, but the idea of data nodes (D) will be introduced. We will abstract the system into this algorithm. Assuming as well, constant speed, equal division of bandwidth, all users are getting the same data as once, and there is a constant overhead before downloading the data for each user, there is also an equal division of the data nodes' bandwidth to the users.
+
+\subsubsection{Proposed Method Algorithm for One Data Node}
+1. There is a constant overhead H seconds to set up the communication between the user and the relevant nodes.
+2. One data node will send data in the speed of X bytes per second. X is the speed of data transfer from 1 data node.
+3. Users will receive data with an equal portion of the X bytes per second.
+
+\subsubsection{Proposed Method Algorithm for Multiple Data Nodes}
+1. There is a constant overhead H seconds to set up the communication between the user and the relevant nodes.
+2. All data nodes (D number of data nodes) will send data in the speed of D times X bytes per second. X is the speed of data transfer from 1 data node.
+3. Users will receive data with an equal portion of the D times X bytes per second.
+
 
 
 \section{Comparison of base method vs distributed method}
@@ -600,7 +609,7 @@ base method (NCBI)
 - go to website
 - one website
 - one data source
-- single point of failure
+- single point of failure \cite{seqtorr}
 - implemented
 
 proposed method
