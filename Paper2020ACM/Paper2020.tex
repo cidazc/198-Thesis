@@ -568,39 +568,82 @@ Theoretical analysis of the speed up by checking time complexity of the base met
 In the base method, represented by NCBI. We will abstract the transfer into this algorithm. Assuming as well, constant speed, equal division of bandwidth, all users are getting the same data all at once, and there is a constant overhead before downloading can occur.
 
 \subsubsection{Base Method Algorithm}
-
-1. There is a constant overhead H seconds to set up the communication between the user and the main server.
-1. The main server sends data in the speed of X bytes per second. X is the speed of data transfer from the server.
-2. Users will receive the data with an equal portion of the X bytes per second (bandwidth).
+\begin{enumerate}
+    \item There is a constant overhead H seconds to set up the communication between the user and the main server.
+    \item The main server sends data in the speed of X bytes per second. X is the speed of data transfer from the server.
+    \item Users will receive the data with an equal portion of the X bytes per second (bandwidth).
+\end{enumerate}
 
 \subsubsection{Base Case of the Base Method}
-1 total users will receive data in the speed of X/1 bytes per second.
-2 total users will receive data in the speed of X/2 bytes per second.
-
-With simple induction we can assume the general case to be:
+    \begin{itemize} 
+        \item 1 total users will receive data in the speed of X/1 bytes per second. Downloading data (size of X bytes) will take X/X + H seconds to transfer.
+        \item 2 total users will receive data in the speed of X/2 bytes per second. Downloading data (size of X bytes) will take X/(2X) + H seconds to transfer.
+    \end{itemize}
 
 \subsubsection{General Case of the Base Method} 
-N total users will receive data in the speed of X/N bytes per second. N is the number of users sharing the bandwidth.
+With simple induction we can assume the general case to be: N total users will receive data in the speed of X/N bytes per second, with H seconds of an initial overhead. N is the number of users sharing the bandwidth. Downloading data (size of X bytes) will take X/(NX) + H or (1/N) + H seconds to transfer. A notable aspect of this general case is that an increase in the number of users decreases the user download speed.
 
 \subsubsection{Notable Cases of the Base Method}
-If N=X, all users will receive data with 1 byte per second.
-If N>X, all users will receive data with less than 1 byte per second, or if we forego the assumption of total equal division: Some will receive 1 byte per second, and others will receive 0 bytes per second or no transfer at all. This a bottleneck scenario.
-
+    \begin{itemize} 
+        \item If N = X, all users will receive data with 1 byte per second.
+        \item If N > X, all users will receive data with less than 1 byte per second, or if we forego the assumption of total equal division: Some will receive 1 byte per second, and others will receive 0 bytes per second or no transfer at all. This a bottleneck scenario.
+    \end{itemize}
 
 \subsection{Proposed Method}
-For the proposed system, it is very similar to the base method, but the idea of data nodes (D) will be introduced. We will abstract the system into this algorithm. Assuming as well, constant speed, equal division of bandwidth, all users are getting the same data as once, and there is a constant overhead before downloading the data for each user, there is also an equal division of the data nodes' bandwidth to the users.
+For the proposed system, it is very similar to the base method, but the idea of data nodes (D) will be introduced. We will abstract the system into this algorithm. Assuming as well, constant speed, equal division of bandwidth, all users are getting the same data as once, there is a constant overhead before downloading the data for each user, there is also an equal division of the data nodes' bandwidth to the users, and all data nodes have an exact copy of the data.
 
 \subsubsection{Proposed Method Algorithm for One Data Node}
-1. There is a constant overhead H seconds to set up the communication between the user and the relevant nodes.
-2. One data node will send data in the speed of X bytes per second. X is the speed of data transfer from 1 data node.
-3. Users will receive data with an equal portion of the X bytes per second.
+
+\begin{enumerate}
+    \item There is a constant overhead H seconds to set up the communication between the user and the relevant nodes.
+    \item One data node will send data in the speed of X bytes per second. X is the speed of data transfer from 1 data node.
+    \item Users will receive data with an equal portion of the X bytes per second. 
+\end{enumerate}
+
+\subsubsection{Base Case of the Proposed Method for One Data Node}
+
+\begin{itemize} 
+    \item 1 total users (and 1 data node) will receive data in the speed of 1 times X/1 bytes per second. Downloading data (size of X bytes) will take X/X + H seconds to transfer.
+    \item 2 total users (and 1 data node) will receive data in the speed of 1 times X/2 bytes per second. Downloading data (size of X bytes) will take X/(2X) + H seconds to transfer.
+\end{itemize}
+
+
+\subsubsection{General Case of the Proposed Method for One Data Node} 
+Exactly the same as the  General Case of the Base Method, N total users and 1 data node will receive data in the speed of X/N bytes per second with H seconds of an initial overhead. N is the number of users sharing the bandwidth. Downloading data (size of X bytes)  will take X/(NX) + H or (1/N) + H seconds to transfer.
 
 \subsubsection{Proposed Method Algorithm for Multiple Data Nodes}
-1. There is a constant overhead H seconds to set up the communication between the user and the relevant nodes.
-2. All data nodes (D number of data nodes) will send data in the speed of D times X bytes per second. X is the speed of data transfer from 1 data node.
-3. Users will receive data with an equal portion of the D times X bytes per second.
+\begin{enumerate}
+    \item There is a constant overhead H seconds to set up the communication between the user and the relevant nodes.
+    \item All data nodes (D number of data nodes) will send data in the speed of D times X bytes per second. X is the speed of data transfer from 1 data node.
+    \item Users will receive data with an equal portion of the D times X bytes per second.
+\end{enumerate}
 
 
+\subsubsection{Base Case of the Proposed Method for Multiple Data Nodes}
+\begin{itemize}
+    \item 1 total users (and D data nodes) will receive data in the speed of D times X/1 bytes per second. Downloading data (size of X bytes) will take DX/X + H seconds to transfer.
+    \item 2 total users (and D data nodes) will receive data in the speed of D times X/2 bytes per second. Downloading data (size of X bytes) will take DX/(2X) + H seconds to transfer.
+\end{itemize}
+
+
+
+
+\subsubsection{General Case of the Proposed Method for Multiple Data Nodes} 
+This is different from the General Case of the Proposed Method for Multiple Data Nodes by a factor of D. N total users and D data nodes will receive data in the speed of DX/N bytes per second with H seconds of an initial overhead. N is the number of users sharing the bandwidth. Downloading data (size of X bytes)  will take DX/(NX) + H or (D/N) + H seconds to transfer. A notable aspect of this general case is that as the number of data nodes increases, the user's speed also increases. Even if the previous feature from the general case of the base method is still at play, (an increase in the number of users decreases the user download speed).
+
+\subsubsection{Notable Cases of the Proposed Method}
+\begin{itemize}
+    \item  If D = 1, N = X, all users will receive data with 1 byte per second (base method and proposed method for one data node is excactly the same).
+    \item If D = 1, N > X, all users will receive data with less than 1 byte per second, or if we forego the assumption of total equal division: Some will receive 1 byte per second, and others will receive 0 bytes per second or no transfer at all. This a bottleneck scenario. (also the same).
+    \item If D = 0, there is no data transfer at all. This is an extreme case.
+    \item If D = 1, the proposed method will match the base case, general cases, and notable cases for the base method
+    \item If D > 1, the proposed method will be faster than the base method (as long as H, X, N are the same).
+\end{itemize}
+
+\subsection{Sumamry of the Theoretical Analysis of Speed}
+Generally as the number of users increases, the data transfer speed decreases by a constant factor for all methods. There is also a concept of bottleneck when the number of users is much greater than the data speed put out by all methods.
+
+The proposed method (with D > 1, and same H, X, N) will be faster than the base method. A notable extreme for the proposed method is that once D = 0, no transfer will occur and will be slower than the bottleneck base method. With this analysis, it is suggested the proposed method is faster than the base method on most cases (D > 1). 
 
 \section{Comparison of base method vs distributed method}
 
@@ -622,7 +665,7 @@ proposed method
 - only have users from a certain data community
 - able to design the APIs for speed, security, consistency, tolerance, etc. depending on community needs
 
-- increase in data speed transfer (if there are sufficient available data nodes)
+- the section on theoretical speed increase in data speed transfer (data nodes > 1)
 - can reduce the data stored to house only locally used and needed data
 
 \section{Recommendations}
