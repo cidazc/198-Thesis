@@ -469,10 +469,10 @@ Then for the downloading of the data. The user will download normally, but under
 
 The system is described as \textit{community assisted}. Since ideally, institutions can contribute to sharing the data by hosting servers that will become the data nodes. This sharing allows a greater bandwidth, and hopefully speed in which this data can be transferred. 
 
-The database is a distributed database, which will aim to utilize the best features from Peer2Peer and Client/Servers. This will also aim to store sequences. Thus the "Distributed Database for Sequences" portion of the title.
+The database is a distributed database, which will aim to utilize the best features from peer-to-peer and client-server architectures. This will also aim to store sequences. Thus the "Distributed Database for Sequences" portion of the title.
 
 \subsubsection{Community Aspect} \label{community}
-The sytem was also described as community assisted. The definition of \textbf{community} to be used here is a \textit{set of people who generally collaborate together to do research}. And the focus is the genome research community. Reemphasizing certain features from the database, that any users can upload data. This means all users in the community can contribute to the knowledge base, and contribute data to be used by the community. Another important community aspect is that users can become data nodes themselves. Meaning these users can increase the overall storage of the database, and at the same time theoretically increase data speeds (which will be discussed more later). Frequently used local data as well will be more easily accessible (since it's on local data nodes, and should have faster access speeds). The concept of closer networks having faster speeds (discussed in the network section) is at play here. Another community aspect will be this paper, publicly describing many aspects of the structure and code. So that this concept may be further developed and even implemented by genome research communities.
+The sytem was also described as community assisted. The definition of \textbf{community} to be used here is a \textit{set of people who generally collaborate together to do research}. And the focus is the genome research community. Reemphasizing certain features from the database, that any users can upload data. This means all users in the community can contribute to the knowledge base, and contribute data to be used by the community. Another important community aspect is that institutions can increase the number of data nodes. Meaning there will be an increase in the overall storage of the database, and at the same time theoretically increase data speeds (which will be discussed more later). Frequently used local data as well will be more easily accessible (since it's on local data nodes, and should have faster access speeds). The concept of closer networks having faster speeds (discussed in the network section) is at play here. Another community aspect will be this paper, publicly describing many aspects of the structure and code. So that this concept may be further developed and even implemented by genome research communities.
 
 To summarize, this helps the community since the community may add their own data. The community may increase storage (through data nodes) these may also assist in increasing data speeds. And frequently used data will have faster access. 
 
@@ -693,147 +693,6 @@ We want to acknowledge our advisers for giving the idea for our thesis. And for 
 %%
 %% If your work has an appendix, this is the place to put it.
 \appendix
-
-\section{User-System Interface}
-(check appendix for detailed pseudocode)
-
-parang this section abstracts the user part from the system part
-
-The user commmunicates with the system. User can do create, read, update, delete.
-
-The system on its own delegates how things are stored or updated consistently ...
-
-The user communicates with the master all the time???
-
-
-\section{Master Node-Data Node Interface}
-(check appendix for detailed pseudocode)
-
-parang this section abstracts how master and data communicate and store data
-
-GET
-The user requests data from the system (via the master gate hehe)
-
-The master holds a copy of all the data locations in the data nodes (can be called a directory). 
-The master once needs a certain data, will check its directory which data nodes have it
-The master once knows which of its data nodes have the data (multiple) will call them to inform it will request data
-The data is informed that data will be requests
-The master sends the directory of addresses of data nodes with the data and transfer key???? to the user
-
-The user user receives the transfer key and uses it in the website to request data from data nodes
-
-CREATE
-The user wants to send data to the system (via the master gate hehe)
-
-The master holds a copy of all the data locations (can be called a directory). 
-The master will find 2+ data nodes to hold the data, and store them in a temp directory
-The master will call the 2+ data nodes and check if they have enough space and are able to receive the data
-The master will wait for an ack before sending the data to the 2+ data nodes
-The master will ask the user to generate a hashcode
-The master will send the user data nodes to send the data
-The data nodes will receive the data and hash
-The data nodes will complete receiving data, generate a hash and compare it with the user's hash. If different, repeat the process (may ask from a data node with complete data).
-The data nodes if all have the complete, correct data will inform master node.
-
-The user user receives the transfer key 
-The user generates a hash of its data
-The user uses the transfer key to send data to data nodes
-
-\section{Master Node-Data Node Structure}
-(check appendix for detailed pseudocode)
-
-
-MASTER NODE
-holds data:
-directory of data nodes with verified data
-directory of data nodes with unverified data (being transferred currently)
-directory of data nodes space free
-
-holds function:
-which data nodes have data x?
-does data node N have data x?
-is user able to receive data X?
-is user able to send data X?
-is data node N able to send data X?
-is data node N able to receive data X?
-
-
-what is hash of data X on data node N?
-what is hash of user data X to be sent?
-Is hash of data X on data node N and user data X same?
-
-
-is data X being transferred currently from data node N?
-is data X being transferred currently to data node N?
-is data X done transferring to data node N?
-is data X across all data nodes consistent? (same hash)?
-
-how much space does data node N have?
-how much space does user data to send need?
-
-send data node N location to user?
-where is the location of data node N?
-
-
-DATA NODES
-holds data:
-Metadata
-Data
-Directory of Metadata
-Storage Space
-
-
-holds function:
-has storage space X?
-how much storage space?
-is data X across all data nodes consistent? (same hash)?
-how much space does user data need?
-able to receive data X?
-able to send data X?
-what is hash of data X?
-what is hash of user data X to be sent?
-Is hash of data X and user data X same?
-
-\section{Node Internal Interface}
-(check appendix for detailed pseudocode)
-Frontend-Backend Interface
-Via Data APIs
-GET, POST, PUT, DELETE
-
-Via Data Sync APIs
-DATA SAME? 
-
-Via Data Availability APIs
-DATA AVAILABLE?
-DATA NODE ABLE TO RECEIVE?
-DATA NODE ABLE TO SEND?
-
-\section{Node Internal Structure}
-(check appendix for detailed pseudocode)
-
-parang this section abstracts how nodes function inside
-
-Frontend - debugging mostly, users dont see this frontend???? or isang frontend lang ni master nakikita
-Backend - storage before it goes to database? for functions? for APIs??
- 
-Inside Backend: Idea pala to categorize functions into these APIs idk if tama paggamit ko ng APIs
-Network APIs - abstracted part to connect to the network
-Database Sync APIs - abstracted part to keep database consistent
-Database Availability APIs - abstracted part to keep database available
-
-
-Database - stores shit
-
-
-\subsection{Community Aspect}
-- good for community since the system is expandable or customizable??
-- community can see the whole framework and structure
-- communities can set up their own master and data nodes
-- individuals in communities can host their own data nodes (ideally master node is the institution with the data)
-- ideally having multiple data nodes makes it download faster somehow
-- communities can only store the data they need
-- communities basically can self-expand storage, self-organize somehow the storage, and self-increase their bandwidth 
-
 
 \end{document}
 \endinput
