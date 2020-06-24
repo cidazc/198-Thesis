@@ -272,7 +272,7 @@ Two types of databases will be discussed in this paper. Each have their specific
 
 For genomic research, when the data storage needs to be increased often, distributed databases are most appropriate.
 
-\subsubsection{CAP theorem for Databases} 
+\subsubsection{CAP theorem for Databases} \label{cap}
 There are 3 principles needed when creating a database. The idea is that only two of the three can be focused on at any given time. Only two since the current technology can only handle two. These principles and limitations need to be taken into consideration when designing the system. 
 
 \begin{itemize}
@@ -334,7 +334,7 @@ PeerDB is a proposal for a distributed system using P2P. For this to be used in 
 
 A future PeerDB system will also face similar problems faced by BioTorrents since it will need to rely on numerous active users for it to work.
 
-\subsection{NCBI}
+\subsection{NCBI} \label{NCBI}
 The National Center for Biotechnology Information or more commonly known as NCBI, which discussed briefly in the section on \textit{BioTorrents} and in the \textit{Introduction}. This is the standard genomic database used by many researches and institutions. We will refer this later on as well as the \textit{base system}. This is the website used to access and store most genomic information\cite{campbell}. It uses a client-server architecture. Users may download data via the graphics interface (website), or may be done via file transfer protocols such as FTP or HTTP \cite{biotorrents}. The latter is preferred since it may be done to automate the download of data.
 
 The SeqTorr authors\cite{seqtorr} also stated that NCBI is the main and current DBMS used to get and share genomic data. But one difficulty using that is updating the current genomic data. There currently is no way to check which data (on your computer) has been updated, which sequences were corrected. And the way the authors solved this was to regularly re-download the entire NCBI database.
@@ -374,7 +374,7 @@ To restate the different gaps or problems found with other implementations of Ge
 
 \subsection{Problems of Current Distributed Databases for Genomes}
 \begin{enumerate}
-    \item No public existing usable public framework on distributed databases for genomes
+    \item No existing usable public framework on distributed databases for genomes
     \item Existing distributed database system for genomes is not replicable
 \end{enumerate}
 
@@ -389,7 +389,7 @@ Based on the problems we found described, we propose to:
     \end{itemize}
     \item  Design a distributed database system
     \begin{itemize}
-        \item To resolve 3 \& 4 of the Problems of Classical Databases. 
+        \item To resolve 3 \& 4 of the Problems of Classical Databases, and 1 \& 2 of the Problems of Distributed Databases. 
     \end{itemize}
 \end{itemize}
 
@@ -472,7 +472,7 @@ The system is described as \textit{community assisted}. Since ideally, instituti
 
 The database is a distributed database, which will aim to utilize the best features from Peer2Peer and Client/Servers. This will also aim to store sequences. Thus the "Distributed Database for Sequences" portion of the title.
 
-\subsubsection{Community Aspect}
+\subsubsection{Community Aspect} \label{community}
 The sytem was also described as community assisted. The definition of \textbf{community} to be used here is a \textit{set of people who generally collaborate together to do research}. And the focus is the genome research community. Reemphasizing certain features from the database, that any users can upload data. This means all users in the community can contribute to the knowledge base, and contribute data to be used by the community. Another important community aspect is that users can become data nodes themselves. Meaning these users can increase the overall storage of the database, and at the same time theoretically increase data speeds (which will be discussed more later). Frequently used local data as well will be more easily accessible (since it's on local data nodes, and should have faster access speeds). The concept of closer networks having faster speeds (discussed in the network section) is at play here. Another community aspect will be this paper, publicly describing many aspects of the structure and code. So that this concept may be further developed and even implemented by genome research communities.
 
 To summarize, this helps the community since the community may add their own data. The community may increase storage (through data nodes) these may also assist in increasing data speeds. And frequently used data will have faster access. 
@@ -546,26 +546,27 @@ Table~\ref{table:data_model_table} on Page~\pageref{table:data_model_table} aims
 Table~\ref{table:data_perm_table} on Page~\pageref{table:data_perm_table} shows the different set of users and the permissions allowed to them in the system. The moderator is a special user who has the ability to not allow some data to be uploaded. This is to make sure there is a means to verifying the data being uploaded. All users can upload, download, and store (or host) data. All other users, which are called guests has an ability to download and upload data.
 
 
-%HIII NEED HELP HEREE
 \section{Proof of Correctness}
-correct if
-GET - gets data
-POST - puts data
-PUT - edits data
-DELTE - deletes data
+Hii i need help fixing this section di ko pa alam ano ilalagay
 
-speed should be X bytes per second
+The distributed database will function correctly if:
 
-Data aross Data Nodes is consistent
+\begin{enumerate}
+    \item GET transfers the data to the user with no error
+    \item POST transfers the data to the data node with no error
+    \item PUT edits the data
+    \item DELETE removes the data
+    \item all DATA NODES with DATA X have the exact copy of DATA X
+\end{enumerate}
 
 A proof of correctness for the implementation.
 
-\section{Theoretical Analysis of Speed}
+\section{Theoretical Analysis of Speed} 
 
 Theoretical analysis of the speed up by checking time complexity of the base method versus the proposed method.
 
 \subsection{Base Method}
-In the base method, represented by NCBI. We will abstract the transfer into this algorithm. Assuming as well, constant speed, equal division of bandwidth, all users are getting the same data all at once, and there is a constant overhead before downloading can occur.
+In the base method, represented by NCBI (see Section \ref{NCBI}). We will abstract the transfer into this algorithm. Assuming as well, constant speed, equal division of bandwidth, all users are getting the same data all at once, and there is a constant overhead before downloading can occur.
 
 \subsubsection{Base Method Algorithm}
 \begin{enumerate}
@@ -629,7 +630,7 @@ Exactly the same as the  General Case of the Base Method, N total users and 1 da
 
 
 \subsubsection{General Case of the Proposed Method for Multiple Data Nodes} 
-This is different from the General Case of the Proposed Method for Multiple Data Nodes by a factor of D. N total users and D data nodes will receive data in the speed of DX/N bytes per second with H seconds of an initial overhead. N is the number of users sharing the bandwidth. Downloading data (size of X bytes)  will take DX/(NX) + H or (D/N) + H seconds to transfer. A notable aspect of this general case is that as the number of data nodes increases, the user's speed also increases. Even if the previous feature from the general case of the base method is still at play, (an increase in the number of users decreases the user download speed).
+This is different from the General Case of the Proposed Method for a Single Data Node by a factor of D. N total users and D data nodes will receive data in the speed of DX/N bytes per second with H seconds of an initial overhead. N is the number of users sharing the bandwidth. Downloading data (size of X bytes)  will take DX/(NX) + H or (D/N) + H seconds to transfer. A notable aspect of this general case is that as the number of data nodes increases, the user's speed also increases. Even if the previous feature from the general case of the base method is still at play, (an increase in the number of users decreases the user download speed).
 
 \subsubsection{Notable Cases of the Proposed Method}
 \begin{itemize}
@@ -640,46 +641,27 @@ This is different from the General Case of the Proposed Method for Multiple Data
     \item If D > 1, the proposed method will be faster than the base method (as long as H, X, N are the same).
 \end{itemize}
 
-\subsection{Sumamry of the Theoretical Analysis of Speed}
+\subsection{Summary of the Theoretical Analysis of Speed} \label{theoreticalspeed}
 Generally as the number of users increases, the data transfer speed decreases by a constant factor for all methods. There is also a concept of bottleneck when the number of users is much greater than the data speed put out by all methods.
 
 The proposed method (with D > 1, and same H, X, N) will be faster than the base method. A notable extreme for the proposed method is that once D = 0, no transfer will occur and will be slower than the bottleneck base method. With this analysis, it is suggested the proposed method is faster than the base method on most cases (D > 1). 
 
-\section{Comparison of base method vs distributed method}
+\section{Comparison of base method vs proposed method}
 
-base method (NCBI)
-- houses a lot of biological data
-- go to website
-- one website
-- one data source
-- single point of failure \cite{seqtorr}
-- implemented
+For the final comparisons of the base method the proposed method, the current base method (NCBI in Section \ref{NCBI}) is the go-to website for biological data and genomic data. It is currently used by and is one website and one server. This points to a single point of failure\cite{seqtorr}. The section \ref{theoreticalspeed} on theoretical analysis of speed described the problem of having a bottleneck when the number of users are too many for the data bandwidth of the server. 
 
-proposed method
-- ability to scale
-- multiple (scalable data nodes) data sources
-- multiple (scalable data nodes) data links
-- not yet implemented
-- can be done / implemented on a local scale (limit nodes to the needs)
-- only have data for a certain data community
-- only have users from a certain data community
-- able to design the APIs for speed, security, consistency, tolerance, etc. depending on community needs
-
-- the section on theoretical speed increase in data speed transfer (data nodes > 1)
-- can reduce the data stored to house only locally used and needed data
+The proposed method introduces the idea of data nodes and in section \ref{theoreticalspeed} explains how having at least one data node should theoretically rival the speed of the base method. And having multiple data nodes will be faster in theory than the base method. Another advantage of having a distributed database is the community aspect (see Section \ref{community}). The may be implemented on a local scale, meaning it can have the necessary data for the community. The most frequently used data, may be put on more data nodes increasing the speed of the data transfer (see Section \ref{theoreticalspeed}). Another is that the features on the designs of the speed, consistency, and fault tolerance (see Section \ref{cap} ) may be calibrated to the needs of the community. 
 
 \section{Recommendations}
+A recommendation is to implement this proposed system. It is advised to have a public code with an easy-to-start documentation.
 
-Implement this. Describe the technologies used and why. And make the code public. Better yet create a template code to easily copy and implement own data centers.
+A small but important technical step is to pay attention to port access especially with university internet, some universities only limit the usable ports to two and this would be an important hurdle to overcome in managing multiple data nodes.
 
-Implementation problems. The network API will face problems in port access especially in UPD internet. Only 2 ports are currently available. 
+Another is to look into security, which aspects of the code or data must be private or moderated. How does data privacy work? And how does security affect the accessibility of the system? What are the different risks in distributed databases and how to prevent them? Many questions arise in security but these will only be answered better once implementation starts.
 
-Have a set of testing APIs and have testing APIs embedded in each component. And the testing consistently checks which data have integrity. 
+A recommendation is to look into a way for master nodes to communicate with other master nodes, this will start the idea of communication and collaboration between caDDS to other caDDS.
 
-Have security. The API structure is one way of having security in the future even if it isnt implemented yet. Restructure and redesigning the APIs are one way to achieve security. Adding user authentication is one way to achieve this. As well as having a separate layer between user and master. Where all interactions happen in that layer (even data transfer??). 
-Abstract this project even further. Creating means for master nodes to communicate and collaborate with other master nodes. This will let different caDDS (assuming this is implemented) to communicate and collaborate (send data) to other caDDS.
-
-Abstract this project for non-genomic data as well. To develop the idea of a distributed data community (where distributed databases are easy to scale, implement, and connect). Which can help share many kinds of scientific data more easily. A specific suggestion is for other fields with large data gathered, such as space image data.
+The last recommendation is to abstract this project for non-genomic data as well. This is good especially for other scientific communities with its own growing data set such as cosmology with its space image data. 
 
 %\begin{figure}[h]
 %  \centering
