@@ -120,8 +120,7 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-working draft (insert kulang when info is ready):
- Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genomic data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Data nodes should theoretically increase data transfer speeds even as the number of users increase. (to be updated based on conclusion) While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. A recommendation is to implement the system and make the code public for the use of other communities.
+Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genomic data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Data nodes should theoretically increase data transfer speeds even as the number of users increase. (to be updated based on conclusion) While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. The proposed system is also theoretically faster as long as there are multiple working data nodes. A recommendation is to implement the system and make the code public for the use of other communities.
 \end{abstract}
 
 %%
@@ -464,7 +463,7 @@ In networks, when there is data being accessed over the network, it is not calle
 
 \subsection{Summary of the System}
 
-The system is essentially a database. The database stores sequence data. It has the normal CRUD functions meaning Create, Read, Update, Delete. It can let anyone download sequence data. But only registered users can upload sequence data. When a user uploads data, the moderator will verify the data's authenticity before allowing it to be uploaded. 
+The system is essentially a database. The database stores sequence data. It has the normal CRUD functions meaning Create, Read, Update, Delete. It can let anyone download sequence data. But only registered users can upload sequence data. When a user uploads data, the moderator will verify the data's authenticity before allowing it to be uploaded.
 
 Then for the downloading of the data. The user will download normally, but under the hood the system will be doing a lot of work. It will check multiple "mirrors" of the download, by looking at the different available data nodes, then let the user choose the fastest or best option. File transfer will occur to bring the file to the user, then the system will be the one checking if the file were downloaded correctly. There is a simple organization of available files as well.
 
@@ -682,7 +681,7 @@ The last recommendation is to abstract this project for non-genomic data as well
 %% consistent spelling of the heading.
 \begin{acks}
 
-We want to acknowledge our advisers for giving the idea for out thesis. And for answering our many questions about genomics. Writing this paper overlapped with the covid19 pandemic which changed a big portion of the scope of this thesis. We thank our advisers for making this work manageable during this pandemic crisis.
+We want to acknowledge our advisers for giving the idea for our thesis. And for answering our many questions about genomics. Writing this paper overlapped with the covid19 pandemic which changed a big portion of the scope of this thesis. We thank our advisers for making this work manageable during this pandemic crisis.
 \end{acks}
 
 %%
