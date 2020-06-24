@@ -172,7 +172,7 @@ University of the Philippine - Diliman\\ % Your institution for the title page
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRO + RRL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}{Abstract}
-  Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genomic data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Data nodes should theoretically increase data transfer speeds even as the number of users increase. (to be updated based on conclusion) While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. A recommendation is to implement the system and make the code public for the use of other communities.
+Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genomic data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Data nodes should theoretically increase data transfer speeds even as the number of users increase. (to be updated based on conclusion) While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. The proposed system is also theoretically faster as long as there are multiple working data nodes. A recommendation is to implement the system and make the code public for the use of other communities.
 \end{frame}
 \section{Introduction}
 \subsection{Genomic Concepts}
@@ -503,29 +503,22 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
 \section{Problem}
 % after discussion of dist. databases
 \begin{frame}{Problem}
-The different gaps or problems found with other implementations
-\textbf{Problems of Classical Databases}
-\begin{enumerate}
-%PROBLEMS OF CLASSICAL DATABASES (ALL FOUR)
-    \item Genome researchers download entire database of genomic data
-    \item Genome researchers only need a portion of the database, but end up downloading everything  (gigabytes size)
-    \item Client-Server approach can face bottlenecks (server speed) %is resolved by making it more distributed
+    The different gaps or problems found with other implementations
+    \textbf{Problems of Classical Databases}
+    %PROBLEMS OF CLASSICAL DATABASES (ALL FOUR)
+    \begin{enumerate}
+        \item Genome researchers download an entire database of genomic data, especially when uncertain how to update their data
+        \item Genome researchers only need a portion of the database, but end up downloading the entire database
+        \item Client-Server approach can face bottlenecks (server speed)
+        \item P2P approach has a need of a large unmoderated active user base to work
     \end{enumerate}
-% or having a hard time getting a portion of the database
-% easier to download parts vs whole, whole vs parts
-
-% not easy to navigate the database? 
-% what is the big problem? too big data to download all at once?
-% why is it a problem? speed of download? or size?
-
-\textbf{Problems of Distributed Databases}
-
-\begin{enumerate}
-%PROBLEM OF DIST. DATABASES
-    \item Only one framework on distributed database for genomes
-    \item Existing distributed database for genome code has little documentation % concept of APIs and documentation
-
-\end{enumerate}
+    \textbf{Problems of Distributed Databases}
+    
+    \begin{enumerate}
+    %PROBLEM OF DIST. DATABASES
+        \item No existing usable public framework on distributed databases for genomes
+        \item Existing distributed database system for genomes is not replicable
+    \end{enumerate}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -544,27 +537,27 @@ The different gaps or problems found with other implementations
 
 \begin{frame}{Objectives}
 Based on the problems we found earlier, we propose the following objectives
- \begin{itemize}
-    \item Create an information system that speeds up the download and upload of genomic data
-    \begin{itemize}
+\begin{itemize}
+    \item Design the framework for an information system that speeds up the download and upload of genomic data
+    \begin{itemize} 
         \item To resolve 1 \& 2 of the Problems of Classical Databases. 
+    \end{itemize}
+    \item  Design a distributed database system
+    \begin{itemize}
+        \item To resolve 3 \& 4 of the Problems of Classical Databases, and 1 \& 2 of the Problems of Distributed Databases. 
     \end{itemize}
 \end{itemize}
 
 \begin{itemize}
-    \item The system should have the main API’s
+    \item For the framework, the system should have the main API’s 
     \begin{itemize}
         \item POST genome data
-        \item GET genome data (implement hybrid P2P)
+        \item GET genome data (this will implement a hybrid P2P transfer)
         \begin{itemize}
-            \item This will aim to resolve number 3 in the Problems of Classical Databases
+            \item This will aim to speed up number 3 in the Problems of Classical Databases
         \end{itemize}
         \item PUT genome metadata (optional: PUT data)
         \item DELETE genome data
-    \end{itemize}
-    \item Write documentation for the system
-    \begin{itemize}
-        \item This will be used to resolve the Problems of Distributed Databases
     \end{itemize}
 \end{itemize}
 \end{frame}
@@ -573,13 +566,20 @@ Based on the problems we found earlier, we propose the following objectives
 \begin{frame}{Scope}
 The current scope and coverage of the project is only
 \begin{itemize}
-    \item Security and Authentication is not part of the scope
-    \item Use only FASTA file format 
-    \begin{itemize}
-        \item DNA nucleotides only
-    \end{itemize}
-    \item Only a proof of concept, UI will be purely for functional purposes (very basic design)
+    \item To create a framework for a proposed system
+    \item To design the correctness of a system
+    \item To look at the basic time complexity of the base system (NCBI) and the proposed system
+    \item To compare the proposed system to the base system
 \end{itemize}
+
+The current scope and coverage of the project will NOT consider:
+\begin{itemize}
+    \item Security and Authentication 
+    \item Specific technologies to create the system
+    \item All the data stored in the system (but focus on main data only)
+    \item Implementing the actual system (but pseudocodes to the author's best ability will be provided)
+\end{itemize}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% THEORETICAL FRAMEWORK %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -589,16 +589,14 @@ The current scope and coverage of the project is only
         \begin{frame}{Network Layers}
 
          \textbf{Networks Layers} how computers pass data to each other
-        \begin{itemize}
-            \item \begin{itemize}
-            \item Level 1: Medium used to send signals (physical, electrical signals of 0 and 1), through wire or by air
-            \item Level 2: Introduction of packets: Wifi, Ethernet, connecting together different . Goal of sending a group of signals.
-            \item Level 3: Introduction of networks: IP Address to uniquely identify entities. 
-            \item Level 4: Management of error free data transmission: Sending a group of messages via TCP, UDP, FTP
-            \item \textbf{Level 5}: Abstraction of Level 4: Function calls programmers will use to do level 4 processes.
-            \end{itemize}
-        \end{itemize}
-    \end{frame}
+        \begin{enumerate}
+                    \item Level 1: Medium used to send signals (physical, electrical signals of 0 and 1), through wire or by air
+                    \item Level 2: Introduction of packets: Wifi, Ethernet, connecting together different interfaces. Goal of sending a group of signals.
+                    \item Level 3: Introduction of networks: IP Address to uniquely identify entities.
+                    \item Level 4: Management of error free data transmission: Sending a group of messages via TCP, UDP, FTP
+                    \item Level 5: Abstraction of Level 4: Function calls programmers will use to do level 4 processes.
+        \end{enumerate}
+        \end{frame}
     
     \subsection{Application Architecture}
     % part ng theoretical framework
@@ -747,53 +745,100 @@ This data model is lifted from SeqTorr \cite{seqtorr}
 \subsection{System Summary}
 \begin{frame}{System}
   \begin{itemize}   
-    \item system is this
-    \item distributed
-    \item community assisted
+    \item 
+    \item 
+    \item 
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Summary}
-  \begin{itemize}   
-    \item 
-    \item 
-    \item 
-  \end{itemize}
-\end{frame}
 
 \subsection{Community}
 \begin{frame}{Community}
   \begin{itemize}   
-    \item good for community
-    \item easy to expand storage
-    \item 
+    \item Community may add their own data
+    \item Community may increase their data storage capacity
+    \item Community may increase data transfer speeds (through data nodes)
+    \item Frequently used data can become more accessible
   \end{itemize}
 \end{frame}
 
 \subsection{Comparisons}
 \begin{frame}{Speed Comparisons}
+
+Variables used:
   \begin{itemize}   
-    \item simple time complexity chart
-    \item faster si caDDS ofc 
-    \item 
+    \item \textbf{H} - Constant overhead before downloading may occur
+    \item \textbf{X} - Constant data transfer speed by the server in bytes per second
+    \item \textbf{N} - Number of users simultaneously using the system at the same time
   \end{itemize}
+  
+Assumptions used:
+\begin{itemize}
+    \item constant data transfer
+    \item equal division of bandwidth
+    \item all users are getting the same data as once
+    \item there is a constant overhead before downloading the data for each user
+    \item there is also an equal division of the data nodes' bandwidth to the users
+    \item and all data nodes have an exact copy of the data.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Speed Comparisons Algorithm}
+Algorithm for the base method:
+    \begin{enumerate}
+    \item There is a constant overhead H seconds to set up the communication between the user and the main server.
+    \item The main server sends data in the speed of X bytes per second. X is the speed of data transfer from the server.
+    \item Users will receive the data with an equal portion of the X bytes per second (bandwidth).
+    \end{enumerate}
+    
+Algorithm for the proposed method:
+    \begin{enumerate}
+    \item There is a constant overhead H seconds to set up the communication between the user and the relevant nodes.
+    \item All data nodes (D number of data nodes) will send data in the speed of D times X bytes per second. X is the speed of data transfer from 1 data node.
+    \item Users will receive data with an equal portion of the D times X bytes per second.
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Speed Comparisons Conclusions}
+    
+Generally as the number of users increases, the data transfer speed decreases by a constant factor for all methods. There is also a concept of \textbf{bottleneck} when the number of users is much greater than the data speed put out by all methods.
+
+The proposed method (with D $>$ 1, and same H, X, N) will be faster than the base method. \textit{With this analysis, it is suggested the proposed method is faster than the base method on most cases (D $>$ 1). }
 \end{frame}
 
 
 \begin{frame}{Final Comparisons}
-  \begin{itemize}   
-    \item caDDS is scalable, easy for community, has docu hehe
-    \item NCBI is one, stable, widely used
-    \item 
-  \end{itemize}
+  \begin{block} {\textbf{Base Method: NCBI}}
+    \begin{itemize}
+        \item The current base method (NCBI) is the go-to website for biological data and genomic data. 
+        \item One website and one server. This points to a single point of failure\cite{seqtorr}.
+        \item The section on theoretical analysis of speed described the problem of having a bottleneck when the number of users are too many for the data bandwidth of the server. 
+    \end{itemize}
+
+  \end{block}
+  
+    \begin{block} {\textbf{Proposed Method: caDDS}}
+    
+    \begin{itemize}
+        \item With multiple data nodes, this is faster in theory than the base method.
+        \item  Community: \begin{itemize}
+            \item Database only contains community used data
+            \item Frequently used data can be made more accessible
+            \item The design and principles of the database may be calibrated to the needs of a community
+        \end{itemize}
+    \end{itemize}
+  \end{block}
 \end{frame}
 
 
 \begin{frame}{Recommendations}
   \begin{itemize}   
-    \item implement
-    \item security
-    \item public code
+    \item Implement the proposed system
+    \item Pay attention to port problems with university internet
+    \item Discuss and mitigate different security risks
+    \item Find a way to connect master nodes to other master nodes
+    \item Abstract the data to non-genomic data, for use in other scientific fields
   \end{itemize}
 \end{frame}
 
