@@ -535,14 +535,14 @@ Table~\ref{table:data_model_table} on Page~\pageref{table:data_model_table} aims
     \toprule
     user & description \\
     \midrule
-   Moderator & Has ability to upload, download, store data, verify \\
-    Peer & Has ability to upload, download, store data \\
-    Guest & Has ability to upload, download \\
+   Moderator & Has ability to upload, download, verify \\
+    Registered User & Has ability to upload, download \\
+    Guest & Has ability to download \\
    \bottomrule 
 \end{tabular}
 \end{table}
 
-Table~\ref{table:data_perm_table} on Page~\pageref{table:data_perm_table} shows the different set of users and the permissions allowed to them in the system. The moderator is a special user who has the ability to not allow some data to be uploaded. This is to make sure there is a means to verifying the data being uploaded. All users can upload, download, and store (or host) data. All other users, which are called guests has an ability to download and upload data.
+Table~\ref{table:data_perm_table} on Page~\pageref{table:data_perm_table} shows the different set of users and the permissions allowed to them in the system. The moderator is a special user who has the ability to not allow some data to be uploaded. This is to make sure there is a means to verifying the data being uploaded. All registered users can upload and download. All other users, which are called guests, have an ability to download data.
 
 
 \section{Proof of Correctness}
