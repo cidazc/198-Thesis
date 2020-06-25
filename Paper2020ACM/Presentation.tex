@@ -171,11 +171,9 @@ University of the Philippine - Diliman\\ % Your institution for the title page
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRO + RRL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Abstract}
-Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genomic data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Data nodes should theoretically increase data transfer speeds even as the number of users increase. (to be updated based on conclusion) While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. The proposed system is also theoretically faster as long as there are multiple working data nodes. A recommendation is to implement the system and make the code public for the use of other communities.
-\end{frame}
+
 \section{Introduction}
-\subsection{Genomic Concepts}
+\subsection{Genomics Concepts}
 
 \begin{frame}{Human DNA Length}
     \centering
@@ -218,7 +216,7 @@ Genomic data the past few years have grown exponentially with the technology bar
     \item Reading genes from cells is sequencing
     \item Replications (coverage) \& Fragmentation of DNA is necessary to read
     \item Every read stores the many fragments
-    \item Each sequence read is redundant and uses a lot of space
+    \item Each sequence read has redundant information and uses a lot of space
   \end{itemize}
   \centering
   \includegraphics[scale=0.2]{sequencing.png}
@@ -264,13 +262,13 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
 \end{frame}
 
 \begin{frame}{NGS vs Hard Disk Storage}
-        Computational sense, there is a need to store, upload, and retrieve sequence files that are growing larger. 
-        \begin{itemize}
-        \item Slope of orange line (NGS) is larger than slope of yellow line (pre-NGS)
-        \item Hard disk storage (blue) graph is greater than yellow (pre-NGS) but is now less than orange (NGS)
-        \end{itemize}
-        \centering
-            \includegraphics[scale=0.2]{seq-data.jpeg}
+Computational sense, there is a need to store, upload, and retrieve sequence files that are growing larger. 
+\begin{itemize}
+    \item Slope of orange line (NGS) is larger than slope of yellow line (pre-NGS)
+    \item Hard disk storage (blue) graph is greater than yellow (pre-NGS) but is now less than orange (NGS)
+\end{itemize}
+\centering
+\includegraphics[scale=0.2]{seq-data.jpeg}
 \end{frame}
 
 \begin{frame}{Moore's Law}
@@ -279,14 +277,14 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
   \end{block}
   \begin{itemize}   
     \item Prediction of the speed new technology (faster processing power and better storage) is developed
-    \item But moore's law is too slow for the speed of genomic data increase
+    \item But moore's law is too slow for the speed of genomics data increase
     \item
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Growing problem of storage}
   \begin{itemize}   
-    \item Each read\cite{seqtorr} has 60x coverage, around 200gb each
+    \item One sample read\cite{seqtorr} has 60x coverage, around 200gb each
     \item NGS, More genomic researches, more files needed to be saved and transferred
   \end{itemize}
 \end{frame}
@@ -294,11 +292,11 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
 \subsection{Data Storage Concepts}
 \begin{frame}{Database}
   \begin{itemize}   
-    \item store data with tech
+    \item Database is a technology used to store and manage data
   \end{itemize}
 \end{frame}
   \begin{frame}{Data Storage}
-        A \textbf{database} (\textbf{DBMS}, Database Management System) is defined by 
+        More formally a \textbf{database} (\textbf{DBMS}, Database Management System) is defined by 
         \begin{block} {\textbf{Definition}}
 
         DBMS contains information about a particular enterprise
@@ -314,7 +312,7 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
     \subsubsection{Database Principles}
     \begin{frame}{Database Principles}
         \begin{itemize}
-            \item \textbf{Principles} to remember when creating a database (CAP). Idea is that only 2 of the three can be focused on. \cite[Ch.~19]{Silberschatz2010}
+            \item \textbf{Principles} to remember when creating a database (CAP). Note that it is impossible to achieve perfectly all 3 principles. \cite{cap}Idea is that only 2 of the three can be focused on. \cite[Ch.~19]{Silberschatz2010}
             \begin{itemize}
                 \item \textbf{Consistency}
                 \begin{itemize}
@@ -338,6 +336,7 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
   \begin{frame}{Normal: NCBI}
         \begin{itemize}
             \item NCBI has a large collection of genomic datasets in its website, which can be searched and downloaded.
+            \item Single source and a single point of failure
         \end{itemize}
     \end{frame}
     \begin{frame}{Normal: NCBI}
@@ -359,12 +358,6 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
         \end{itemize}
     \end{frame}
     
-    
-    % cinomment out ko kasi meron naman explanation sa taas
-    %\subsection{P2P Database}
-    %\begin{frame}{P2P Databases}
-    %    something explaining briefly p2p databases
-    %\end{frame}
     
         \subsection{BioTorrents}
     \begin{frame}{P2P: BioTorrents}
@@ -427,6 +420,16 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
         \end{itemize}
     \end{frame}
 
+    \subsection{Dat Protocol}
+    \begin{frame}{Distributed: Dat Protocol}
+        \begin{itemize}
+            \item New open source protocol (not a database) developed in 2013, still volatile
+            \item Users can download and host files
+            \item Downloads are distributed among users
+            \item Version history exists
+            \item Works for any kind of file
+        \end{itemize}
+    \end{frame}
         
     \subsection{SeqTorr}
     \begin{frame}{Distributed: SeqTorr}
@@ -468,34 +471,32 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
     
     
     \begin{frame}{Distributed: SeqTorr}
-    % have a unified way of discussing each database
-    % what aspects of the database to discuss each
-    % extra features will come after
-        Problems: % have one for each database system
+        Problems: 
         \begin{itemize}
-            \item program not currently available
+            \item System not currently available
             \begin{itemize}
-                \item cannot measure any statistics on this
+                \item cOnly exists documentation of their APIs
             \end{itemize}
         \end{itemize}
     \end{frame}
     
     \begin{frame}{Table}
-% Bio-related -> biological
-% What's the difference between biological vs general vs FASTA
-% What does general mean?
-% What does biological mean? -> explain pa to
-% May 3 types of data ...
-   \begin{table}[]
-        \begin{tabular}{|l|l|l|l|l|}
-        \hline
-        System      & CS/P2P/H & Available? & DL/UL speed & Type of Data \\ \hline
-        BioTorrents & P2P           & No         & Depends                    & Biological  \\ \hline
-        SeqTorr     & H             & No         & Fast (PH server)           & FASTA        \\ \hline
-        PeerDB      & P2P           & No         & Depends                    & General      \\ \hline
-        NCBI        & CS            & Yes        & Slow (US server)           & Biological  \\ \hline
-        \end{tabular}
-    \end{table} 
+
+\begin{table}[h]
+    \caption{Comparisons of Different Databases and Technologies}
+    \label{table:database_comparison_table}
+    \begin{tabular}{ccccc}
+    \toprule
+    System      & CS/P2P/H & Available? & DL/UL speed & Type of Data \\ 
+    \midrule
+    BioTorrents & P2P           & No         & Depends                    & Biological  \\ 
+    SeqTorr     & H             & No         & Fast (PH server)           & FASTA        \\ 
+    PeerDB      & P2P           & No         & Depends                    & General      \\ 
+    NCBI        & CS            & Yes        & Slow (US server)           & Biological  \\
+    Dat Protocol    & P2P      & Yes        & Depends           & General  \\ 
+    \bottomrule
+    \end{tabular}
+\end{table} 
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROBLEM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -507,17 +508,17 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
     \textbf{Problems of Classical Databases}
     %PROBLEMS OF CLASSICAL DATABASES (ALL FOUR)
     \begin{enumerate}
-        \item Genome researchers download an entire database of genomic data, especially when uncertain how to update their data
+        \item Genome researchers download an entire database of genomics data, especially when uncertain how to update their data
         \item Genome researchers only need a portion of the database, but end up downloading the entire database
-        \item Client-Server approach can face bottlenecks (server speed)
-        \item P2P approach has a need of a large unmoderated active user base to work
+        \item Client-Server approach can face bottlenecks (server speed) (Section \ref{client-server})
+        \item P2P approach has a need of a large unmoderated active user base to work (Section \ref{p2p})
     \end{enumerate}
     \textbf{Problems of Distributed Databases}
     
     \begin{enumerate}
     %PROBLEM OF DIST. DATABASES
-        \item No existing usable public framework on distributed databases for genomes
-        \item Existing distributed database system for genomes is not replicable
+    \item No existing usable public framework on distributed databases for genomes
+    \item Existing distributed database system for genomes is not replicable 
     \end{enumerate}
 \end{frame}
 
@@ -526,6 +527,9 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
 \titlepage % Print the title page as the first slide
 \end{frame}
 
+\begin{frame}{Abstract}
+Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genomic data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Data nodes should theoretically increase data transfer speeds even as the number of users increase. (to be updated based on conclusion) While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. The proposed system is also theoretically faster as long as there are multiple working data nodes. A recommendation is to implement the system and make the code public for the use of other communities.
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% OBJECTIVES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -538,7 +542,7 @@ Graph of a megabase sequence cost over time \cite{genomics-cost}
 \begin{frame}{Objectives}
 Based on the problems we found earlier, we propose the following objectives
 \begin{itemize}
-    \item Design the framework for an information system that speeds up the download and upload of genomic data
+    \item Design the framework for an information system that speeds up the download and upload of genomics data
     \begin{itemize} 
         \item To resolve 1 \& 2 of the Problems of Classical Databases. 
     \end{itemize}
@@ -547,6 +551,7 @@ Based on the problems we found earlier, we propose the following objectives
         \item To resolve 3 \& 4 of the Problems of Classical Databases, and 1 \& 2 of the Problems of Distributed Databases. 
     \end{itemize}
 \end{itemize}
+
 
 \begin{itemize}
     \item For the framework, the system should have the main API’s 
@@ -577,7 +582,7 @@ The current scope and coverage of the project will NOT consider:
     \item Security and Authentication 
     \item Specific technologies to create the system
     \item All the data stored in the system (but focus on main data only)
-    \item Implementing the actual system (but pseudocodes to the author's best ability will be provided)
+    \item Implementing the actual system 
 \end{itemize}
 
 \end{frame}
@@ -591,7 +596,7 @@ The current scope and coverage of the project will NOT consider:
          \textbf{Networks Layers} how computers pass data to each other
         \begin{enumerate}
                     \item Level 1: Medium used to send signals (physical, electrical signals of 0 and 1), through wire or by air
-                    \item Level 2: Introduction of packets: Wifi, Ethernet, connecting together different interfaces. Goal of sending a group of signals.
+                    \item Level 2: Introduction of packets: WIFI, Ethernet, connecting together different interfaces. Goal of sending a group of signals.
                     \item Level 3: Introduction of networks: IP Address to uniquely identify entities.
                     \item Level 4: Management of error free data transmission: Sending a group of messages via TCP, UDP, FTP
                     \item Level 5: Abstraction of Level 4: Function calls programmers will use to do level 4 processes.
@@ -599,12 +604,7 @@ The current scope and coverage of the project will NOT consider:
         \end{frame}
     
     \subsection{Application Architecture}
-    % part ng theoretical framework
-    % pwedeng walang slide of c/s
-    % pwedeng ibanggit nalang ang client-server architecture
 
-    % methods: ito framework
-    % implemens client-server...
     \begin{frame}{Application Architecture}
         \begin{itemize}
             \item The \textbf{application architecture} is how a networked app is structured across the various end systems (i.e. computers, servers, etc.) \cite{kurose}
@@ -703,13 +703,10 @@ This data model is lifted from SeqTorr \cite{seqtorr}
 
 \small
 \begin{center}
-    
-
-\begin{tabular}{c|c}
-\hline
+\begin{tabular}{cl}
+    \toprule
     key & description \\
-\hline
-\hline
+    \midrule
     seq\textunderscore id & unique ID assigned to all sequences \\
     organism & organism where the sequence was extracted from \\
     quality & the rating of the data based on the number of downloads or another criteria \\
@@ -717,7 +714,8 @@ This data model is lifted from SeqTorr \cite{seqtorr}
     institute & institute where the uploader or sequence was taken from \\
     upload\textunderscore date & date the data was uploaded to the database \\
     last\textunderscore modified & the date the metadata or data was edited \\
-    data\textunderscore nodes & list of data nodes that this data contains
+    data\textunderscore nodes & list of data nodes that this data is contained to \\
+    \bottomrule
 \end{tabular}
 \end{center} 
 
@@ -727,15 +725,14 @@ This data model is lifted from SeqTorr \cite{seqtorr}
 \subsection{Data Permissions}
 \begin{frame}{Data Permissions}
 \begin{center}
-\begin{tabular}{c|c}
-\hline
+\begin{tabular}{cl}
+    \toprule
     user & description \\
-\hline
-\hline
-   Moderator & Has ability to upload, download, store data, verify \\
-    Peer & Has ability to upload, download, store data \\
-    Guest & Has ability to upload, download \\
-
+    \midrule
+   Moderator & Has ability to upload, download, verify \\
+    Registered User & Has ability to upload, download \\
+    Guest & Has ability to download \\
+   \bottomrule 
 \end{tabular}
 \end{center}
 
@@ -756,7 +753,7 @@ This data model is lifted from SeqTorr \cite{seqtorr}
 \begin{frame}{Community}
   \begin{itemize}   
     \item Community may add their own data
-    \item Community may increase their data storage capacity (via adding data nodes in institutions)
+    \item Community may increase their data storage capacity (via adding institution data nodes)
     \item Community may increase data transfer speeds (through data nodes)
     \item Frequently used data can become more accessible
   \end{itemize}
@@ -834,10 +831,9 @@ The proposed method (with D $>$ 1, and same H, X, N) will be faster than the bas
 
 \begin{frame}{Recommendations}
   \begin{itemize}   
-    \item Implement the proposed system
+    \item Implement the proposed system and make the code public
     \item Pay attention to port problems with university internet
     \item Discuss and mitigate different security risks
-    \item Find a way to connect master nodes to other master nodes
     \item Abstract the data to non-genomic data, for use in other scientific fields
   \end{itemize}
 \end{frame}
