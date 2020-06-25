@@ -334,15 +334,12 @@ The SeqTorr authors\cite{seqtorr} also stated that NCBI is the main and current 
 
 To state again some problems of NCBI, it has the limitations of \textit{Client-Server} architecture meaning the speed of the download is heavily reliant on the speed of the main NCBI server and the number of users accessing the server. Which also puts a lot of stress on the main server. Another problem discussed earlier was the updating of local user data, which have no technology yet to do so.
 
-% CID PROGRESS ENDS HEREE FOR MAY 29 2020
 
 \subsection{Dat Protocol}
 
 The Dat Protocol is a newly-developed, open source peer-to-peer protocol for sharing data\cite{dat}. With a single command, anyone can start hosting a directory of files for others to download, as long as they have a publicly accessible IP address and port. Other users can download and then host their own copy of the same directory. Downloads are distributed, meaning if a file is shared across multiple active peers, a new user will be downloading that file from those peers, so bandwidth is shared, much like in BitTorrent. A file's data is synced across peers, so any changes made to the original copy of the file will be sent to peers hosting the same file. And like Git, the version history is also stored and made accessible to peers. Unlike Git though, Dat works well for any kind of file, not just source code. Dat also has security built in. Only users with the directory's read key can download it, and only users with the write key can make changes. In short, Dat has "taken the best parts of Git, BitTorrent, and Dropbox". Another important feature is that files and directories are stored as-is, meaning no modifications are done by Dat when storing files.
 
 Dat's development began in 2013, so it is a relatively new protocol. There may still be large changes in the development and management of Dat, so the project is relatively volatile. Development is ongoing, and the community is active, yet there may still exist a few bugs and other difficulties when using Dat to build an application. Dat is built on NodeJS, and support for other programming languages and frameworks is quite limited. It also contains the same problems as other P2P protocols, namely, a lack of data moderation and incentives for users to serve as peers.
-
-% CID PROGRESS STARTS HEREE FOR JUNE 2 2020
 
 \begin{table}[h]
     \caption{Comparisons of Different Databases and Technologies}
@@ -431,14 +428,6 @@ The current scope and coverage of the project will NOT consider:
     \item Implementing the actual system
 \end{itemize}
 
-% CID PROGRESS ENDS HEREE FOR JUNE 2 2020
-
-% CID PROGRESS STARTS HEREE FOR JUNE 3 2020
-% REDID FORMAT
-% CID PROGRESS ENDS HEREE FOR JUNE 3 2020
-
-% CID PROGRESS STARTS HEREE FOR JUNE 4 2020
-
 \section{Theoretical Framework}
 
 \subsection{Networks}
@@ -491,27 +480,37 @@ The system was also described as community assisted. The definition of \textbf{c
 To summarize, this helps the community since the community may add their own data. The community may increase storage (through data nodes) these may also assist in increasing data speeds. And frequently used data will have faster access. 
 
 
-% CID PROGRESS ENDS HEREE FOR JUNE 4 2020
-
 \begin{figure}[h]
 \caption{App network diagram}
 \centering
-\includegraphics[width=0.35\textwidth]{images/thesis1.png} 
+\includegraphics[width=0.50\textwidth]{images/thesis1.png} 
 \end{figure}
 
 \begin{figure}[h]
-\caption{POST: Uploading a sequence to the master node}
+\caption{POST: Uploading a sequence}
 \centering
-\includegraphics[width=0.35\textwidth]{images/thesis3.png} 
+\includegraphics[width=0.60\textwidth]{images/thesis1-Page-3.png} 
 \end{figure}
 
 \begin{figure}[h]
 \caption{GET: Downloading a sequence}
 \centering
-\includegraphics[width=0.35\textwidth]{images/thesis4.png} 
+\includegraphics[width=0.60\textwidth]{images/thesis4.png} 
 \end{figure}
 
-%CID: Explain the data model and data permissions
+\begin{figure}[h]
+\caption{PUT: Updating a sequence}
+\centering
+\includegraphics[width=0.60\textwidth]{images/thesis1-Page-5.png} 
+\end{figure}
+
+\begin{figure}[h]
+\caption{DELETE: Deleting a sequence}
+\centering
+\includegraphics[width=0.60\textwidth]{images/thesis1-zzzzz.png} 
+\end{figure}
+
+
 
 \begin{table}[h]
 \caption{Data Model to be Used in the System}
@@ -667,15 +666,6 @@ A small but important technical step is to pay attention to port access especial
 Another is to look into security. How does data privacy work? And how does security affect the accessibility of the system? What are the different risks in distributed databases and how to prevent them? Many questions arise in security but these will only be answered better once implementation starts.
 
 The last recommendation is to abstract this project for non-genomic data as well. This is good especially for other scientific communities with its own growing data set such as cosmology with its space image data. 
-
-%\begin{figure}[h]
-%  \centering
-%  \includegraphics[width=\linewidth]{sample-franklin}
-%  \caption{1907 Franklin Model D roadster. Photograph by Harris \&
-%    Ewing, Inc. [Public domain], via Wikimedia
-%    Commons. (\url{https://goo.gl/VLCRBB}).}
-%  \Description{A woman and a girl in white dresses sit in an open car.}
-%\end{figure}
 
 \section{Appendices}
 

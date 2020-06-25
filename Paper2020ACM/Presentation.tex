@@ -475,7 +475,7 @@ Computational sense, there is a need to store, upload, and retrieve sequence fil
         \begin{itemize}
             \item System not currently available
             \begin{itemize}
-                \item cOnly exists documentation of their APIs
+                \item Only exists documentation of their APIs
             \end{itemize}
         \end{itemize}
     \end{frame}
@@ -510,8 +510,8 @@ Computational sense, there is a need to store, upload, and retrieve sequence fil
     \begin{enumerate}
         \item Genome researchers download an entire database of genomics data, especially when uncertain how to update their data
         \item Genome researchers only need a portion of the database, but end up downloading the entire database
-        \item Client-Server approach can face bottlenecks (server speed) (Section \ref{client-server})
-        \item P2P approach has a need of a large unmoderated active user base to work (Section \ref{p2p})
+        \item Client-Server approach can face bottlenecks (server speed)
+        \item P2P approach has a need of a large unmoderated active user base to work
     \end{enumerate}
     \textbf{Problems of Distributed Databases}
     
@@ -665,9 +665,17 @@ The current scope and coverage of the project will NOT consider:
 
 \begin{frame}{Theoretical Framework: System Description}
     \begin{itemize}
-        \item A \textbf{master node} stores metadata of all sequences, may or may not contain sequence files
+        \item The system is inspired by SeqTorr's design
+        \item A \textbf{Master node} does administrative functions: authentication, uploading, moderation. It also contains all metadata.
         \item \textbf{Data nodes} stores sequence files \& metadata of all sequence files in its filesystem
-        \item Both master node \& data nodes have user interface that allow users to upload, search, and download sequence files
+    \end{itemize}
+\end{frame}
+\begin{frame}{Theoretical Framework: System Description}
+    When a user downloads a sequence:
+    \begin{itemize}
+        \item The user searches for keywords in the system
+        \item The user is then given the results and the available data nodes
+        \item The user then chooses to download from one data node or from multiple data nodes
     \end{itemize}
 \end{frame}
 
@@ -675,26 +683,34 @@ The current scope and coverage of the project will NOT consider:
 \begin{frame}{Theoretical Framework: Schematics}
 \textbf{App network diagram} \\ \medskip
 \centering
-\includegraphics[scale=0.5]{thesis1.png}
+\includegraphics[scale=0.5]{images/thesis1.png}
 \end{frame}
 
-\begin{frame}{Theoretical Framework: Schematics}
-\textbf{POST: Uploading a sequence to the master node} \\ \medskip
+\begin{frame}{Theoretical Framework: POST}
+\textbf{POST: Uploading a sequence} \\ \medskip
 \centering
-\includegraphics[scale=0.5]{thesis3.png}
+\includegraphics[scale=0.50]{images/thesis1-Page-3.png} 
 \end{frame}
 
-\begin{frame}{Theoretical Framework: Schematics}
-\textbf{POST: Uploading a sequence to a data node} \\ \medskip
-\centering
-\includegraphics[scale=0.5]{thesis2.png}
-\end{frame}
-
-\begin{frame}{Theoretical Framework: Schematics}
+\begin{frame}{Theoretical Framework: GET}
 \textbf{GET: Downloading a sequence} \\ \medskip
 \centering
-\includegraphics[scale=0.5]{thesis4.png}
+\includegraphics[scale=0.5]{images/thesis4.png}
 \end{frame}
+
+\begin{frame}{Theoretical Framework: PUT}
+\textbf{PUT: Updating a sequence} \\ \medskip
+\centering
+\includegraphics[scale=0.5]{images/thesis1-Page-5.png}
+\end{frame}
+
+\begin{frame}{Theoretical Framework: DELETE}
+\textbf{DELETE: Deleting a sequence} \\ \medskip
+\centering
+\includegraphics[scale=0.5]{images/thesis1-zzzzz.png}
+\end{frame}
+
+
 
 \subsection{Data Model}
 \begin{frame}{Data Model}
@@ -738,15 +754,6 @@ This data model is lifted from SeqTorr \cite{seqtorr}
 
 \end{frame}
 
-
-\subsection{System Summary}
-\begin{frame}{System}
-  \begin{itemize}   
-    \item 
-    \item 
-    \item 
-  \end{itemize}
-\end{frame}
 
 
 \subsection{Community}
