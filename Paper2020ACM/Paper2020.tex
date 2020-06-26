@@ -23,8 +23,13 @@
 %%
 %% The first command in your LaTeX source must be the \documentclass command.
 \documentclass[acmsmall]{acmart}
+%\documentclass[manuscript,screen]{acmart}
+\usepackage{multicol, caption}
+\usepackage{placeins}
 
-
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
 
 
 % NOTE that a single column version is required for submission and peer review. This can be done by changing the \doucmentclass[...]{acmart} in this template to 
@@ -72,11 +77,12 @@
 %% citations and references.
 %% Uncommenting
 %% the next command will enable that style.
-%%\citestyle{acmauthoryear}
+%\citestyle{acmauthoryear}
 
 %%
 %% end of the preamble, start of the body of the document source.
 \begin{document}
+
 
 %%
 %% The "title" command has an optional parameter,
@@ -89,9 +95,17 @@
 %% Of note is the shared affiliation of the first two authors, and the
 %% "authornote" and "authornotemark" commands
 %% used to denote shared contribution to the research.
+\author{El King Morado}
+\authornote{Adviser}
+\email{elkingmoradoking@gmail.com}
+\affiliation{%
+  \institution{University of the Philippines - Philippine Genome Center}
+  \city{Quezon}
+  \country{Philippines}
+}
+
 \author{Carl Araya}
-\authornote{Both authors contributed equally to this research.}
-\email{jjazcarraga@up.edu.ph}
+\email{carl.araya256@gmail.com}
 \affiliation{%
   \institution{University of the Philippines - Diliman}
   \city{Quezon}
@@ -99,13 +113,12 @@
 }
 
 \author{Jose Carlos Rodrigo J. Azcarraga}
-\authornotemark[1]
+\email{jjazcarraga@up.edu.ph}
 \affiliation{%
   \institution{University of the Philippines - Diliman}
   \city{Quezon}
   \country{Philippines}
 }
-\email{jjazcarraga@up.edu.ph}
 
 
 %%
@@ -120,7 +133,7 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genome data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Master node handles administrative work while the Data nods contain all sequence data. Data nodes should theoretically increase data transfer speeds. While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. The proposed system is also theoretically faster as long as there are multiple working data nodes. A recommendation is to implement the system and make the code public for the use of other communities.
+Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genome data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Master node handles administrative work while the Data nodes contain all sequence data. Data nodes should theoretically increase data transfer speeds. While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. The proposed system is also theoretically faster as long as there are multiple working data nodes. A recommendation is to implement the system and make the code public for the use of other communities.
 \end{abstract}
 
 %%
@@ -163,14 +176,16 @@ Genomic data the past few years have grown exponentially with the technology bar
 \maketitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% INTRODUCTION %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{multicols}{2}
+
 \section{Introduction}
-The goal of this introduction is to explain the idea of genomes, their size and magnitude. Inside every human body are the instructions to create and maintain it. These instructions are found inside the genome. The instructions inside the human genome are incredibly long. For example, entire human genome, inside a singular cell, when laid out is around 2 meters in length.\cite{ency_sci_tech}
+Inside every human body are the instructions to create and maintain it. These instructions are found inside the genome. The instructions inside the human genome are incredibly long. For example, entire human genome, inside a singular cell, when laid out is around 2 meters in length.\cite{ency_sci_tech}
 
 Combining  and laying out all the information for all the cells in the human body. The length is incredibly long that it can span the earth to moon 6000 times. This describes as well the vast amount of DNA information in the body. These kinds of information will help scientists explain many of the understood and unknown processes inside all organisms. These may also be used to compare different organisms to each other. And to compare humans to other humans.
 
 
 \subsection{Definition of Genomics}
-Genomics is is the study of wholes sets of genes and their interactions\cite[~p.437]{campbell}. The efforts to study this field has led to volumes of data that need to be analyzed. Which has also spurred the field bioinformatics, which aims to use computers to aid the analysis and storage of biological data. Institutions such as the National Institute of Health and National Library of Medicine, have led this field and built a website to encourage collaboration online through their online portal called NCBI (National Center for Biotechnology Information). \cite[~p.438]{campbell} This website will be discussed later in more detail in Section \ref{NCBI}.
+Genomics is the study of whole sets of genes and their interactions\cite[~p.437]{campbell}. The efforts to study this field has led to volumes of data that need to be analyzed. Which has also spurred the field bioinformatics, which aims to use computers to aid the analysis and storage of biological data. Institutions such as the National Institute of Health and National Library of Medicine, have led this field and built a website to encourage collaboration online through their online portal called NCBI (National Center for Biotechnology Information). \cite[~p.438]{campbell} This website will be discussed later in more detail in Section \ref{NCBI}.
 
 National Institute of Health \cite{genomics-definition} formally defines genomics as \\ \\
 \textit{the study of all of a person's genes (the genome), including interactions of those genes with each other and with the person's environment.} \\ \\
@@ -197,7 +212,7 @@ These reads or sequences taken will need an extra step before the data becomes u
 
 \subsection{Human Genome Project}
 
-Another way to see the way genomic data is large is by looking at the \textit{Human Genome Project (HGP)}. The project's aim was to sequence the entire human genome. At the time it needed a lot of collaborations, a lot of financing, and new computational tools (piecing everything together). Back in 2003 it was a milestone because the first human genome \cite{introgenomics} had been first completely read. It took the project ten years of work, a dozen institutions, and 3,000,000,000 dollars to finish. The technology for sequencing and genomics was still at its infancy. 
+Another way to see the way genomic data is large is by looking at the \textit{Human Genome Project (HGP)}. The project's aim was to sequence the entire human genome. At the time it needed a lot of collaborations, a lot of financing, and new computational tools (piecing everything together). Back in 2003 it was a milestone because the first human genome \cite{introgenomics} had been first completely read. It took the project ten years of work, a dozen institutions, and 3 billion dollars to finish. The technology for sequencing and genomics was still at its infancy. 
 
 Once the Human Genome Project was completed in 2003 and the studies fully published in 2006. The research then paved the way to study chimpanzees since their DNA is the closest to humans. And the whole genome structure of humans can easily be used to recreate the whole genome sequence of the chimpanzee. This was completed 2 years after the Human Genome Project\cite{campbell}. These paved the way for more and more whole genome studies of animals much different from humans. By April 2013, around 4,300 genomes had been studied\cite[~p.442]{campbell}. These contribute to the growing amount of research, analysis, and most importantly data around genomes of different organisms.
 
@@ -214,25 +229,25 @@ There exists a concept of \textit{coverage} as well. Referring back to the \text
 
 This contributes to the large data size of sequence reads. Currently, for a coverage of around 60, the file size for a compressed human genome can easily reach 200 GB. And a project of 10-20 genomes would need approximately 4 TB of storage. Transferring these data across research groups would indeed be a challenge. \cite[~p.68]{paulselzer2018} These highlight the important and growing problem of storage and file transfers in genome research.
 
-\begin{figure}[h]
+\begin{Figure}
 \centering
-\includegraphics[width=0.65\textwidth]{images/human-gen-cost.jpg} 
-\caption{Cost per Genome Data Over Time}
+\includegraphics[width=0.80\linewidth]{images/human-gen-cost.jpg} 
+\captionof{figure}{Cost per Genome Data Over Time}
 \label{fig:human_gen_cost_fig}
-\end{figure}
+\end{Figure}
 
-To view these technology developments over time, we look at the Figure~\ref{fig:human_gen_cost_fig} on Page~\pageref{fig:human_gen_cost_fig} \cite{genomics-cost}, we note here the expensive cost at the initial stages of sequencing the human genome. But as time progresses, the cost substantially went down to what it is now. The big fall of the prices around 2004 - 2005 corresponds to the introduction of the Next Generation Sequencers.
+To view these technology developments over time, we look at the Figure~\ref{fig:human_gen_cost_fig} \cite{genomics-cost}, we note here the expensive cost at the initial stages of sequencing the human genome. But as time progresses, the cost substantially went down to what it is now. The big fall of the prices around 2004 - 2005 corresponds to the introduction of the Next Generation Sequencers.
 
 \subsection{Database}
 
-\begin{figure}[h]
-\caption{Megabase Cost Over Time}
+\begin{Figure}
+\captionof{figure}{Megabase Cost Over Time}
 \centering
-\includegraphics[width=0.65\textwidth]{images/seq-cost.jpeg} 
+\includegraphics[width=0.80\linewidth]{images/seq-cost.jpeg} 
 \label{fig:megabase_cost_fig}
-\end{figure}
+\end{Figure}
 
-Similar to Figure~\ref{fig:human_gen_cost_fig} on Page~\pageref{fig:human_gen_cost_fig}, we also note the same pattern for the cost of sequencing (not just humans) in Figure~\ref{fig:megabase_cost_fig}\cite{genomics-cost}. After the human genome project, many more whole genome projects have been completed. And the cost of sequencing dropped 1000 fold from 2008 to 2012 alone \cite{bon_compression}. This lowering of cost, again corresponds to the idea of sequencing becoming more available. Increasing the number of research projects, therefore contributing to the growing number again of genomic data.
+Similar to Figure~\ref{fig:human_gen_cost_fig}, we also note the same pattern for the cost of sequencing (not just humans) in Figure~\ref{fig:megabase_cost_fig}\cite{genomics-cost}. After the human genome project, many more whole genome projects have been completed. And the cost of sequencing dropped 1000 fold from 2008 to 2012 alone \cite{bon_compression}. This lowering of cost, again corresponds to the idea of sequencing becoming more available. Increasing the number of research projects, therefore contributing to the growing number again of genomic data.
  
 \begin{center}
 \textit{Moore's law states that the number of transistors on a chip doubles every two years.}\cite{kurose}
@@ -341,7 +356,7 @@ The Dat Protocol is a newly-developed, open source peer-to-peer protocol for sha
 
 Dat's development began in 2013, so it is a relatively new protocol. There may still be large changes in the development and management of Dat, so the project is relatively volatile. Development is ongoing, and the community is active, yet there may still exist a few bugs and other difficulties when using Dat to build an application. Dat is built on NodeJS, and support for other programming languages and frameworks is quite limited. It also contains the same problems as other P2P protocols, namely, a lack of data moderation and incentives for users to serve as peers.
 
-\begin{table}[h]
+\begin{table*}[ht]
     \caption{Comparisons of Different Databases and Technologies}
     \label{table:database_comparison_table}
     \begin{tabular}{ccccc}
@@ -355,11 +370,11 @@ Dat's development began in 2013, so it is a relatively new protocol. There may s
     Dat Protocol    & P2P      & Yes        & Depends           & General  \\ 
     \bottomrule
     \end{tabular}
-\end{table} 
+\end{table*} 
 
 \subsection{Comparisons of Database Technologies} \label{compdb}
 
-Table~\ref{table:database_comparison_table} on page ~\pageref{table:database_comparison_table} compares the different technologies studied. An important point to note is that a majority of the databases are not available. This will also be used later on to describe what are the main problems of the different databases.
+Table~\ref{table:database_comparison_table} compares the different technologies studied. An important point to note is that a majority of the databases are not available. This will also be used later on to describe what are the main problems of the different databases.
 
 \section{Problem}
 To restate the different gaps or problems found with other implementations of Genomic Databases
@@ -480,39 +495,37 @@ The system was also described as community assisted. The definition of \textbf{c
 To summarize, this helps the community since the community may add their own data. The community may increase storage (through data nodes) these may also assist in increasing data speeds. And frequently used data will have faster access. 
 
 
-\begin{figure}[h]
-\caption{App network diagram}
+\begin{Figure}
+\captionof{figure}{App network diagram}
 \centering
-\includegraphics[width=0.50\textwidth]{images/thesis1.png} 
-\end{figure}
+\includegraphics[width=0.8\linewidth]{images/thesis1.png} 
+\end{Figure}
 
-\begin{figure}[h]
-\caption{POST: Uploading a sequence}
+\begin{Figure}
+\captionof{figure}{POST: Uploading a sequence}
 \centering
-\includegraphics[width=0.60\textwidth]{images/thesis1-Page-3.png} 
-\end{figure}
+\includegraphics[width=0.80\linewidth]{images/thesis1-Page-3.png} 
+\end{Figure}
 
-\begin{figure}[h]
-\caption{GET: Downloading a sequence}
+\begin{Figure}
+\captionof{figure}{GET: Downloading a sequence}
 \centering
-\includegraphics[width=0.60\textwidth]{images/thesis4.png} 
-\end{figure}
+\includegraphics[width=0.80\linewidth]{images/thesis4.png} 
+\end{Figure}
 
-\begin{figure}[h]
-\caption{PUT: Updating a sequence}
+\begin{Figure}
+\captionof{figure}{PUT: Updating a sequence}
 \centering
-\includegraphics[width=0.60\textwidth]{images/thesis1-Page-5.png} 
-\end{figure}
+\includegraphics[width=0.80\linewidth]{images/thesis1-Page-5.png} 
+\end{Figure}
 
-\begin{figure}[h]
-\caption{DELETE: Deleting a sequence}
+\begin{Figure}
+\captionof{figure}{DELETE: Deleting a sequence}
 \centering
-\includegraphics[width=0.60\textwidth]{images/thesis1-zzzzz.png} 
-\end{figure}
+\includegraphics[width=0.80\linewidth]{images/thesis1-zzzzz.png} 
+\end{Figure}
 
-
-
-\begin{table}[h]
+\begin{table*}[ht]
 \caption{Data Model to be Used in the System}
 \label{table:data_model_table}
 \begin{tabular}{cl}
@@ -529,13 +542,12 @@ To summarize, this helps the community since the community may add their own dat
     data\textunderscore nodes & list of data nodes that this data is contained to \\
     \bottomrule
 \end{tabular}
-\end{table}
+\end{table*}
 
-Table~\ref{table:data_model_table} on Page~\pageref{table:data_model_table} aims to show the metadata that will be initially stored in the database.
+Table~\ref{table:data_model_table} aims to show the metadata that will be initially stored in the database.
 
 %CID: Data Permissions
-
-\begin{table}[h]
+\begin{table*}[ht]
 \caption{Data Permissions and Users in the System}
 \label{table:data_perm_table}
 \begin{tabular}{cl}
@@ -547,9 +559,9 @@ Table~\ref{table:data_model_table} on Page~\pageref{table:data_model_table} aims
     Guest & Has ability to download \\
    \bottomrule 
 \end{tabular}
-\end{table}
+\end{table*}
 
-Table~\ref{table:data_perm_table} on Page~\pageref{table:data_perm_table} shows the different set of users and the permissions allowed to them in the system. The moderator is a special user who has the ability to not allow some data to be uploaded. This is to make sure there is a means to verifying the data being uploaded. All registered users can upload and download. All other users, which are called guests, have an ability to download data.
+Table~\ref{table:data_perm_table} shows the different set of users and the permissions allowed to them in the system. The moderator is a special user who has the ability to not allow some data to be uploaded. This is to make sure there is a means to verifying the data being uploaded. All registered users can upload and download. All other users, which are called guests, have an ability to download data.
 
 
 \section{Proof of Correctness}
@@ -667,8 +679,6 @@ Another is to look into security. How does data privacy work? And how does secur
 
 The last recommendation is to abstract this project for non-genomic data as well. This is good especially for other scientific communities with its own growing data set such as cosmology with its space image data. 
 
-\section{Appendices}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% ACKNOWLEDGEMENT & GRATITUDE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 %% The acknowledgments section is defined using the "acks" environment
@@ -683,12 +693,13 @@ We want to acknowledge our advisers Dr. Jan Michael Yap and Sir El King Morado f
 %%
 %% The next two lines define the bibliography style to be used, and
 %% the bibliography file.
-\bibliographystyle{ACM-Reference-Format}
+%\bibliographystyle{ACM-Reference-Format}
+\bibliographystyle{newapa}
 \bibliography{bibfile}
 
-%%
-%% If your work has an appendix, this is the place to put it.
-\appendix
+
+
+\end{multicols}{2}
 
 \end{document}
 \endinput
