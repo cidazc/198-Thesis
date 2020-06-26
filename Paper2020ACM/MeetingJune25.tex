@@ -1,0 +1,176 @@
+Marami to hahahaha get ready mostly sa proof of correctness
+
+Whole Paper:
+1) Make it 2 column format
+2) Add sir El King Morado - UP Philippine Genome Center
+3) Remove references to page numbers
+4) Put figures on top of a column (see what sir el king sent)
+
+Abstract
+- okay content
+- fix typoL Data nods
+
+Intro Pg 1
+- Remove sentence: [the goal of this intro]
+- remove subsections in inntro
+- Genomics study of blank. To generate data you need sequencing. But the data is big & needs effort. To sequence a lot, tech evolved and NGS gave high throughput
+- Intro should be 2 columns lang. Make each paragraph a few sentences instead.
+- Intro goal: layoutht background of the work
+- Flow: Idea of A lot of data -> Problems -> Proposed Solution
+-
+
+-Intro Pg 2
+- 3,000,000,000 -> 3 billion
+- Shorten HGP section. Combine HGP + NGS to one paragraph.
+- Fix typo: Genomics is is
+
+-Intro: Database
+- NGS -> high voluminous data -> need to store it in a digital format -> retrieve it for analysis
+
+
+Overall info guide: 
+- tama na yung flow
+- lessen info
+- compress database to 1/2 sentences. Then mention centralized/distributed database.
+
+Into: CAP
+- make it 1 paragraph
+- only describe the most important principle and why
+
+Application Architecture: (Move to Theoretical Framework)
+- Discuss Client Server in 1 sentence
+- Discuss P2P in 1 sentence
+-Describe Hybrid 
+
+-Sample: 
+- First we need to discuss 2 basic architecture: CS, P2P. 
+- CS is blank. 
+- P2P is blank. 
+- Our proposed system will be hybrid getting these aspects from CS and P2P
+
+RRL:
+- first paragraph say: We review blank. We would like to focus on blank and blank. In the end we would like to make a comparitive analysis. 
+- Table Comparing the diff Databass: Remove Dat, Describe each column narratively, and describe some conclusions from the table
+- Answer the question: anong halaga ng columns? 
+- Discuss each column CS/P2P/H, and the data on each column
+- FASTA -> Biological
+- Move dat to Methodology.
+
+Review of Related Literature:
+- the review tells you you are meant to critique the work you have seen
+- here summarize gaps (mej copy the problems to here)
+
+
+Problem:
+- summarize the gaps. To review the current implementation has problems in size.
+- To summarize, centralized databases suffer from these problems. Therefore the research aims to focus on developing a database with these features
+- Problem Statement: Central thesis, one unifying question. May certain level of measurability.
+
+Objectives:
+- specify metrics, activities, na once you do this succeed.
+- the bullet points "Resolve problems blank of blank" move them to a paragraph below objectives
+- For the paragraph below: First objective addresses these problems, second objective addresses these limitations blank.
+- keep first 2 objectives, the last is: to evaluate the theoretical properties of the system based on the correctness and its speed
+
+
+Methodology:
+- dito mapupunta yung framework and APIs
+- say we will be developing an information system. And all information systems have GET,POST,PUT,DELETE functionalities.
+
+Scope
+- 2 things: 
+- 1) create a theoretical design for a proposed system
+- 2) evaluate the theoretical running time and speed of the operations.
+- define here what you mean by proposed system and base system (FTP protocol of NCBI be specific that this is what base system means)
+- base system: FTP retrieval from NCBI
+
+Limitation
+- no implement
+- be transparent, time constraints and pandemic
+- no security and authentication
+
+
+Theoretical Framework
+- discusses abstractly anong paglalaruan na ideas
+- Discuss Hybrid,CS, P2P in short sentences
+- Network, forego layers 1-3. Briefly discuss layers 4 and 5 and their importance.
+- Discuss how retrieval operations rely on layers 4 and 5 (FTP for NCBI, torrent??)
+- good flow, but too many info, need to shorten it.
+
+Summary of the System
+- call this section caDDS
+- start with an outline for the entire section
+- The retrieval mehanism is inspired by SeqTorr. This section describes the proposed system. This is a hybrid focused or distributed system
+
+Community
+- this section is good
+- move to 7.2 or after
+
+System Description
+- for each photo (GET, POST...) , need one paragraph explaining each one. 1 paragraph per operation (GET, POST...)
+- for each photo outline what happens in 1) 2) 3)
+
+
+Proof of Correctness (BIGTIME CHANGE)
+- how do you guarantee that a get does what it is intended to do:
+- cite preconditions, post conditions,all the paths from pre conditions to post conditions and how it would always be true
+- like an if else
+- shows the path from pre condition to post condition
+- set pre conditions, assumptions, then show how it becomes postconditions (state after)
+
+
+Sample:
+Assume do not factor in physical state of the network, it is error free
+for GET
+input of this operation: search key
+output of this operation: data transferred to the user
+
+Master node during search has 2 possible output
+1) at least 1 hit
+2) not in the database
+
+After having at least 1 hit
+-> sends the link to user
+-> user clicks to link if he wants
+-> user presses link
+-> user makes a download request to master
+-> master redirects user to data node
+-> data node sends data to user
+
+Precondition: User chooses to download
+Postcondition: User retrieves files
+
+User inputs:search key
+master outputs: results report
+
+How to know master will send the correct file?
+1) each metadata has a unique identifier
+2) guarantees exact file since each file has a unique identifier
+
+How to know it will reach the correct user
+1) Each user has a unique identifier (IP Address)
+
+Theoretical Analysis
+- Mention base system means FTP from NCBI...
+- Mention why only get/ retrieval is used. Since all operations can be broken up into small retrieval operations
+- abstract size of a payload
+- cite that network is assumed to be error free
+- articulate assumptions better
+- move the final comparisons here
+
+Conclusion Template:
+- say what you did
+- summarize analysis of results
+- 2 to 3 sentences of what you did/ problem
+- 2 sentences correctness and speed
+- correctness: system operations
+- speed: faster/slower
+- shown to do what is expected based on preconditions
+
+Reccomendations
+- okay
+
+Acknowledgements -> Remove from Appendix
+
+Biblio
+- Make it APA format
