@@ -350,11 +350,6 @@ The SeqTorr authors\cite{seqtorr} also stated that NCBI is the main and current 
 To state again some problems of NCBI, it has the limitations of \textit{Client-Server} architecture meaning the speed of the download is heavily reliant on the speed of the main NCBI server and the number of users accessing the server. Which also puts a lot of stress on the main server. Another problem discussed earlier was the updating of local user data, which have no technology yet to do so.
 
 
-\subsection{Dat Protocol}
-
-The Dat Protocol is a newly-developed, open source peer-to-peer protocol for sharing data\cite{dat}. With a single command, anyone can start hosting a directory of files for others to download, as long as they have a publicly accessible IP address and port. Other users can download and then host their own copy of the same directory. Downloads are distributed, meaning if a file is shared across multiple active peers, a new user will be downloading that file from those peers, so bandwidth is shared, much like in BitTorrent. A file's data is synced across peers, so any changes made to the original copy of the file will be sent to peers hosting the same file. And like Git, the version history is also stored and made accessible to peers. Unlike Git though, Dat works well for any kind of file, not just source code. Dat also has security built in. Only users with the directory's read key can download it, and only users with the write key can make changes. In short, Dat has "taken the best parts of Git, BitTorrent, and Dropbox". Another important feature is that files and directories are stored as-is, meaning no modifications are done by Dat when storing files.
-
-Dat's development began in 2013, so it is a relatively new protocol. There may still be large changes in the development and management of Dat, so the project is relatively volatile. Development is ongoing, and the community is active, yet there may still exist a few bugs and other difficulties when using Dat to build an application. Dat is built on NodeJS, and support for other programming languages and frameworks is quite limited. It also contains the same problems as other P2P protocols, namely, a lack of data moderation and incentives for users to serve as peers.
 
 \begin{table*}[ht]
     \caption{Comparisons of Different Databases and Technologies}
@@ -364,7 +359,7 @@ Dat's development began in 2013, so it is a relatively new protocol. There may s
     System      & CS/P2P/H & Available? & DL/UL speed & Type of Data \\ 
     \midrule
     BioTorrents & P2P           & No         & Depends                    & Biological  \\ 
-    SeqTorr     & H             & No         & Fast (PH server)           & FASTA        \\ 
+    SeqTorr     & H             & No         & Fast (PH server)           & Biological       \\ 
     PeerDB      & P2P           & No         & Depends                    & General      \\ 
     NCBI        & CS            & Yes        & Slow (US server)           & Biological  \\
     Dat Protocol    & P2P      & Yes        & Depends           & General  \\ 
@@ -376,9 +371,8 @@ Dat's development began in 2013, so it is a relatively new protocol. There may s
 
 Table~\ref{table:database_comparison_table} compares the different technologies studied. An important point to note is that a majority of the databases are not available. This will also be used later on to describe what are the main problems of the different databases.
 
-\section{Problem}
-To restate the different gaps or problems found with other implementations of Genomic Databases
-\subsection{Problems of Classical Databases}
+To restate the different gaps or problems found with other implementations of Genomic Databases: 
+\subsection{Problems of Centralized Databases}
 \begin{enumerate}
 \item Genome researchers download an entire database of genomics data, especially when uncertain how to update their data
 \item Genome researchers only need a portion of the database, but end up downloading the entire database
@@ -393,33 +387,20 @@ To restate the different gaps or problems found with other implementations of Ge
     \item Existing distributed database system for genomes is not replicable 
 \end{enumerate}
 
-\section{Objectives}
+\section{Problem}
+To summarize the gaps described earlier, there are problems in implementations of centralized databases, specifically with bottlenecks and moderation. Other problems are specific to genome researchers with updating of the data. The last problem is the gap of usable distributed databases targeted towards genomics researchers. The main problem will be: "How to design a distributed database that is useful for genomics researchers?"
 
+\section{Objectives}
 Based on the problems we found described, we propose to:
 
 \begin{itemize}
     \item Design the framework for an information system that speeds up the download and upload of genomics data
-    \begin{itemize} 
-        \item To resolve 1 \& 2 of the Problems of Classical Databases. 
-    \end{itemize}
     \item  Design a distributed database system
-    \begin{itemize}
-        \item To resolve 3 \& 4 of the Problems of Classical Databases, and 1 \& 2 of the Problems of Distributed Databases. 
-    \end{itemize}
+    \item Evaluate the theoretical properties of the system based on the correctness and speed
 \end{itemize}
 
-\begin{itemize}
-    \item For the framework, the system should have the main API’s 
-    \begin{itemize}
-        \item POST genome data
-        \item GET genome data (this will implement a hybrid P2P transfer)
-        \begin{itemize}
-            \item This will aim to speed up number 3 in the Problems of Classical Databases
-        \end{itemize}
-        \item PUT genome metadata (optional: PUT data)
-        \item DELETE genome data
-    \end{itemize}
-\end{itemize}
+The first objective addresses the genome researchers problems of centralized databases. The second objective aims to resolve the limitations of the client-server and P2P approaches, and the existing problems of distributed databases. The third objective aims to show the theoretical rationale for using these distributed databases. 
+
 
 
 \section{Scope}
@@ -434,16 +415,17 @@ The project will focus on creating a framework, and outlining key API features o
 
 \end{itemize}
 
-The current scope and coverage of the project will NOT consider:
-
-\begin{itemize}
-    \item Security and Authentication 
-    \item Specific technologies to create the system
-    \item All the data stored in the system (but focus on main data only)
-    \item Implementing the actual system
-\end{itemize}
+\section{Limitations}
+The research had time constraints and physical constraints because of the unexpected Covid-19 pandemic. The research will not implement the system or explain the technology stack to be used. It will not include security and authentication.
 
 \section{Theoretical Framework}
+
+\subsection{Dat Protocol}
+
+The Dat Protocol is a newly-developed, open source peer-to-peer protocol for sharing data\cite{dat}. With a single command, anyone can start hosting a directory of files for others to download, as long as they have a publicly accessible IP address and port. Other users can download and then host their own copy of the same directory. Downloads are distributed, meaning if a file is shared across multiple active peers, a new user will be downloading that file from those peers, so bandwidth is shared, much like in BitTorrent. A file's data is synced across peers, so any changes made to the original copy of the file will be sent to peers hosting the same file. And like Git, the version history is also stored and made accessible to peers. Unlike Git though, Dat works well for any kind of file, not just source code. Dat also has security built in. Only users with the directory's read key can download it, and only users with the write key can make changes. In short, Dat has "taken the best parts of Git, BitTorrent, and Dropbox". Another important feature is that files and directories are stored as-is, meaning no modifications are done by Dat when storing files.
+
+Dat's development began in 2013, so it is a relatively new protocol. There may still be large changes in the development and management of Dat, so the project is relatively volatile. Development is ongoing, and the community is active, yet there may still exist a few bugs and other difficulties when using Dat to build an application. Dat is built on NodeJS, and support for other programming languages and frameworks is quite limited. It also contains the same problems as other P2P protocols, namely, a lack of data moderation and incentives for users to serve as peers.
+
 
 \subsection{Networks}
 
@@ -468,7 +450,22 @@ Level 4 and 5 is what the system will mainly use and operate on. In these system
 In networks, when there is data being accessed over the network, it is not called C.R.U.D. (the way databases access data), instead it is called POST, GET, PUT, DELETE. POST is analogous to CREATE meaning the user submit data to be stored (in the server). GET is similar to READ but is in the context of reading a file over a network (from a server). PUT is analogous to UPDATE as DELETE remains as DELETE. These are codes used to denote network commands that do the same thing as the CRUD functions discussed earlier. This is important since there is an added layer of difficulty when it comes to transmitting data over a network. 
 
 
-\subsection{Summary of the System}
+\begin{itemize}
+    \item (Move to Theoretical Framework/caDDS) The system is an information system, and all information systems must have the main API’s 
+    \begin{itemize}
+        \item POST genome data
+        \item GET genome data (this will implement a hybrid P2P transfer)
+        \begin{itemize}
+            \item This will aim to speed up number 3 in the Problems of Classical Databases
+        \end{itemize}
+        \item PUT genome metadata (optional: PUT data)
+        \item DELETE genome data
+    \end{itemize}
+\end{itemize}
+
+
+
+\subsection{caDDS: Community Assisted Distributed Database for Sequences}
 
 \subsubsection{Overview}
 The two parts of the system infrastructure are the master node and data nodes. These are also inspired from SeqTorr. 
@@ -488,11 +485,6 @@ Then for the downloading of the data. In the master node, the user will search f
 The system is described as \textit{community assisted}. Since ideally, institutions can contribute to sharing the data by hosting servers that will become the data nodes. This sharing allows a greater bandwidth, and hopefully speed in which this data can be transferred. 
 
 The database is a distributed database, which will aim to utilize the best features from peer-to-peer and client-server architectures. This will also aim to store sequences. Thus the "Distributed Database for Sequences" portion of the title.
-
-\subsubsection{Community Aspect} \label{community}
-The system was also described as community assisted. The definition of \textbf{community} to be used here is a \textit{set of people and institutions who generally collaborate together to do research}. And the focus is the genome research community. Reemphasizing certain features from the database, that any registered user can upload data. This means all users in the community can contribute to the knowledge base, and contribute data to be used by the community. Another important community aspect is that institutions can increase the number of data nodes. Meaning there will be an increase in the overall storage of the database, and at the same time theoretically increase data speeds (which will be discussed more later). Frequently used local data as well will be more easily accessible (since data nodes should have faster access speeds). The concept of closer networks having faster speeds (discussed in the network section) is at play here. Another community aspect will be this paper, publicly describing many aspects of the structure and code. So that this concept may be further developed and even implemented by genome research communities.
-
-To summarize, this helps the community since the community may add their own data. The community may increase storage (through data nodes) these may also assist in increasing data speeds. And frequently used data will have faster access. 
 
 
 \begin{Figure}
@@ -562,6 +554,13 @@ Table~\ref{table:data_model_table} aims to show the metadata that will be initia
 \end{table*}
 
 Table~\ref{table:data_perm_table} shows the different set of users and the permissions allowed to them in the system. The moderator is a special user who has the ability to not allow some data to be uploaded. This is to make sure there is a means to verifying the data being uploaded. All registered users can upload and download. All other users, which are called guests, have an ability to download data.
+
+
+\subsection{Community Aspect} \label{community}
+The system was also described as community assisted. The definition of \textbf{community} to be used here is a \textit{set of people and institutions who generally collaborate together to do research}. And the focus is the genome research community. Reemphasizing certain features from the database, that any registered user can upload data. This means all users in the community can contribute to the knowledge base, and contribute data to be used by the community. Another important community aspect is that institutions can increase the number of data nodes. Meaning there will be an increase in the overall storage of the database, and at the same time theoretically increase data speeds (which will be discussed more later). Frequently used local data as well will be more easily accessible (since data nodes should have faster access speeds). The concept of closer networks having faster speeds (discussed in the network section) is at play here. Another community aspect will be this paper, publicly describing many aspects of the structure and code. So that this concept may be further developed and even implemented by genome research communities.
+
+To summarize, this helps the community since the community may add their own data. The community may increase storage (through data nodes) these may also assist in increasing data speeds. And frequently used data will have faster access. 
+
 
 
 \section{Proof of Correctness}
@@ -668,6 +667,8 @@ The proposed method (with D > 1, and same H, X, N) will be faster than the base 
 For the final comparisons of the base method the proposed method, the current base method (NCBI in Section \ref{NCBI}) is the go-to website for biological data and genomic data. It is currently used and is one website and one server. This points to a single point of failure\cite{seqtorr}. The section \ref{theoreticalspeed} on theoretical analysis of speed described the problem of having a bottleneck when the number of users are too many for the data bandwidth of the server. 
 
 The proposed method introduces the idea of data nodes and in section \ref{theoreticalspeed} explains how having at least one data node should theoretically rival the speed of the base method. And having multiple data nodes will be faster in theory than the base method. Another advantage of having a distributed database is the community aspect (see Section \ref{community}). The proposed method may be implemented on a local scale, meaning it can have the necessary data for the community. The most frequently used data, may be put on more data nodes increasing the speed of the data transfer (see Section \ref{theoreticalspeed}). Another is that the features on the designs of the speed, consistency, and fault tolerance (see Section \ref{cap} ) may be calibrated to the needs of the community. 
+
+\section{Conclusion}
 
 
 \section{Recommendations}

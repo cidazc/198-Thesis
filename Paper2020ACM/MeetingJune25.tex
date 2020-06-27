@@ -1,117 +1,118 @@
 Marami to hahahaha get ready mostly sa proof of correctness
 
 Whole Paper:
-check 1) Make it 2 column format
-check 2) Add sir El King Morado - UP Philippine Genome Center
-check 3) Remove references to page numbers
-check 4) Put figures on top of a column (see what sir el king sent)
+✓ 1) Make it 2 column format
+✓ 2) Add sir El King Morado - UP Philippine Genome Center
+✓ 3) Remove references to page numbers
+✓ 4) Put figures on top of a column (see what sir el king sent)
 
-Abstract
-- okay content
-check - fix typoL Data nods
+✓ Abstract
+✓ - okay content
+✓ - fix typo Data nods
 
 Intro Pg 1
-- Remove sentence: [the goal of this intro]
-- remove subsections in inntro
+✓ - Remove sentence: [the goal of this intro]
 - Genomics study of blank. To generate data you need sequencing. But the data is big & needs effort. To sequence a lot, tech evolved and NGS gave high throughput
 - Intro should be 2 columns lang. Make each paragraph a few sentences instead.
 - Intro goal: layoutht background of the work
 - Flow: Idea of A lot of data -> Problems -> Proposed Solution
--
+- remove subsections in inntro (do this last)
+
 
 -Intro Pg 2
-check - 3,000,000,000 -> 3 billion
+✓ - 3,000,000,000 -> 3 billion
 - Shorten HGP section. Combine HGP + NGS to one paragraph.
-check - Fix typo: Genomics is is
+✓ - Fix typo: Genomics is is
 
 -Intro: Database
 - NGS -> high voluminous data -> need to store it in a digital format -> retrieve it for analysis
 
 
 Overall info guide: 
-- tama na yung flow
+✓ - tama na yung flow
 - lessen info
-- compress database to 1/2 sentences. Then mention centralized/distributed database.
+- compress database to 1 or 2 sentences. Then mention centralized/distributed database.
 
 Into: CAP
-- make it 1 paragraph
+- shorten and make it 1 paragraph
 - only describe the most important principle and why
 
 Application Architecture: (Move to Theoretical Framework)
 - Discuss Client Server in 1 sentence
 - Discuss P2P in 1 sentence
--Describe Hybrid 
-
--Sample: 
+- Describe Hybrid 
 - First we need to discuss 2 basic architecture: CS, P2P. 
 - CS is blank. 
 - P2P is blank. 
 - Our proposed system will be hybrid getting these aspects from CS and P2P
 
 RRL:
-- first paragraph say: We review blank. We would like to focus on blank and blank. In the end we would like to make a comparitive analysis. 
-- Table Comparing the diff Databass: Remove Dat, Describe each column narratively, and describe some conclusions from the table
+- make the first paragraph say: We review blank. We would like to focus on blank and blank. In the end we would like to make a comparitive analysis. 
+- Move Dat (move to theoretical framework)
+- Table Comparing the diff Databass, Describe each column narratively, and describe some conclusions from the table
 - Answer the question: anong halaga ng columns? 
 - Discuss each column CS/P2P/H, and the data on each column
-- FASTA -> Biological
-- Move dat to Methodology.
+✓ - FASTA rename to Biological
 
 Review of Related Literature:
 - the review tells you you are meant to critique the work you have seen
-- here summarize gaps (mej copy the problems to here)
+- here summarize gaps 
+✓ - copy the problems to here
 
 
-Problem:
-- summarize the gaps. To review the current implementation has problems in size.
+80 percent ✓ Problem:
+✓ - move the problems bullet points to RRL. Replace problem bullet points with a paragraph summary 
+✓ - summarize the gaps. To review the current implementation has problems in size.
 - To summarize, centralized databases suffer from these problems. Therefore the research aims to focus on developing a database with these features
-- Problem Statement: Central thesis, one unifying question. May certain level of measurability.
+✓ - Problem Statement: Central thesis, one unifying question. May certain level of measurability.
 
 Objectives:
 - specify metrics, activities, na once you do this succeed.
-- the bullet points "Resolve problems blank of blank" move them to a paragraph below objectives
-- For the paragraph below: First objective addresses these problems, second objective addresses these limitations blank.
-- keep first 2 objectives, the last is: to evaluate the theoretical properties of the system based on the correctness and its speed
+✓- the bullet points "Resolve problems blank of blank" move them to a paragraph below objectives
+✓- For the paragraph below: First objective addresses these problems, second objective addresses these limitations blank.
+✓- keep first 2 objectives, the last is: to evaluate the theoretical properties of the system based on the correctness and its speed
+✓ - framework and APIs move to theoretical framework. 
 
-
-Methodology:
-- dito mapupunta yung framework and APIs
-- say we will be developing an information system. And all information systems have GET,POST,PUT,DELETE functionalities.
 
 Scope
 - 2 things: 
 - 1) create a theoretical design for a proposed system
 - 2) evaluate the theoretical running time and speed of the operations.
-- define here what you mean by proposed system and base system (FTP protocol of NCBI be specific that this is what base system means)
-- base system: FTP retrieval from NCBI
+- define here what you mean by proposed system and base system (
+- base system means FTP retrieval from NCBI
 
-Limitation
-- no implement
-- be transparent, time constraints and pandemic
-- no security and authentication
+✓ Limitation
+✓- make limitations section
+✓- no implement
+✓- be transparent, time constraints and pandemic
+✓- no security and authentication
 
 
 Theoretical Framework
+- should have a very basic flow
 - discusses abstractly anong paglalaruan na ideas
 - Discuss Hybrid,CS, P2P in short sentences
 - Network, forego layers 1-3. Briefly discuss layers 4 and 5 and their importance.
 - Discuss how retrieval operations rely on layers 4 and 5 (FTP for NCBI, torrent??)
 - good flow, but too many info, need to shorten it.
+- (half check, since this still needs to be moved to theoretical framework) say we will be developing an information system. And all information systems have GET,POST,PUT,DELETE functionalities.
+
 
 Summary of the System
-- call this section caDDS
-- start with an outline for the entire section
-- The retrieval mehanism is inspired by SeqTorr. This section describes the proposed system. This is a hybrid focused or distributed system
+✓ - call this section caDDS
+- start with an outline for the entire section (This section will describe the different operations in ...)
+- say: The retrieval mechanism is inspired by SeqTorr. This section describes the proposed system. This is a hybrid focused or distributed system
 
-Community
-- this section is good
-- move to 7.2 or after
+✓ Community
+✓ - this section is good
+✓- move to 7.2 or after
 
 System Description
 - for each photo (GET, POST...) , need one paragraph explaining each one. 1 paragraph per operation (GET, POST...)
 - for each photo outline what happens in 1) 2) 3)
 
 
-Proof of Correctness (BIGTIME CHANGE)
+Proof of Correctness (BIGTIME CHANGE + STUFF TO LEARN)
 - how do you guarantee that a get does what it is intended to do:
 - cite preconditions, post conditions,all the paths from pre conditions to post conditions and how it would always be true
 - like an if else
@@ -151,7 +152,7 @@ How to know it will reach the correct user
 1) Each user has a unique identifier (IP Address)
 
 Theoretical Analysis
-- Mention base system means FTP from NCBI...
+- Mention base system means FTP from NCBI (will be stated in scope but good to state again here) ...
 - Mention why only get/ retrieval is used. Since all operations can be broken up into small retrieval operations
 - abstract size of a payload
 - cite that network is assumed to be error free
@@ -159,6 +160,7 @@ Theoretical Analysis
 - move the final comparisons here
 
 Conclusion Template:
+✓ - make a conclusion section
 - say what you did
 - summarize analysis of results
 - 2 to 3 sentences of what you did/ problem
@@ -167,10 +169,12 @@ Conclusion Template:
 - speed: faster/slower
 - shown to do what is expected based on preconditions
 
-Reccomendations
+✓ Reccomendations
 - okay
 
-check Acknowledgements -> Remove from Appendix
+✓ Acknowledgements -> Remove from Appendix
 
-Biblio
-check - Make it APA format
+✓ Biblio
+✓ - Make it APA format
+
+Presentation - after naaa
