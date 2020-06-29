@@ -179,55 +179,16 @@ Genomic data the past few years have grown exponentially with the technology bar
 \begin{multicols}{2}
 
 \section{Introduction}
-Inside every human body are the instructions to create and maintain it. These instructions are found inside the genome. The instructions inside the human genome are incredibly long. For example, entire human genome, inside a singular cell, when laid out is around 2 meters in length.\cite{ency_sci_tech}
 
-Combining  and laying out all the information for all the cells in the human body. The length is incredibly long that it can span the earth to moon 6000 times. This describes as well the vast amount of DNA information in the body. These kinds of information will help scientists explain many of the understood and unknown processes inside all organisms. These may also be used to compare different organisms to each other. And to compare humans to other humans.
+There is a vast amount of information inside the human body. One of these key biological information storage designs are in the genes. These tell each cell how to organize, how to build, maintain the organism\cite{alberts_mole}. These genes inside a single cell (humans) when laid out is 2 meters in length.\cite{ency_sci_tech} And combining all of the cells, the information laid out would reach the moon, and back, 6000 times. 
 
+These biological information storage designs or genes are studied in the field of \textit{Genomics}. Genomics studies the whole sets of genes and their interactions \cite[~p.437]{campbell}. The definition by the NIH (National Institute of Health) adds to that definition by including the study of how these genes interact with the environment.\cite{genomics-definition} Genes are large, and the human genome is filled with 3.2 billion pairs of information (or bases) \cite{introgenomics}.
 
-\subsection{Definition of Genomics}
-Genomics is the study of whole sets of genes and their interactions\cite[~p.437]{campbell}. The efforts to study this field has led to volumes of data that need to be analyzed. Which has also spurred the field bioinformatics, which aims to use computers to aid the analysis and storage of biological data. Institutions such as the National Institute of Health and National Library of Medicine, have led this field and built a website to encourage collaboration online through their online portal called NCBI (National Center for Biotechnology Information). \cite[~p.438]{campbell} This website will be discussed later in more detail in Section \ref{NCBI}.
+Before these information is analyzed digitally, they must be read into a machine first. This is called \textit{Sequencing}. Here a machine takes fragments of genes and reads them into a digital format. These machines take in a lot of information from different but redundant fragments of genes to get a complete reading. Another set of computational processes are needed to combine these information to form the gene. Back in the 1980s the speed of sequencing was still slow at around 1000 bases a day\cite{campbell}.
 
-National Institute of Health \cite{genomics-definition} formally defines genomics as \\ \\
-\textit{the study of all of a person's genes (the genome), including interactions of those genes with each other and with the person's environment.} \\ \\
+In 1993, when sequencing technology was still at its infancy. There was an initiative to complete the entire human genome\cite{introgenomics}. It was a slow process which took 10 years, a lot of collaborations, 3 billion dollars. In 2000 when the human genome project had been ongoing, the speed of sequencing grew to 1000 base pairs every second, 24 hours a day, 7 days a week \cite{campbell}. The technology became faster and more reliable.
 
-In the definition, one main component of genomics are genes. Genes comprise of DNA. DNA, deoxyribonucleic acid, is a chemical compound that works like a computer bytes to store information for organisms. DNA's structure is composed of chemical compounds (or nucleotides) that encode information. These nucleotides are commonly written down as A,G,C,T corresponding to their chemical makeup\cite{alberts_mole}. Another important feature of genes is that these genes are the instructions passed on from one generation to another. \cite[p.~2]{hartl2018}
-
-These nucleotides form sets of base pairs (otherwise known as \textit{bases}). These bases encode the information stated earlier. They are pairs since, there is always a corresponding complement pair for every nucleotide. To give a bigger picture, when these bases are combined and organized, these act as a blueprint to describe and instruct the body(or organism) on how to create it and how to maintain it.\cite{alberts_mole}
-
-If all the bases, genes, genomics combined form the blueprint of the organism. There is useful knowledge there and there will be a need to understand all the complexity and interactions to further understand how the blueprint of an organism works. Genomics play a role in understanding different components of an organism by paying attention to the genes and nucleotide bases. Different organisms have certain differences in genes and this has been a focal point of many genomics studies, which sometimes is aimed as well as establishing surprising similarities among distinct organisms.
-
-The instructions inside the genes explain the complexity of an organism. This also means more complex organisms are likely to have more complicated genes and therefore have a lot more information. Even if this general idea is true, there are some exceptions, some plants such as the Japanese canopy plant \textit{Paris japonica} have 50 times the genome size compared to humans\cite[~p.442]{campbell}. These may be due to repeating non-essential DNA. But the idea of having many unknown components and interactions in a complex organism means more information will be needed and gathered. Humans, being complex, are extensively studied in order to detail the complex processes inside the body. The presence of many studies for the human genome has increased the amount of information generated. To give an idea of the amount of information, for humans, the full human genome contain around $3.2x10^9$ base pairs \cite{introgenomics}. 
-
-Storing information is one aspect, but before analyzing that information, these have to be physically taken from the organism's cells and read. Reading these information from genes will need a certain technology. The technology is called \textit{Sequencing}.
-
-\subsection{Sequencing}
-
-The machines to generate the sequences are aptly called \textbf{Sequencers} that look (or more appropriately, \textit{read}) the DNA of a specimen. The machine outputs A,G,C,T, sometimes with uncertainties. Sequencers look at the exact order of a single strand of DNA. The process of sequencing DNA seems straightforward that a machine will read only one strand of DNA. In actuality, one strand is too little for one machine to read. So before reading, the DNA is \textit{replicated} multiple times in the laboratory. Here there is a concept of repeated reading or coverage which will be discussed later.
-
-Sequencers also can't read the entire length of DNA. With this, the DNA is also \textit{fragmented} before processing. By fragmented meaning it will be cut up into pieces. Sequencers can only read it in parts. 
-
-The idea of \textit{replication} and \textit{fragmentation} are important because these increase the data taken up when sequencing. Replication causes a lot of redundant data in the sequence. Fragmentation causes there to be a need to piece back the information together. Now with those concepts in mind sequencers then reads (or sequences) the replicated and fragmented data.
-
-These reads or sequences taken will need an extra step before the data becomes useful. It will then be needed to be put back together computationally to form the \textit{correct or reference} DNA. These utilize many of the technology developed by bioinformatice. These are one of the reasons why genomic data is large because even the fragmented replicated data is still stored, not just the reference DNA.
-
-\subsection{Human Genome Project}
-
-Another way to see the way genomic data is large is by looking at the \textit{Human Genome Project (HGP)}. The project's aim was to sequence the entire human genome. At the time it needed a lot of collaborations, a lot of financing, and new computational tools (piecing everything together). Back in 2003 it was a milestone because the first human genome \cite{introgenomics} had been first completely read. It took the project ten years of work, a dozen institutions, and 3 billion dollars to finish. The technology for sequencing and genomics was still at its infancy. 
-
-Once the Human Genome Project was completed in 2003 and the studies fully published in 2006. The research then paved the way to study chimpanzees since their DNA is the closest to humans. And the whole genome structure of humans can easily be used to recreate the whole genome sequence of the chimpanzee. This was completed 2 years after the Human Genome Project\cite{campbell}. These paved the way for more and more whole genome studies of animals much different from humans. By April 2013, around 4,300 genomes had been studied\cite[~p.442]{campbell}. These contribute to the growing amount of research, analysis, and most importantly data around genomes of different organisms.
-
-
-\subsubsection{Next Generation Sequencing}
-
-The introduction of \textit{Next Generation Sequencers or (NGS)} can be seen as a another significant event in the history of genomics. This is a new technology which has allowed the machines to read faster and cheaper. These utilize a variety of technologies, some make use of light, some use ion semiconductors, others use a special DNA marker with a fluorescent probe \cite[~p.67]{paulselzer2018}.  Back in 1980 the speed in which sequencing can be done was 1000 base pairs a day. In 2000 when the human genome project had been ongoing, the speed grew to 1000 base pairs every second, 24 hours a day, 7 days a week \cite{campbell}.  In 2000 the technology had been growing faster and more reliable.
-
-NGS has contributed to this speedup even further. Many countries that research have started employing NGS. The NGS technology in Japan can now read 10,000 human genomes per day. \cite[p.~19]{introgenomics} Compare this to the many years and institutions it took to study the first human genome back in 2003. Now a singular laboratory can achieve this with speed.
-
-These show how the technology for reading genomes has been developed over the years. This tech has increased the speed of reading, and as well as research. Which directly affects the speed in which genome data is produced. Since each sequence read requires storage. This poses a problem to projects involving sequences, causing the data volumes to be usually very large\cite{bon_compression}. 
-
-There exists a concept of \textit{coverage} as well. Referring back to the \textit{replication} and \textit{fragmentation} concept earlier. There needs to be a specific number of reads a machine needs in order to produce a good quality reference sequence (the correct, standard sequence). Meaning the sequence isn't read only once, where multiple reads need multiple reads.  
-
-This contributes to the large data size of sequence reads. Currently, for a coverage of around 60, the file size for a compressed human genome can easily reach 200 GB. And a project of 10-20 genomes would need approximately 4 TB of storage. Transferring these data across research groups would indeed be a challenge. \cite[~p.68]{paulselzer2018} These highlight the important and growing problem of storage and file transfers in genome research.
+After the human genome project finished, there was a lot of data to be analyzed and many papers were published in the next few years. The research led to many advancements and many more genomes to be studied. From the whole genome of the closest relative to humans (chimpanzee) in 2006 to 4300 different whole genomes in 2013\cite[~p.442]{campbell}. Part of the reason why research was capable of looking at more whole genomes was because of next generation sequencing (NGS). NGS used a variety of technologies to make sequencing faster, cheaper, and more reliable\cite[~p.67]{paulselzer2018}. The technology speedup can be noticed in Japan, where today 10,000 human whole genomes can be studied in a single day. This has greatly increased the speed of research and data production in the field of genomics.
 
 \begin{Figure}
 \centering
@@ -236,10 +197,6 @@ This contributes to the large data size of sequence reads. Currently, for a cove
 \label{fig:human_gen_cost_fig}
 \end{Figure}
 
-To view these technology developments over time, we look at the Figure~\ref{fig:human_gen_cost_fig} \cite{genomics-cost}, we note here the expensive cost at the initial stages of sequencing the human genome. But as time progresses, the cost substantially went down to what it is now. The big fall of the prices around 2004 - 2005 corresponds to the introduction of the Next Generation Sequencers.
-
-\subsection{Database}
-
 \begin{Figure}
 \captionof{figure}{Megabase Cost Over Time}
 \centering
@@ -247,38 +204,11 @@ To view these technology developments over time, we look at the Figure~\ref{fig:
 \label{fig:megabase_cost_fig}
 \end{Figure}
 
-Similar to Figure~\ref{fig:human_gen_cost_fig}, we also note the same pattern for the cost of sequencing (not just humans) in Figure~\ref{fig:megabase_cost_fig}\cite{genomics-cost}. After the human genome project, many more whole genome projects have been completed. And the cost of sequencing dropped 1000 fold from 2008 to 2012 alone \cite{bon_compression}. This lowering of cost, again corresponds to the idea of sequencing becoming more available. Increasing the number of research projects, therefore contributing to the growing number again of genomic data.
- 
-\begin{center}
-\textit{Moore's law states that the number of transistors on a chip doubles every two years.}\cite{kurose}
-\end{center}
 
-The idea of Moore's law should give relief to genomic researchers since this means, that as time passes by, technology for processing and storage will improve. And the overall capacity for what technology can do will increase as well. 
-
-But, by paying attention to the speed in which the number of sequence data increases seems to exceed the speed of Moore's Law. And this will pose an additional problem since the technology doesn't seem to be catching up. The immediate problem is the storage of all the data being produced. A certain technology needs to be made for the purpose of holding this data. This technology is called \textit{Databases}. But there is a greater need as well in making sure the data stays secure, consistent, easily accessible, and fast. These are other aspects needed by a genomics researcher as well. And this is the reason why a specific class of Databases called \textit{Distributed Databases} will be discussed in section \ref{db_types}.
-
-\subsubsection{Databases Definition}
-A database (DBMS, Database Management System) is defined by containing information about a particular enterprise. Functionalities include: \cite{Silberschatz2010}
-\begin{itemize}
-    \item Collection of interrelated data
-    \item Set of programs to access the data
-    \item An environment that is both convenient and efficient to use
-\end{itemize}
-
-These form a system that is made for accessing and updating data. The next section (\ref{cap}) discusses the key points to consider in creating a good database system (or DBMS). The key points are important to discuss many important features and dilemmas of the proposed system. Certain database principles are needed to make sure the data is available, secure, and consistent. 
+In the Figure~\ref{fig:human_gen_cost_fig} \cite{genomics-cost}, it can be noticed that the cost per genome data goes down over time (note the year 2004-2005) where NGS was introduced. In this next Figure~\ref{fig:megabase_cost_fig}\cite{genomics-cost} we also note the drop of sequencing cost from 2008 to 2012 by 1000 fold \cite{bon_compression}. These graphs show how the cost has been reduced which should increase the data production by a huge amount as well.
 
 
-
-\subsubsection{Database Types} \label{db_types}
-Two types of databases will be discussed in this paper. Each have their specific niche and use. One is more efficient and easier to make, another is better suited for collaborative work. Note the technical jargon that needs to be used to explain some concepts. These are namely: \cite{centralizedvsdistributed}
-
-\begin{itemize}
-    \item Centralized - In a centralized database, all data are managed by a single DBMS in a single node to be distributed to users. As a result, transactions are easily manageable because everything can be processed in the single node. Here, the cost of communication is high and reliability is low, as an error in the database will mean disaster to the network as a whole. These are easier to create.
-    
-    \item Distributed - In a distributed database, data are stored in multiple servers in different geographical locations. Each node may contain a part or the entirety of the data. The difficulty of managing transactions will go up, but the result is higher availability, faster response, and modular growth, among other advantages. These databases are better creating spread out databases, and are better for collaborative work.
-\end{itemize}
-
-For genomic research, when the data storage needs to be increased often, distributed databases are most appropriate.
+The huge data must be stored in a form of digital information storage design as well. These are where the technologies of databases come in. Databases or (DBMS: Database Management Systems) manage the digital information, and the access to it. \cite{Silberschatz2010}. The two types of databases are the centralized and the distributed databases\cite{centralizedvsdistributed}. The centralized databases have a single node or a single access point. While distributed databases have multiple nodes, and each node contains a portion or a replica of the data. Distributed databases are more complex but have higher availability, faster response, and is better for collaborative work. For genomic research, when the data storage needs to be increased often, distributed databases are most appropriate.
 
 \subsubsection{CAP theorem for Databases} \label{cap}
 There are 3 principles needed when creating a database\cite{Silberschatz2010}. It is given that it is impossible to do all 3 principles at the same time perfectly\cite{gilbert2012perspectives}. The idea is that only two of the three can be focused on at any given time. These principles and limitations need to be taken into consideration when designing the system. 
@@ -486,6 +416,7 @@ The system is described as \textit{community assisted}. Since ideally, instituti
 
 The database is a distributed database, which will aim to utilize the best features from peer-to-peer and client-server architectures. This will also aim to store sequences. Thus the "Distributed Database for Sequences" portion of the title.
 
+Figure 3 shows the way in which the different components of the network interact with each other. The master node is connected to all data nodes for syncing purposes. 
 
 \begin{Figure}
 \captionof{figure}{App network diagram}
@@ -707,4 +638,6 @@ We want to acknowledge our advisers Dr. Jan Michael Yap and Sir El King Morado f
 %%
 %% End of file `sample-acmsmall.tex'.
 %%
+
+\bibliography{bibfile}
 
