@@ -207,8 +207,7 @@ After the human genome project finished, there was a lot of data to be analyzed 
 
 In the Figure~\ref{fig:human_gen_cost_fig} \cite{genomics-cost}, it can be noticed that the cost per genome data goes down over time (note the year 2004-2005) where NGS was introduced. In this next Figure~\ref{fig:megabase_cost_fig}\cite{genomics-cost} we also note the drop of sequencing cost from 2008 to 2012 by 1000 fold \cite{bon_compression}. These graphs show how the cost has been reduced which should increase the data production by a huge amount as well.
 
-
-The huge data must be stored in a form of digital information storage design as well. These are where the technologies of databases come in. Databases or (DBMS: Database Management Systems) manage the digital information, and the access to it. \cite{Silberschatz2010}. The two types of databases are the centralized and the distributed databases\cite{centralizedvsdistributed}. The centralized databases have a single node or a single access point. While distributed databases have multiple nodes, and each node contains a portion or a replica of the data. Distributed databases are more complex but have higher availability, faster response, and is better for collaborative work. For genomic research, when the data storage needs to be increased often, distributed databases are most appropriate.
+The huge data must be stored in a form of digital information storage design as well. These are where the technologies of databases come in. Databases or DBMS (Database Management Systems) manage the digital information, and the access to it. \cite{Silberschatz2010}. The two types of databases are the centralized and the distributed databases\cite{centralizedvsdistributed}. The centralized databases have a single node or a single access point. While distributed databases have multiple nodes, and each node contains a portion or a replica of the data. Distributed databases are more complex but have higher availability, faster response, and are better for collaborative work. For genomic research, when the data storage needs to be increased often, distributed databases are most appropriate.
 
 \subsubsection{CAP theorem for Databases} \label{cap}
 There are 3 principles needed when creating a database\cite{Silberschatz2010}. It is given that it is impossible to do all 3 principles at the same time perfectly\cite{gilbert2012perspectives}. The idea is that only two of the three can be focused on at any given time. These principles and limitations need to be taken into consideration when designing the system. 
@@ -335,15 +334,8 @@ The first objective addresses the genome researchers problems of centralized dat
 
 \section{Scope}
 
-The project will focus on creating a framework, and outlining key API features of the framework. The current scope of the project is as follows:
+The research will focus on creating a theoretical design for the proposed system. And to evaluate the theoretical properties of the proposed system and the base system. The proposed system is the caDDS (community assisted Distributed Databases for Sequences), specifically the GET operation. While the base system, is the FTP (File Transfer Protocol) of NCBI for getting sequences. NCBI is currently a complex platform, but the scope of this research will only be the FTP access route.
 
-\begin{itemize}
-    \item To create a framework for a proposed system
-    \item To design the correctness of a system
-    \item To look at the basic time complexity of the base system (NCBI) and the proposed system
-    \item To compare the proposed system to the base system
-
-\end{itemize}
 
 \section{Limitations}
 The research had time constraints and physical constraints because of the unexpected Covid-19 pandemic. The research will not implement the system or explain the technology stack to be used. It will not include security and authentication.
