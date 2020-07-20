@@ -133,7 +133,7 @@
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
-Genomic data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genome data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. Master node handles administrative work while the Data nodes contain all sequence data. Data nodes should theoretically increase data transfer speeds. While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. The proposed system is also theoretically faster as long as there are multiple working data nodes. A recommendation is to implement the system and make the code public for the use of other communities.
+Genomics data the past few years have grown exponentially with the technology barely keeping up. The problem faced by genome researchers is the large data set and difficulty transferring the files. Previous distributed databases are either not meant for genome data, or difficult to replicate. This paper lays the groundwork for a distributed database that is designed to easily scale to accommodate bigger storage, and also reduces the data speed bottleneck faced by centralized databases. The proposed system has a master node and data nodes. The master node handles administrative work while the Data nodes contain all sequence data. Data nodes should theoretically increase data transfer speeds. While current databases(e.g. NCBI) have more data, more users, and a live platform. The proposed system is aimed towards a smaller community, with more frequent and localized data, which the data storage can easily be expanded as the need arises. The proposed system is also theoretically faster as long as there are multiple working data nodes. A recommendation is to implement the system and make the code public for the use of other communities.
 \end{abstract}
 
 %%
@@ -180,13 +180,13 @@ Genomic data the past few years have grown exponentially with the technology bar
 
 \section{Introduction}
 
-There is a vast amount of information inside the human body. One of these key biological information storage designs are in the genes. These tell each cell how to organize, how to build, maintain the organism\cite{alberts_mole}. These genes inside a single cell (humans) when laid out is 2 meters in length.\cite{ency_sci_tech} And combining all of the cells, the information laid out would reach the moon, and back, 6000 times. 
+There is a vast amount of information inside the human body. One of these key biological information storage designs are in the genes. These tell each cell how to organize, how to build, and how to maintain the organism\cite{alberts_mole}. The genes inside a single cell (humans) when laid out is 2 meters in length.\cite{ency_sci_tech} And combining all of the cells, the information laid out would reach the moon, and back, 6000 times. 
 
-These biological information storage designs or genes are studied in the field of \textit{Genomics}. Genomics studies the whole sets of genes and their interactions \cite[~p.437]{campbell}. The definition by the NIH (National Institute of Health) adds to that definition by including the study of how these genes interact with the environment.\cite{genomics-definition} Genes are large, and the human genome is filled with 3.2 billion pairs of information (or bases) \cite{introgenomics}.
+These biological information storage designs or genes are studied in the field of \textit{Genomics}. Genomics studies the whole sets of genes and their interactions \cite[~p.437]{campbell}. The definition by the NIH (National Institute of Health) adds to that definition by including the study of how these genes interact with the environment.\cite{genomics-definition} Genes are large, the human genome specifically is filled with 3.2 billion pairs of information (or bases) \cite{introgenomics}.
 
-Before these information is analyzed digitally, they must be read into a machine first. This is called \textit{Sequencing}. Here a machine takes fragments of genes and reads them into a digital format. These machines take in a lot of information from different but redundant fragments of genes to get a complete reading. Another set of computational processes are needed to combine these information to form the gene. Back in the 1980s the speed of sequencing was still slow at around 1000 bases a day\cite{campbell}.
+Before these information are analyzed digitally, they must be read into a machine first. This is called \textit{Sequencing}. Here a machine takes fragments of genes and reads them into a digital format. These machines take in a lot of information from different but redundant fragments of genes to get a complete reading. Another set of computational processes are needed to combine these information to form the gene. Back in the 1980s the speed of sequencing was still slow and the top laboratory could only process around 1000 bases a day\cite{campbell}.
 
-In 1993, when sequencing technology was still at its infancy. There was an initiative to complete the entire human genome\cite{introgenomics}. It was a slow process which took 10 years, a lot of collaborations, 3 billion dollars. In 2000 when the human genome project had been ongoing, the speed of sequencing grew to 1000 base pairs every second, 24 hours a day, 7 days a week \cite{campbell}. The technology became faster and more reliable.
+In 1993, when sequencing technology was still at its infancy. There was an initiative to complete the entire human genome\cite{introgenomics}. It was a slow process which took 10 years, a lot of collaborations, and 3 billion dollars. In 2000, when the human genome project had been ongoing, the speed of sequencing grew to processing 1000 base pairs every second, 24 hours a day, 7 days a week \cite{campbell}. The technology became faster and more reliable.
 
 After the human genome project finished, there was a lot of data to be analyzed and many papers were published in the next few years. The research led to many advancements and many more genomes to be studied. From the whole genome of the closest relative to humans (chimpanzee) in 2006 to 4300 different whole genomes in 2013\cite[~p.442]{campbell}. Part of the reason why research was capable of looking at more whole genomes was because of next generation sequencing (NGS). NGS used a variety of technologies to make sequencing faster, cheaper, and more reliable\cite[~p.67]{paulselzer2018}. The technology speedup can be noticed in Japan, where today 10,000 human whole genomes can be studied in a single day. This has greatly increased the speed of research and data production in the field of genomics.
 
@@ -207,35 +207,13 @@ After the human genome project finished, there was a lot of data to be analyzed 
 
 In the Figure~\ref{fig:human_gen_cost_fig} \cite{genomics-cost}, it can be noticed that the cost per genome data goes down over time (note the year 2004-2005) where NGS was introduced. In this next Figure~\ref{fig:megabase_cost_fig}\cite{genomics-cost} we also note the drop of sequencing cost from 2008 to 2012 by 1000 fold \cite{bon_compression}. These graphs show how the cost has been reduced which should increase the data production by a huge amount as well.
 
-The huge data must be stored in a form of digital information storage design as well. These are where the technologies of databases come in. Databases or DBMS (Database Management Systems) manage the digital information, and the access to it. \cite{Silberschatz2010}. The two types of databases are the centralized and the distributed databases\cite{centralizedvsdistributed}. The centralized databases have a single node or a single access point. While distributed databases have multiple nodes, and each node contains a portion or a replica of the data. Distributed databases are more complex but have higher availability, faster response, and are better for collaborative work. For genomic research, when the data storage needs to be increased often, distributed databases are most appropriate.
+The huge data must be stored in a form of digital information storage design as well. These are where the technologies of databases come in. Databases or DBMS (Database Management Systems) manage the digital information, and the access to it. \cite{Silberschatz2010}. The two types of databases are the centralized and the distributed databases\cite{centralizedvsdistributed}. The centralized databases have a single node or a single access point. While distributed databases have multiple nodes, and each node contains a portion or a replica of the data. Distributed databases are more complex but have higher availability, faster response, and are better for collaborative work. For genomics research, when the data storage needs to be increased often, distributed databases are most appropriate.
 
-\subsubsection{CAP theorem for Databases} \label{cap}
-There are 3 principles needed when creating a database\cite{Silberschatz2010}. It is given that it is impossible to do all 3 principles at the same time perfectly\cite{gilbert2012perspectives}. The idea is that only two of the three can be focused on at any given time. These principles and limitations need to be taken into consideration when designing the system. 
+Databases also have three principles \cite{Silberschatz2010}, these 3 principles form the ideal database. But these 3 principles, practically cannot be done all at the same time \cite{Silberschatz2010}. These are the considerations and limitations that need to be addressed. One principle is consistency, data should be accurate and faithfully replicated. Another is availability, is the database able to serve users all of the time? The down times should be as infrequent as possible. The last and which will be the focus is Partition Tolerance. Partition Tolerance is the resiliency of a system. What happens when one portion malfunctions, will the whole system fail or will the rest easily adjust? This is necessary for a distributed database. And since Partition Tolerance \cite{Silberschatz2010} is chosen, then the trade off will be between availability and consistency.
 
-\begin{itemize}
-    \item Consistency - Does the data have integrity? To update one part, all other (replicated) parts should be updated quickly as well; Data is accurate and copied faithfully. An example would be that genes for specimen A, when copied to another data node should contain the exact copy of the data, with no changes.
-    \item Availability - Is the database usable by clients all of the time? The entire system must be in downtime as infrequently as possible, despite failures.
-    \item Partition Tolerance - How resilient is the system when it comes to failures? If one portion breaks, the other portions should still be entirely usable. An example would be a power failure for one system, how would this affect the other systems?
-\end{itemize}
+The trade off for this system is between availability and consistency. For a consistency-priority-database, a change in one portion of the database, a create SQL command, will lock the entire database preventing other changes (reducing availability), then it will make sure that change is replicated in all relevant portions of the database, before making the database available again.
 
-Partition tolerance is a de facto requirement of distributed databases and cannot be avoided, so the main trade-off is between availablity and consistency. \cite{Silberschatz2010} Suppose a distributed system prefers consistency over availability. A user updates an SQL row in one partition of the database. Beforehand, this row has already been replicated among many partitions. To ensure that all replicas of the row are consistent, the system must lock this part of the database to prevent other users from reading and editing it, so availability will be negatively affected in the meantime. A distributed system preferring availability, such as a messenger app, will not lock parts of the database in the purpose of being open to serve its users, but cannot guarantee that the data it outputs is always up-to-date. There might be a delay before the data is fully consistent throughout geographic locations.
-
-\subsection{Application Architecture}
-Another important consideration is how a system is built. These describe the blueprint and interaction within a database system. These provide insights similar to the questions asked when looking between database types. Database types describe how the data is handled inside the system. But application architecture describes how the users interact with the system. The application architecture is how a networked app is structured across the various end systems (i.e. computers, servers, etc.) \cite{kurose} The end systems are another way to call users or clients. 
-The application architecture types fall into either client-server, peer-to-peer, or hybrid architecture.
-
-\subsubsection{Client-Server} \label{client-server}
-A client-server architecture relies on a Web server that is always available and has a fixed IP address. When a client (or user) sends a request for data, the server (or DBMS in this example) responds by sending the requested data. The client-server architecture is mainly built to respond to one client at a time. The architecture may handle multiple connections but as these grow bigger, it may not be able to keep up with the increasing number of connections since the server might not be able to handle all the requests.
-
-\subsubsection{P2P} \label{p2p}
-A peer-to-peer (P2P) architecture has minimal to no reliance on always-on, dedicated servers. Peers are desktops/laptops (or users) that communicate to each other without passing through a dedicated server (or DBMS). These include internet, BitTorrent, and some other file sharing protocols. An advantage of P2P networks is their scalability, unlike the earlier type. Each user can benefit the whole network by sharing his/her own resources. 
-
-However, since P2P doesn't have a central data management system. P2P has its own problems, which are security and incentivizing users to share their resources.
-
-\subsubsection{Hybrid}
-A hybrid architecture combines elements of P2P and client-server architectures, attempting to utilize advantages of both.
-
-For a genomic database system, it would be best to utilize Hybrid Application Architecture. Since there needs to be certain features that Client-Server of P2P might not be able to deliver. One would be scalability, another is security and centralized management of the data, which is a feature not provided by P2P.
+For an availability-priority-database, an example would be the messenger Facebook app. Where the focus of the app is speed. Here changes in a database will not lock the database, to make its app available. The downside is that the data is available, but it is not always up to date, and time is needed before the data is fully consistent on all the relevant databases.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% RRL %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -244,21 +222,21 @@ For a genomic database system, it would be best to utilize Hybrid Application Ar
 We review the technologies on data storage done before. Some have employed \textit{Client-Server}, some \textit{P2P}, others have tried \textit{Hybrid} (but are still few and unsuccessful).
 
 \subsection{SeqTorr: A distributed scalable database for genomic information}
-The focus on SeqTorr was finding a way to scale databases meant specifically for genomic information. There was also a focus on being able to choose information to share and use. The standard genomics workflow consists of uploading and downloading data on an international database like NCBI in Section \ref{NCBI}. Having a distributed scalable local infrastructure to store genomic data instead of relying on NCBI would be beneficial since: only certain sequences in NCBI are relevant to the institutions (e.g. Asian sequences are needed more than Caucasian ones), researchers within the country can share data with fast speeds, and  institutions can share in the hosting of data.
+The focus on SeqTorr was finding a way to scale databases meant specifically for genomics information. There was also a focus on being able to choose information to share and use. The standard genomics workflow consists of uploading and downloading data on an international database like NCBI in Section \ref{NCBI}. Having a distributed scalable local infrastructure to store genomic data instead of relying on NCBI would be beneficial since: only certain sequences in NCBI are relevant to the institutions (e.g. Asian sequences are needed more than Caucasian ones), researchers within the country can share data with fast speeds,and institutions can share in the hosting of data.
 
 The architecture of SeqTorr consists of a master node and multiple data nodes. The master node contains metadata of all the sequences and is where the user authentication is handled, while the data node is where the actual sequences are stored. All user uploads happen in the master node. When the master node receives a sequence from a user, it distributes the sequence to any available data nodes. 
 \cite{seqtorr}
 
-SeqTorr seems to go in the right direction and focus for genomic databses. But currently, SeqTorr is not available, and the code base does not have any documentation which makes future work difficult.
+SeqTorr seems to go in the right direction to focus on genomics databases. But currently, SeqTorr is not available, and the code base does not have any documentation which makes future work on this difficult.
 
 \subsection{BioTorrents}
-BioTorrents focused on P2P and making it easy to share data across biological scientific communities.  Scientific data continues to grow, and so does the demand for easier accessibility. Centralized servers, as stated earlier, using HTTP or FTP cannot keep up with concurrent requests, and peer-to-peer protocols does not scale well for large files.\cite{biotorrents} One example of these centralized servers is NCBI, which will be discussed later. BitTorrent handles both these problems. 
+BioTorrents focused on P2P and making it easy to share data across biological scientific communities. Scientific data continues to grow, and so does the demand for easier accessibility. Centralized servers, as stated earlier, which are using HTTP or FTP, cannot keep up with concurrent requests, and peer-to-peer protocols does not scale well for large files.\cite{biotorrents} One example of these centralized servers is NCBI, which will be discussed later. BitTorrent handles both these problems. 
 
-BioTorrents is a system for legally sharing scientific data that works on top of the BitTorrent protocol (or P2P). It is much like a public tracker \cite{biotorrents}. The main website hosts .torrent and metadata files. The main website doesn't store data, rather it lets the users keep the data and share it to other users. The main website only facilitates the sharing of these data (via the idea of P2P and torrents).
+BioTorrents is a system for legally sharing scientific data that works on top of the BitTorrent protocol (or P2P). It is much like a public tracker \cite{biotorrents}. The main website hosts torrent and metadata files. The main website doesn't store data, rather it lets the users keep the data and share it to other users. The main website only facilitates the sharing of these data (via the idea of P2P and torrents).
 
-The main website stores info about each dataset includes categories, license, filenames, etc. that helps users in searching for relevant datasets. There is also a torrent file has a list of trackers, servers that "know" which peers are serving which files, so it can download from those peers simultaneously. These torrents act like a directory telling the user who currently has the data for a piece of the file. The system then helps the user download many pieces of the file from many different users.
+The main website stores info about each dataset includes categories, license, filenames, etc. that helps users in searching for relevant datasets. There is also a torrent file that has a list of trackers, servers that "know" which peers are serving which files, so it can download from those peers simultaneously. These torrents act like a directory telling the user who currently has the data for a piece of the file. The system then helps the user download many pieces of the file from many different users.
 
-The client (or user) must have their computer continuously turned on to keep their file available to others. The main issue with BioTorrents, which is a problem as well in P2P, is that it requires lots of users that will keep many torrents available as often as possible.\cite{biotorrents} These entail that for the system to work, many people need to use it and all these people need to keep their computers on all the time.
+The client (or user) must have their computer continuously turned on to keep their file available to others. The main issue with BioTorrents, which is a problem as well in P2P, is that it requires lots of users to keep torrents available as often as possible.\cite{biotorrents} These entail that for the system to work, many people need to use it and all these people need to keep their computers on all the time.
 
 BioTorrents was successful; many people had used it to share data. It was active for a while. However, BioTorrents has been down for years. This also shows what problems a system will face when doing a pure P2P application architecture.
 
@@ -267,14 +245,14 @@ BioTorrents was successful; many people had used it to share data. It was active
 PeerDB is a proposed P2P system for sharing general data. Each node is equipped with a MySQL database that it keeps available for other nodes to download from. Each node also keeps track of its neighbors, and any useful information about them. Queries are passed around neighbors, with a maximum number of hops. A node may cache information about other peers to speed up future queries.
 \cite{peerdb}
 
-PeerDB is a proposal for a distributed system using P2P. For this to be used in the context of genomic biological work, a main website which facilitates sharing will be need to be put up. PeerDB needs to be installed as well on all the users who will be participating.
+PeerDB is a proposal for a distributed system using P2P. For this to be used in the context of genomics biological work, a main website which facilitates sharing will be need to be put up. PeerDB needs to be installed as well on all the users who will be participating.
 
 A future PeerDB system will also face similar problems faced by BioTorrents since it will need to rely on numerous active users for it to work.
 
 \subsection{NCBI} \label{NCBI}
-The National Center for Biotechnology Information or more commonly known as NCBI, which discussed briefly in the section on \textit{BioTorrents} and in the \textit{Introduction}. This is the standard genomic database used by many researches and institutions. We will refer this later on as well as the \textit{base system}. This is the website used to access and store most genomic information\cite{campbell}. It uses a client-server architecture. Users may download data via the graphics interface (website), or may be done via file transfer protocols such as FTP or HTTP \cite{biotorrents}. The latter is preferred since it may be done to automate the download of data.
+The National Center for Biotechnology Information or more commonly known as NCBI, which discussed briefly in the section on \textit{BioTorrents} and in the \textit{Introduction}, is the standard genomics database used by many researches and institutions. We will refer a portion of this later on as the \textit{base system}. This is the website used to access and store most genomics information around the world\cite{campbell}. It uses a client-server architecture. Users may download data via the graphics interface (website), or may be done via file transfer protocols such as FTP or HTTP \cite{biotorrents}. The latter is preferred since it may be done to automate the download of data.
 
-The SeqTorr authors\cite{seqtorr} also stated that NCBI is the main and current DBMS used to get and share genomic data. But one difficulty using that is updating the current genomic data. There currently is no way to check which data (on your computer) has been updated, which sequences were corrected. And the way the authors solved this was to regularly re-download the entire NCBI database.
+The SeqTorr authors\cite{seqtorr} also stated that NCBI is the main and current DBMS used to get and share genomics data. But one difficulty using that is updating the current genomics dataset. There is currently no way to check which data (on your computer) have been updated, which sequences were corrected. And the way the authors solved this was to regularly re-download the entire NCBI database.
 
 To state again some problems of NCBI, it has the limitations of \textit{Client-Server} architecture meaning the speed of the download is heavily reliant on the speed of the main NCBI server and the number of users accessing the server. Which also puts a lot of stress on the main server. Another problem discussed earlier was the updating of local user data, which have no technology yet to do so.
 
@@ -331,7 +309,6 @@ Based on the problems we found described, we propose to:
 The first objective addresses the genome researchers problems of centralized databases. The second objective aims to resolve the limitations of the client-server and P2P approaches, and the existing problems of distributed databases. The third objective aims to show the theoretical rationale for using these distributed databases. 
 
 
-
 \section{Scope}
 
 The research will focus on creating a theoretical design for the proposed system. And to evaluate the theoretical properties of the proposed system and the base system. The proposed system is the caDDS (community assisted Distributed Databases for Sequences), specifically the GET operation. While the base system, is the FTP (File Transfer Protocol) of NCBI for getting sequences. NCBI is currently a complex platform, but the scope of this research will only be the FTP access route.
@@ -340,46 +317,36 @@ The research will focus on creating a theoretical design for the proposed system
 \section{Limitations}
 The research had time constraints and physical constraints because of the unexpected Covid-19 pandemic. The research will not implement the system or explain the technology stack to be used. It will not include security and authentication.
 
+
 \section{Theoretical Framework}
+Before the system features are discussed, notes about the design, and how it connects internally is needed to gain a better appreciation of the overall system
+
+
+\subsection{Application Architecture}
+The system's design is guided by the application architecture. Here it is discussed how an app that relies on networks functions and interacts \cite{kurose}. There are three main types: Client-Server, Peer-to-Peer, and Hybrid. Client-Server or CS means there is one web application that serves the data to multiple users (or clients, hence the name). As the number of clients grow bigger, the server takes more stress serving all the data. Peer-to-Peer or P2P is different since it has no singular dedicated server. No singular point of stress, and data is easily distributed. The term client and server is merged into a term "peer" that can both receive and send data. All peers can share data to other peers but the catch is that there is no centralized authority moderating these data, and that an active user base or peer base is needed for this to function.
+
+Hybrid tackles some of the issues of CS and P2P, which is scalability and moderation. It allows easier scaling of database access (akin to adding more servers in P2P), but it also allows to have a form of moderation and security (akin to adding a moderator to CS). This is also more appropriate for a distributed database, and which is why a hybrid architecture is used.
 
 \subsection{Dat Protocol}
 
-The Dat Protocol is a newly-developed, open source peer-to-peer protocol for sharing data\cite{dat}. With a single command, anyone can start hosting a directory of files for others to download, as long as they have a publicly accessible IP address and port. Other users can download and then host their own copy of the same directory. Downloads are distributed, meaning if a file is shared across multiple active peers, a new user will be downloading that file from those peers, so bandwidth is shared, much like in BitTorrent. A file's data is synced across peers, so any changes made to the original copy of the file will be sent to peers hosting the same file. And like Git, the version history is also stored and made accessible to peers. Unlike Git though, Dat works well for any kind of file, not just source code. Dat also has security built in. Only users with the directory's read key can download it, and only users with the write key can make changes. In short, Dat has "taken the best parts of Git, BitTorrent, and Dropbox". Another important feature is that files and directories are stored as-is, meaning no modifications are done by Dat when storing files.
+The Dat Protocol is a newly-developed, open source peer-to-peer protocol for sharing data\cite{dat}. With a single command, anyone can start hosting a directory of files for others to download, as long as they have a publicly accessible IP address and port. Other users can download and then host their own copy of the same directory. Downloads are distributed, meaning if a file is shared across multiple active peers, a new user will be downloading that file from those peers, so bandwidth is shared, much like in BitTorrent. A file's data is synced across peers, so any changes made to the original copy of the file will be sent to peers hosting the same file. And like Git, the version history is also stored and made accessible to peers. Unlike Git though, Dat works well for any kind of file, not just source code. Dat also has security built in. Only users with the directory's read key can download it, and only users with the write key can make changes. In short, Dat has "taken the best parts of Git, BitTorrent, and Dropbox"\cite{dat}. Another important feature is that files and directories are stored as-is, meaning no modifications are done by Dat when storing files.
 
 Dat's development began in 2013, so it is a relatively new protocol. There may still be large changes in the development and management of Dat, so the project is relatively volatile. Development is ongoing, and the community is active, yet there may still exist a few bugs and other difficulties when using Dat to build an application. Dat is built on NodeJS, and support for other programming languages and frameworks is quite limited. It also contains the same problems as other P2P protocols, namely, a lack of data moderation and incentives for users to serve as peers.
 
 
 \subsection{Networks}
+In each architecture it was discussed that there is a form of file transfer between peers or from servers to clients. To achieve this transfer, years of technology created systems called networks. There are 5 levels in a network \cite{kurose} but only the last 2, level 4 and 5 is needed for the system. The other levels 1-3 create protocols that send messages to specific and unique computers without error and utilizing any erratic medium between them (whether it be undersea cables or air). 
+Level 4 assumes sending between computers is possible, but erratic. And these protocols in this level make sure all data is complete, error free before it is acknowledged. An important feature here is the File Transfer Protocol which is used by the NCBI. Here a client needs to set up a connection to the main NCBI server, then request specific files to be transferred to the client(or the user), and of course to move these files without error.
 
-An important aspect of the proposed system is the transfer of files to other computers. To achieve that, there are network technologies and systems that need to be understood. Each layer of the network has certain features, securities, and abstraction which contributes to the overall idea of sharing files across networks. Networks Layers are the abstraction of how computers pass data to each other. Understanding this is needed to maximize the speed in which data is transferred between computers. As well as to realize where certain problems or bottlenecks later on. A network, specifically the Internet, is comprised of the following levels of abstraction. \cite{kurose}
-\begin{enumerate}
-    \item Level 1: Medium used to send signals (physical, electrical signals of 0
-and 1), through wire or by air
-    \item Level 2: Introduction of packets: WIFI, Ethernet, connecting together
-different interfaces. Goal of sending a group of signals.
-    \item Level 3: Introduction of networks: IP Address to uniquely identify
-entities.
-    \item Level 4: Management of error free data transmission: Sending a group
-of messages via TCP, UDP, FTP (File Transfer Protocols)
-    \item Level 5: Abstraction of Level 4: Function calls programmers will use
-to do level 4 processes.
-\end{enumerate}
+Level 5 abstracts level 4, and making the process of connecting and transferring easier to accomplish. Since Level 5 uses function calls to do the protocols of level 4. A designer of a system will want the ease-of-use of using level 5 functions, but will need knowledge of level 4 in order to better understand bugs and problems later on. Level 5 also allows the user to focus more on doing similar database or data manipulation functions (C.R.U.D.) as POST, GET, PUT, DELETE. 
 
-Level 1 through 3 focus on building a system for sending messages from one computer entity to another. Every level talks to another entity on the same level. And a higher level talks to the lower level. This later on will be important to understanding the scope of what the thesis will do. Level 1 and 2 can be vulnerable if anyone can read the data inside the network, partly why HTTPS was developed to encrypt the data. 
-
-Level 4 and 5 is what the system will mainly use and operate on. In these systems, there are APIs commonly used to transfer files between computers on networks. These levels, compared to the levels earlier discussed also are more specific to the ideas of file transfer, checking if the files are error free, and more. Making sure files transferred are error free will be needed to do data synchronization later on. Another important network concept is that computers closer on the network (when talking directly) should have a faster speed and lower latency than computers farther apart on a network.
-
-In networks, when there is data being accessed over the network, it is not called C.R.U.D. (the way databases access data), instead it is called POST, GET, PUT, DELETE. POST is analogous to CREATE meaning the user submit data to be stored (in the server). GET is similar to READ but is in the context of reading a file over a network (from a server). PUT is analogous to UPDATE as DELETE remains as DELETE. These are codes used to denote network commands that do the same thing as the CRUD functions discussed earlier. This is important since there is an added layer of difficulty when it comes to transmitting data over a network. 
-
+All information systems must have POST, GET, PUT, DELETE or the corollary (C.R.U.D.). Since there are networks in this system, the network version of the data manipulation functions will be used.
 
 \begin{itemize}
-    \item (Move to Theoretical Framework/caDDS) The system is an information system, and all information systems must have the main API’s 
+    \item The system being proposed is an information system, and this system will have the main API’s
     \begin{itemize}
         \item POST genome data
-        \item GET genome data (this will implement a hybrid P2P transfer)
-        \begin{itemize}
-            \item This will aim to speed up number 3 in the Problems of Classical Databases
-        \end{itemize}
+        \item GET genome data, this system will implement a hybrid P2P transfer
         \item PUT genome metadata (optional: PUT data)
         \item DELETE genome data
     \end{itemize}
@@ -390,7 +357,7 @@ In networks, when there is data being accessed over the network, it is not calle
 \subsection{caDDS: Community Assisted Distributed Database for Sequences}
 
 \subsubsection{Overview}
-The two parts of the system infrastructure are the master node and data nodes. These are also inspired from SeqTorr. 
+The two parts of the system infrastructure are the master node and data nodes. This system is also inspired by SeqTorr. 
 
 The master node is a server that facilitates all authentication, uploading, and moderation. It also catalogs the metadata of all files. It will have a web application on top, with front-end and back-end that users wanting to upload a sequence to the system will have to access. The master node is also in charge of distributing sequence data to the data nodes.
 
@@ -589,10 +556,10 @@ The proposed method (with D > 1, and same H, X, N) will be faster than the base 
 
 For the final comparisons of the base method the proposed method, the current base method (NCBI in Section \ref{NCBI}) is the go-to website for biological data and genomic data. It is currently used and is one website and one server. This points to a single point of failure\cite{seqtorr}. The section \ref{theoreticalspeed} on theoretical analysis of speed described the problem of having a bottleneck when the number of users are too many for the data bandwidth of the server. 
 
-The proposed method introduces the idea of data nodes and in section \ref{theoreticalspeed} explains how having at least one data node should theoretically rival the speed of the base method. And having multiple data nodes will be faster in theory than the base method. Another advantage of having a distributed database is the community aspect (see Section \ref{community}). The proposed method may be implemented on a local scale, meaning it can have the necessary data for the community. The most frequently used data, may be put on more data nodes increasing the speed of the data transfer (see Section \ref{theoreticalspeed}). Another is that the features on the designs of the speed, consistency, and fault tolerance (see Section \ref{cap} ) may be calibrated to the needs of the community. 
+The proposed method introduces the idea of data nodes and in section \ref{theoreticalspeed} explains how having at least one data node should theoretically rival the speed of the base method. And having multiple data nodes will be faster in theory than the base method. Another advantage of having a distributed database is the community aspect (see Section \ref{community}). The proposed method may be implemented on a local scale, meaning it can have the necessary data for the community. The most frequently used data, may be put on more data nodes increasing the speed of the data transfer (see Section \ref{theoreticalspeed}). Another is that the features on the designs of the speed, consistency, and fault tolerance  may be calibrated to the needs of the community. 
 
 \section{Conclusion}
-
+The research designed a theoretical design for a database for genomics researchers. The database is distributed and uses a hybrid architecture when managing the data. The theoretical properties of the design was studied and compared to a base method (FTP of NCBI), notably the speed and correctness. The proposed system, is better suited for database systems that scale. And is shown to be faster if there are multiple data nodes.
 
 \section{Recommendations}
 A recommendation is to implement this proposed system. It is advised to have a public code with an easy-to-start documentation.
